@@ -26,10 +26,17 @@ ADZUNA_COUNTRY = os.getenv("ADZUNA_COUNTRY", "au")
 SCORING_MODEL = os.getenv("SCORING_MODEL", "openrouter/deepseek/deepseek-chat")
 
 # --- What and where to search. Edit freely. ---
+# Broad on purpose: Joseph is open to any tech role, and the LLM ranks by fit
+# afterwards. These queries just decide which jobs enter the funnel.
 SEARCHES = [
-    {"query": "junior backend engineer", "location": "Melbourne"},
     {"query": "graduate software engineer", "location": "Melbourne"},
+    {"query": "junior backend engineer", "location": "Melbourne"},
     {"query": "full stack developer", "location": "Melbourne"},
+    {"query": "web developer", "location": "Melbourne"},
+    {"query": "cloud engineer", "location": "Melbourne"},
+    {"query": "data analyst", "location": "Melbourne"},
+    {"query": "junior data engineer", "location": "Melbourne"},
+    {"query": "AI engineer", "location": "Melbourne"},
 ]
 
 MAX_RESULTS_PER_SEARCH = 20

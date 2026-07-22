@@ -1,0 +1,63 @@
+# Copy this to profile.yaml and fill in your real details.
+# profile.yaml is gitignored so your personal data never hits GitHub.
+# This one file feeds BOTH the job scorer and the cover-letter generator.
+
+name: Joseph
+location: Melbourne, Australia
+level: Junior / graduate software engineer
+target_roles:
+  - Backend engineer
+  - Full-stack engineer
+
+# Hard constraints. The scorer treats these as automatic blockers.
+work_rights:
+  australian_citizen: false
+  security_clearance: false
+  notes: >
+    No Australian citizenship or security clearance. Roles requiring either are
+    automatic no-gos and should be flagged as hard blockers.
+
+skills:
+  languages: [TypeScript, JavaScript, Python]
+  frameworks: [React]
+  cloud: [AWS Lambda, CloudWatch, DynamoDB, Cloudflare, Azure fundamentals]
+  ai_ml:
+    - University foundations in ML, NLP, computer vision, neural networks
+    - Practical LLM API integration (OpenAI) in a production feature
+  backend:
+    - Database debugging, serverless/scheduled jobs, timezone-aware logic, API integration
+
+certifications:
+  - AWS Certified Cloud Practitioner
+  - AWS Certified Developer - Associate
+  - Microsoft Azure Fundamentals
+
+experience:
+  - role: Backend Developer Intern
+    company: Focus Bear (health-tech startup)
+    length: ~3 months, 2025
+    highlights:
+      - Built an OpenAI-powered feature generating personalised encouragement messages tied to each user's routines.
+      - Diagnosed and fixed a timezone streak bug in a scheduled AWS Lambda running in GMT+0 that broke streaks for users in AU, Europe, and Asia.
+      - Worked with AWS tooling (Lambda, CloudWatch, logs, hosted DB) and Cloudflare.
+      - Handled PII and health-data privacy across multiple jurisdictions in a globally distributed team.
+  - role: Honours Group Project (Front-End Lead and Project Coordinator)
+    company: Canberra Health Services / ANU
+    length: Final year
+    highlights:
+      - Led front-end development in TypeScript and React for a clinical-trial time-tracking system delivered to a real client.
+      - Coordinated scheduling, stakeholder communication, and contingency planning when teammates hit burnout, keeping the project on track.
+
+education:
+  - Bachelor of Advanced Computing (Honours), ML / Intelligent Systems, ANU
+  - Bachelor of Commerce (Economics), ANU
+
+strengths:
+  - Coordination and communication under pressure
+  - User-centric attention to edge cases (e.g. timezones)
+  - Self-directed learner who picks up new stacks fast
+
+preferences:
+  - Companies with global users/teams
+  - Products with genuine human impact
+  - Cloud (AWS) and modern stacks

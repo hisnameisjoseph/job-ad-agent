@@ -43,3 +43,24 @@ MAX_RESULTS_PER_SEARCH = 20
 
 # Drop anything the model flags as a hard blocker (e.g. clearance required)?
 DROP_HARD_BLOCKERS = True
+
+
+# --- Pre-filters (run before the LLM to save calls) ---
+# Whole-word title matches that are auto-skipped. Tune freely.
+EXCLUDE_TITLE_KEYWORDS = [
+    "senior", "snr", "principal", "staff", "head of", "director",
+    "vice president", "vp",
+]
+# Drop postings that clearly require this many years of experience or more.
+# Conservative on purpose: borderline jobs pass through and the LLM decides.
+MAX_YEARS_EXPERIENCE = 6
+
+# --- Persistence ---
+CACHE_PATH = ".cache/scored_jobs.json"
+
+# --- Pacing and retries (defaults suit a free tier like Gemini Flash-Lite:
+# ~15 requests/minute). Raise the interval if you still see rate-limit errors. ---
+REQUEST_INTERVAL_SECONDS = 4.0
+
+# --- Display ---
+TOP_N = 25

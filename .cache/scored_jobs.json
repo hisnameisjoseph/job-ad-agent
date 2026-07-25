@@ -1,0 +1,2534 @@
+{
+  "5664902307": {
+    "job": {
+      "id": "5664902307",
+      "source": "adzuna",
+      "title": "Graduate Forward Deployed Software Engineer",
+      "company": "Lyra",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Graduate Forward Deployed Software Engineer role with Lyra based in Melbourne, VIC, AU  Lyra  Role Seniority - graduate More about the Graduate Forward Deployed Software Engineer role at Lyra Compensation $83,200-$104,000 What We\u2019re Looking For High proficiency in Full-stack engineering with Nextjs/Typescript and or Python. Based in Australia. Bonus Points Experience integrating OpenAI, Anthropic, and or Google Gemini APIs Background in an early-stage startup environment. About Lyra J\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5664902307?se=4gbtIdqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=BB56055816E3E1BE1991BAF8D468B4CDB9CD8592",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-14T17:32:27Z"
+    },
+    "score": {
+      "fit_score": 85,
+      "recommendation": "apply",
+      "one_line": "Strong alignment: full-stack Next.js/TypeScript/Python match, LLM API experience, startup internship, and Melbourne location \u2014 all directly line up.",
+      "met_requirements": [
+        "Full-stack engineering with Next.js/TypeScript and/or Python (candidate has all three)",
+        "Based in Australia (candidate is in Melbourne)"
+      ],
+      "partial_requirements": [
+        "Bonus: experience integrating OpenAI, Anthropic, Google Gemini APIs (candidate has OpenAI integration in production; no Anthropic/Gemini explicitly mentioned \u2014 partial/adjacent)"
+      ],
+      "missing_requirements": [],
+      "hard_blockers": []
+    }
+  },
+  "5786318012": {
+    "job": {
+      "id": "5786318012",
+      "source": "adzuna",
+      "title": "Software Development Graduate, 2027 Melbourne",
+      "company": "Amazon",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Description Amazon is looking for passionate Graduate Software Development Engineers (SDEs) to join our team. Amazon/ AWS offers a unique, inclusive work environment where you'll be able to work on the A to Z of problems, at scale, for real customers. You'll join a team solving challenging problems with innovative software solutions, building global software at scale every day and having a ton of fun while you do it. We are a group of engineers that values diversity and collaboration to help ea\u2026",
+      "url": "https://www.adzuna.com.au/details/5786318012?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-03T12:48:11Z"
+    },
+    "score": {
+      "fit_score": 85,
+      "recommendation": "apply",
+      "one_line": "Strong fit: this graduate role is designed for someone exactly at Joseph's level, and his internship + cloud certs + relevant project experience align well with Amazon's stack.",
+      "met_requirements": [
+        "Graduate / entry-level role (Joseph is a new grad)",
+        "Backend development experience (AWS Lambda, serverless, API integration from Focus Bear internship)",
+        "AWS tooling experience (Lambda, CloudWatch, DynamoDB)",
+        "Cloud certifications (AWS Certified Cloud Practitioner, AWS Certified Developer - Associate)",
+        "TypeScript / JavaScript / Python skills",
+        "Experience working on global / at-scale products (Focus Bear, cross-timezone team)",
+        "Strong communication and coordination skills (dual lead/coordinator on Honours project)",
+        "Melbourne-based"
+      ],
+      "partial_requirements": [
+        "Building software at massive scale (Joseph's experience is startup and university project scale, not FAANG scale \u2014 but this is exactly what a grad role is designed to teach)"
+      ],
+      "missing_requirements": [],
+      "hard_blockers": []
+    }
+  },
+  "5710823899": {
+    "job": {
+      "id": "5710823899",
+      "source": "adzuna",
+      "title": "Full Stack Developer",
+      "company": "Netwealth - See Wealth Differently ",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Full Stack Developer role with Netwealth - See Wealth Differently (ASX:NWL) based in Melbourne, VIC, AU  Netwealth - See Wealth Differently (ASX:NWL)  Role Seniority - mid level More about the Full Stack Developer role at Netwealth - See Wealth Differently (ASX:NWL) About Netwealth Netwealth isn't just a company. We're shaping the future of wealth in Australia. Our award-winning platform and NextGen technology empower advisers and investors to achieve more, and we're proud to be recog\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5710823899?se=YCGuItqF8RGa14EqyXoy-w&utm_medium=api&utm_source=cf3b2c53&v=5AC54D3356A24028E05B1B53E77E81F5000EF915",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-04-26T13:54:43Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "maybe",
+      "one_line": "Your tech stack fits but this is a mid-level role that likely expects a couple of years of professional experience, which you don't have.",
+      "met_requirements": [
+        "TypeScript/JavaScript",
+        "React",
+        "Node.js",
+        "Melbourne CBD location",
+        "Full-stack capability (front-end lead experience + backend internship)",
+        "AWS knowledge (certified)"
+      ],
+      "partial_requirements": [
+        "Mid-level seniority: you have internship + group project experience but no full-time professional role yet"
+      ],
+      "missing_requirements": [
+        "Mid-level professional experience (typically 2-4 years for a mid-level full stack role)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5724701706": {
+    "job": {
+      "id": "5724701706",
+      "source": "adzuna",
+      "title": "Full Stack Developer",
+      "company": "Pathify",
+      "location": "Melbourne, Melbourne Region",
+      "description": "We\u2019re looking for a talented Full Stack Developer to join our dynamic team at Pathify to help build cutting-edge web applications. This is a full-time position, working from home but limited to candidates with a right to work in Australia. As a Full Stack Developer, you\u2019ll work on both front-end and back-end development, creating scalable and user-friendly applications, using Django and Angular. You\u2019ll collaborate with cross-functional teams to design, develop, and maintain high-quality softwar\u2026",
+      "url": "https://www.adzuna.com.au/details/5724701706?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 90000.0,
+      "salary_max": 135000.0,
+      "remote": null,
+      "created": "2026-05-10T10:27:14Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "maybe",
+      "one_line": "Joseph is a junior with solid modern-stack skills, but this role requires Django and Angular which he has zero experience in\u2014transferable skills exist but it's a stretch.",
+      "met_requirements": [
+        "Right to work in Australia (Joseph has this)",
+        "Full-stack development (general)",
+        "Remote/WFH eligible"
+      ],
+      "partial_requirements": [
+        "Full-stack experience (Joseph has internship + group project, but both are junior-level)",
+        "Python backend (Joseph knows Python, but Django is a specific framework he hasn't used)",
+        "TypeScript/JavaScript experience (Joseph has this, but Angular is very different from React)"
+      ],
+      "missing_requirements": [
+        "Django experience (required by the role, not mentioned in Joseph's experience)",
+        "Angular experience (required by the role, Joseph has React/Next.js not Angular)",
+        "Professional full-stack experience beyond an internship (role likely expects mid-level)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5572584037": {
+    "job": {
+      "id": "5572584037",
+      "source": "adzuna",
+      "title": "Full Stack Developer",
+      "company": "Netwealth",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About Netwealth Netwealth isn't just a company. We're shaping the future of wealth in Australia. Our award-winning platform and NextGen technology empower advisers and investors to achieve more, and we're proud to be recognised as one of Australia's most innovative FinTech businesses. Since 1999, we've grown rapidly by challenging the status quo. We move fast, think big, and stay agile. Free from unnecessary bureaucracy so we can deliver smarter solutions for our clients and create real impact.\u2026",
+      "url": "https://www.adzuna.com.au/details/5572584037?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-01-08T07:18:17Z"
+    },
+    "score": {
+      "fit_score": 68,
+      "recommendation": "apply",
+      "one_line": "Good junior full-stack fit with the right stack and cloud certs, but the role likely expects mid-level experience given the company's seniority profile.",
+      "met_requirements": [
+        "TypeScript/JavaScript",
+        "React",
+        "Node.js / Nest.js / Next.js",
+        "AWS certifications and experience",
+        "SQL / database experience",
+        "Melbourne location",
+        "Front-end and back-end skills"
+      ],
+      "partial_requirements": [
+        "Seniority level \u2014 junior/graduate profile for a role at an established fintech that likely wants mid-level",
+        "Full-stack development experience in production \u2014 internship was ~3 months"
+      ],
+      "missing_requirements": [
+        "Financial services / fintech domain experience",
+        "Longer track record of full-stack production work"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "4801311489": {
+    "job": {
+      "id": "4801311489",
+      "source": "adzuna",
+      "title": "Full Stack Developer (Node js)",
+      "company": "Bconnect Australia",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Section A: Specific Role Profile Employer is looking for someone who is proactive, passionate, respectful, and willing to collaborate. As a full stack developer at Crafted you will be tasked with developing solutions in a wide range of scenarios using your skills in full. You will not be working on a single system, or even a small part of a bigger system forever. You will work in an exciting fast paced agency environment where you will need to get things done quickly and efficiently but to a hi\u2026",
+      "url": "https://www.adzuna.com.au/details/4801311489?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2024-07-31T07:18:34Z"
+    },
+    "score": {
+      "fit_score": 72,
+      "recommendation": "apply",
+      "one_line": "Joseph's modern stack (TypeScript/React/Node) and cloud certs align well with this Node.js full-stack role, though the seniority level and agency pace are a slight stretch for a junior.",
+      "met_requirements": [
+        "TypeScript/JavaScript proficiency",
+        "Node.js experience",
+        "React experience",
+        "Cloud familiarity (AWS certifications, Lambda usage)",
+        "Located in Melbourne",
+        "Fast learner willing to collaborate"
+      ],
+      "partial_requirements": [
+        "Agency/fast-paced environment experience (internship was startup, not agency; agency demands faster context-switching across multiple clients)",
+        "Full-stack ownership across entire stack (Joseph is stronger on backend/front-end separately)"
+      ],
+      "missing_requirements": [
+        "Senior-level or mid-level experience (job likely targets >2-3 YOE given 'agency environment' and 'fast paced' \u2014 Joseph is a graduate with ~3 months internship)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5179410560": {
+    "job": {
+      "id": "5179410560",
+      "source": "adzuna",
+      "title": "Full Stack MERN Developer",
+      "company": "Tech Aalto",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Full Stack MERN Developer Primary Skill : React JS, Node JS, Express JS, PostgreSQL Develop and maintain user-friendly web applications using React.js for the front end. Build and manage robust RESTful APIs with Node JS & Express (using Node Red optional) to connect front-end and back-end services. Design and optimize PostgreSQL databases to support application functionality and performance. Implement server-side logic and integrate with third-party services using Node.js. Collaborate with UX/U\u2026",
+      "url": "https://www.adzuna.com.au/details/5179410560?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2025-05-04T05:50:31Z"
+    },
+    "score": {
+      "fit_score": 82,
+      "recommendation": "apply",
+      "one_line": "Strong fit for a junior MERN role: Joseph has hands-on React, Node.js, and database experience plus AWS certifications that match the cloud-adjacent ask.",
+      "met_requirements": [
+        "React.js (front-end lead on a real client project)",
+        "Node.js (backend internship using Node/AWS Lambda)",
+        "RESTful API integration (production LLM API integration, API work at Focus Bear)",
+        "Database work (debugged and maintained PostgreSQL-like hosted DB at Focus Bear)",
+        "Collaboration with UX/team (front-end lead & project coordinator on a client project)"
+      ],
+      "partial_requirements": [
+        "Express.js (Joseph has used Node.js and Nest.js; Express pattern is very similar and well within reach, but no listed Express-specific project)",
+        "PostgreSQL optimisation (Joseph has database debugging and maintenance experience but on a hosted DB; no explicit PostgreSQL schema-design project cited)"
+      ],
+      "missing_requirements": [],
+      "hard_blockers": []
+    }
+  },
+  "5781481156": {
+    "job": {
+      "id": "5781481156",
+      "source": "adzuna",
+      "title": "Full Stack Azure Developer",
+      "company": "Yarra Trams",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "About this Opportunity Yarra Trams is seeking a Full Stack Azure Developer (Backend Focused) to play a critical role in designing, building, and governing the cloud\u2011based services that connect enterprise systems to the Yarra Trams Data Management Platform. This role serves as the technical engine bridging raw data assets and business\u2011ready applications. You will design and deliver scalable, secure, and high\u2011performing backend services using modern Azure\u2011native patterns, while applying strong en\u2026",
+      "url": "https://www.adzuna.com.au/details/5781481156?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-30T08:39:49Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "apply",
+      "one_line": "You have Azure fundamentals and some backend/internship experience, but this role targets a mid-level backend-heavy Azure developer and you are junior/graduate level with limited Azure hands-on.",
+      "met_requirements": [
+        "Melbourne CBD location",
+        "Backend development interest and ability",
+        "Cloud certification / Azure Fundamentals",
+        "Strong communication and coordination skills"
+      ],
+      "partial_requirements": [
+        "Full-stack development (you have React front-end experience but backend focused role)",
+        "Azure-native services (you have AZ-900 certification and AWS experience; concepts transfer but no demonstrated Azure PaaS/IaaS hands-on)",
+        "Data Management Platform experience (your economics/data reasoning background helps, but no direct platform experience)"
+      ],
+      "missing_requirements": [
+        "Seniority/years of experience (role likely targets 3+ yrs; you are a junior/graduate)",
+        "Production Azure development at scale (Lambda/CloudWatch is AWS, not Azure. No Azure Functions, Azure Data Lake, Service Bus, etc.)",
+        "Enterprise systems integration (connecting enterprise systems to a data platform)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5799557338": {
+    "job": {
+      "id": "5799557338",
+      "source": "adzuna",
+      "title": "Developer - Full Stack",
+      "company": "MPAU Technology",
+      "location": "Melbourne, Melbourne Region",
+      "description": "We are seeking an experienced Kentico Developer to support the upgrade and redesign of our corporate website. The successful candidate will work closely with designers, business stakeholders, and technical teams to modernize the website, improve user experience, and ensure optimal performance using the Kentico platform. Client Details Our client is a well-established organisation within the transport and distribution sector. As a medium-sized company, they are committed to leveraging technology\u2026",
+      "url": "https://www.adzuna.com.au/details/5799557338?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-14T16:35:06Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This role specifically requires Kentico (a .NET CMS) experience, which Joseph has zero exposure to, and the seniority expectation is for an experienced developer.",
+      "met_requirements": [
+        "Located in Melbourne"
+      ],
+      "partial_requirements": [
+        "Full-stack development (Joseph has some full-stack experience but not in .NET/Kentico stack)"
+      ],
+      "missing_requirements": [
+        "Kentico platform experience required",
+        ".NET/C# stack (Kentico is built on this)",
+        "Experience upgrading/redesigning corporate websites",
+        "Senior/experienced developer level implied"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5785770635": {
+    "job": {
+      "id": "5785770635",
+      "source": "adzuna",
+      "title": "Technology lead",
+      "company": "XPT Software Australia Pty Ltd",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "\u2022 Developers and Testers who would have worked with Energy Utilities Electricity Gas only in their recent career. Tech Stack for .Net Full Stack Developer.NET 4.x to .NET Core 8FluentValidationAzure DevOps Complex SQL Server, Oracle querist queriesNhibernateUnit Testing Substitute, MoqVue.js \u2022 Ensured quality of ZENworks Endpoint Management, a suite for enterprise device configuration, security, and asset management. \u2022 Developed and maintained UI automation in Selenium with Python, improving re\u2026",
+      "url": "https://www.adzuna.com.au/details/5785770635?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-03T05:21:11Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This senior/lead .NET role in energy utilities has almost no overlap with Joseph's junior backend/intern profile, and the 'lead' title demands experience he doesn't have.",
+      "met_requirements": [],
+      "partial_requirements": [
+        ".NET stack: Joseph has Java experience, which is loosely related but not .NET/C#",
+        "SQL: Joseph has SQL skills, but the role wants complex querying at a senior level",
+        "Azure DevOps: Joseph has Azure Fundamentals cert, but no DevOps tooling experience"
+      ],
+      "missing_requirements": [
+        "Senior/lead-level experience (role title is 'Technology lead')",
+        ".NET 4.x to .NET Core 8 \u2014 Joseph has no .NET/C# experience",
+        "Energy utilities industry experience",
+        "Vue.js \u2014 Joseph knows React, not Vue",
+        "Selenium/Python UI automation",
+        "5+ years enterprise experience implied"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5776885734": {
+    "job": {
+      "id": "5776885734",
+      "source": "adzuna",
+      "title": "Software Engineer",
+      "company": "Camp Australia",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is an exciting opportunity for an early-career engineer who is curious, proactive, and eager to grow in a modern engineering environment. You\u2019ll work alongside experienced engineers to design, develop, and improve digital products used across our business, while building strong foundations in software engineering, cloud technologies, and AI-assisted development practices. We\u2019re looking for someone with high agency, someone who takes initiative, enjoys solving problems, asks thoughtful ques\u2026",
+      "url": "https://www.adzuna.com.au/details/5776885734?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-26T08:31:03Z"
+    },
+    "score": {
+      "fit_score": 70,
+      "recommendation": "apply",
+      "one_line": "Strong early-career fit: Melbourne-based grad with modern full-stack/AWS skills and a track record of initiative, but the role's seniority level and AI-assist expectations are a slight unknown.",
+      "met_requirements": [
+        "Early-career / graduate level",
+        "React, TypeScript, Node.js",
+        "Cloud foundations (AWS Certified Developer, Cloud Practitioner)",
+        "Initiative, high agency, problem-solving attitude",
+        "Melbourne CBD location"
+      ],
+      "partial_requirements": [
+        "AI-assisted development (has used OpenAI integration in a production feature, but the role likely expects familiarity with AI tools in the dev workflow itself)"
+      ],
+      "missing_requirements": [
+        "Full-time professional experience beyond a 3-month internship"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5754931445": {
+    "job": {
+      "id": "5754931445",
+      "source": "adzuna",
+      "title": "Product Developer, Sr",
+      "company": "Epicor",
+      "location": "Melbourne, Melbourne Region",
+      "description": "We're looking for a Senior Developer to help build and run a modern Financial Planning & Analysis (FP&A) platform used by finance teams for planning, forecasting, reporting, consolidation, and decision-making. This is a hands-on full-stack role with strong back-end ownership. You'll deliver features end to end, support production systems, and act as an engineering anchor for APAC. You'll work closely with customer-facing teams, understand customer needs, explain complex technical and financial \u2026",
+      "url": "https://www.adzuna.com.au/details/5754931445?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-07T10:41:22Z"
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "This is a senior (Sr) full-stack role requiring significant back-end and production ownership, and Joseph is a junior/graduate with ~3 months of internship experience.",
+      "met_requirements": [
+        "TypeScript/JavaScript skill (used in React and Node.js projects)",
+        "Cloud familiarity (AWS certs + Azure fundamentals)",
+        "SQL awareness"
+      ],
+      "partial_requirements": [
+        "Full-stack ability: Has done both front-end (React/TypeScript project) and back-end (serverless Lambda work), but only at intern/student level, not senior production ownership."
+      ],
+      "missing_requirements": [
+        "Senior-level experience (the role title and description call for a senior developer, an engineering anchor for APAC)",
+        "Back-end ownership of a production FP&A/financial platform",
+        "Experience with financial planning, forecasting, or consolidation domains",
+        "Customer-facing senior engineering responsibilities"
+      ],
+      "hard_blockers": [
+        "The role explicitly requires 'Senior Developer' level: Joseph has ~3 months of internship experience plus academic projects \u2014 far below the senior experience bar. This is a hard mismatch on seniority."
+      ]
+    }
+  },
+  "5727455572": {
+    "job": {
+      "id": "5727455572",
+      "source": "adzuna",
+      "title": "Software Engineer",
+      "company": "Loop IQ Software Development Pty",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "About us Loop IQ is a purpose-built intelligence platform helping care organisations move beyond fragmented spreadsheets and manual reporting \u2014 delivering the accuracy, auditability, and confidence that regulated environments demand. Alongside the platform sits our strategic consulting wing, guiding organisations through implementation and optimisation so the technology delivers from day one. Why work at Loop IQ? Build something that matters \u2014 We\u2019re solving a real problem in a sector that affec\u2026",
+      "url": "https://www.adzuna.com.au/details/5727455572?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-05-13T10:35:43Z"
+    },
+    "score": {
+      "fit_score": 72,
+      "recommendation": "apply",
+      "one_line": "Strong skill overlap (TypeScript, React, Node, AWS) for a junior/mid role in a care-sector platform that genuinely helps people, but lacks stated healthcare/regulated-environment experience.",
+      "met_requirements": [
+        "TypeScript/JavaScript proficiency",
+        "React/front-end experience",
+        "Node.js / backend development",
+        "AWS cloud experience (Lambda, DynamoDB, etc.)",
+        "Startup-style ownership and client-facing experience",
+        "Junior/graduate level \u2014 no senior years of experience required"
+      ],
+      "partial_requirements": [
+        "Regulated-environment / care-sector domain experience \u2014 Joseph's health-tech internship and clinical-trial project at Canberra Health Services are adjacent, not direct care-organisation experience",
+        "Full-stack product ownership \u2014 the internship gave him backend/serverless production experience, though limited breadth"
+      ],
+      "missing_requirements": [],
+      "hard_blockers": []
+    }
+  },
+  "5810307764": {
+    "job": {
+      "id": "5810307764",
+      "source": "adzuna",
+      "title": "Solution Integrator",
+      "company": "GE Vernova",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Job Description Summary The DERMS (Distributed Energy Resource Management System) Solution Integrator is a specialized technical role bridging the gap between a utility's grid operations and thousands of decentralized energy assets (e.g., solar, batteries, EVs). You are responsible for designing, building, and configuring the software architecture that connects the central DERMS platform with field devices, aggregation platforms, and enterprise systems. Job Description Essential Responsibilitie\u2026",
+      "url": "https://www.adzuna.com.au/details/5810307764?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-22T12:54:29Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "Junior software engineer with no grid/energy, SCADA, or utility integration experience facing a DERMS specialist role requiring deep domain knowledge.",
+      "met_requirements": [
+        "Location: Melbourne",
+        "Can work with modern tech stacks (some programming overlap)"
+      ],
+      "partial_requirements": [
+        "Backend/integration mindset \u2013 your internship and project work involved API integration, but at a vastly smaller scale and without industrial protocols like DNP3, Modbus, or ICCP"
+      ],
+      "missing_requirements": [
+        "No experience with DERMS, SCADA, or utility grid systems",
+        "No experience with industrial communication protocols (DNP3, Modbus, ICCP)",
+        "No experience designing integration architectures for field devices or enterprise systems",
+        "No experience with power systems, energy management, or smart grid concepts",
+        "No relevant degree or coursework in power/electrical engineering"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "4801322617": {
+    "job": {
+      "id": "4801322617",
+      "source": "adzuna",
+      "title": "Software Engineer",
+      "company": "Ippon Technologies",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Company Description From humble beginnings in 2003, Ippon Technologies has built a reputation as a global boutique consultancy in the delivery of business oriented technology value. Our people work with household name consumer brands across multiple industry sectors to provide better customer experiences and deeper business value. We\u2019re a team of true technologists who leverage contemporary thinking and tools to enhance the way our clients drive value. Wether it\u2019s a bespoke platform to improve \u2026",
+      "url": "https://www.adzuna.com.au/details/4801322617?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2024-07-31T07:20:06Z"
+    },
+    "score": {
+      "fit_score": 70,
+      "recommendation": "apply",
+      "one_line": "Joseph's modern stack (TypeScript, React, Node/AWS) and internship experience align well with a junior consultancy role, but the posting is vague on seniority level and specifics.",
+      "met_requirements": [
+        "TypeScript/JavaScript skills",
+        "React front-end experience",
+        "Node.js / backend skills",
+        "AWS certification and hands-on experience",
+        "Bachelor's degree in Computing",
+        "Melbourne-based",
+        "Startup/consultancy-style adaptability and cross-functional work"
+      ],
+      "partial_requirements": [
+        "Consultancy experience \u2014 Joseph has worked with real clients (Canberra Health Services) and in a startup but hasn't worked in a formal consultancy firm",
+        "Seniority level \u2014 posting doesn't specify a level, but Joseph is clearly junior/graduate; if they want mid-level or senior this could be a stretch"
+      ],
+      "missing_requirements": [
+        "No specific seniority requirements stated \u2014 unclear if they are hiring juniors"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5658049887": {
+    "job": {
+      "id": "5658049887",
+      "source": "adzuna",
+      "title": "AI Consulting Solutions Engineer",
+      "company": "Netskope",
+      "location": "Australia",
+      "description": "About Netskope Today, there's more data and users outside the enterprise than inside, causing the network perimeter as we know it to dissolve. We realized a new perimeter was needed, one that is built in the cloud and follows and protects data wherever it goes, so we started Netskope to redefine Cloud, Network and Data Security. Since 2012, we have built the market-leading cloud security company and an award-winning culture powered by hundreds of employees spread across offices in Santa Clara, \u2026",
+      "url": "https://www.adzuna.com.au/details/5658049887?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-08T08:20:45Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "skip",
+      "one_line": "This senior cloud security engineering role requires enterprise security experience and senior-level networking/cloud skills that a junior graduate simply does not have.",
+      "met_requirements": [
+        "Cloud fundamentals (AWS certifications)",
+        "Technical problem-solving skills"
+      ],
+      "partial_requirements": [
+        "Some cloud experience via AWS Lambda/serverless work",
+        "General programming and API integration experience"
+      ],
+      "missing_requirements": [
+        "Enterprise cloud/network security experience",
+        "Senior-level experience (role likely targets 5+ yrs)",
+        "Data security / network security domain expertise",
+        "Experience with security products (CASB, SWG, DLP, etc.)",
+        "Consulting or customer-facing technical solutions engineering experience"
+      ],
+      "hard_blockers": [
+        "Seniority gap: this is not a junior/grad role \u2014 the job title and company (Netskope is an enterprise security vendor) imply a senior, experienced solutions engineer in cloud/network security"
+      ]
+    }
+  },
+  "5804897708": {
+    "job": {
+      "id": "5804897708",
+      "source": "adzuna",
+      "title": "Web Developer Intern",
+      "company": "Study and Work",
+      "location": "Melbourne, Melbourne Region",
+      "description": "ABOUT THE HOST COMPANY: Our Host Company believes in investing in fresh talent and nurturing them for growth and career success. ABOUT POSITION : We\u2019re looking for a Web Developer Intern. Our host company offers meaningful work experience, strong supervision, supportive work environment, and is planning to offer permanent employment for the suitable candidate. ABOUT YOU: You must: be studying a relevant degree qualification or a recent graduate. have excellent communication skills, both written\u2026",
+      "url": "https://www.adzuna.com.au/details/5804897708?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-17T22:58:35Z"
+    },
+    "score": {
+      "fit_score": 85,
+      "recommendation": "apply",
+      "one_line": "Joseph is a strong fit for a web development internship \u2014 he's a recent graduate with hands-on React/TypeScript experience and AWS certifications, well above intern level.",
+      "met_requirements": [
+        "Relevant degree qualification / recent graduate (Bachelor of Advanced Computing, ANU)",
+        "Studied a relevant degree (Advanced Computing with ML stream)",
+        "Excellent communication skills (evidenced by front-end lead & project coordinator roles)"
+      ],
+      "partial_requirements": [],
+      "missing_requirements": [
+        "Specific study/work requirement details are vague \u2014 nothing Joseph lacks stands out as missing"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5806154321": {
+    "job": {
+      "id": "5806154321",
+      "source": "adzuna",
+      "title": "Web Developer Intern",
+      "company": "Study and Work",
+      "location": "Melbourne, Melbourne Region",
+      "description": "ABOUT THE HOST COMPANY: Our Host Company believes in investing in fresh talent and nurturing them for growth and career success. ABOUT POSITION : We\u2019re looking for a Word Press Developer Intern. Our host company offers meaningful work experience, strong supervision, supportive work environment, and is planning to offer permanent employment for the suitable candidate. ABOUT YOU: You must: be studying a relevant degree qualification or a recent graduate. have excellent communication skills, both \u2026",
+      "url": "https://www.adzuna.com.au/details/5806154321?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-18T22:56:16Z"
+    },
+    "score": {
+      "fit_score": 60,
+      "recommendation": "apply",
+      "one_line": "Joseph is overqualified technically for a WordPress internship but his modern stack and cloud skills don't directly transfer to WordPress (PHP/theme development), making this a mismatch despite the junior level.",
+      "met_requirements": [
+        "Relevant degree qualification / recent graduate (Advanced Computing Honours)",
+        "Based in Melbourne",
+        "Excellent communication skills (proven via coordination roles)"
+      ],
+      "partial_requirements": [
+        "Web development experience \u2014 Joseph's experience is in React/TypeScript/Next.js, not WordPress/PHP/theme development; partial transferable web dev skills"
+      ],
+      "missing_requirements": [
+        "WordPress-specific experience (the role is explicitly WordPress Developer Intern)",
+        "PHP knowledge (core WordPress language)",
+        "Theme/plugin development experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5781562829": {
+    "job": {
+      "id": "5781562829",
+      "source": "adzuna",
+      "title": "Web Developer Intern",
+      "company": "Study and Work",
+      "location": "Melbourne, Melbourne Region",
+      "description": "29th June, 2026 ABOUT THE HOST COMPANY: Our Host Company believes in investing in fresh talent and nurturing them for growth and career success. Role Summary As a Front-End Developer Intern, you will support the design and development of responsive, user-friendly web interfaces for internal and client projects. You will work closely with the Front-End Lead and development team to translate designs into functional digital experiences while gaining practical experience in modern web technologies.\u2026",
+      "url": "https://www.adzuna.com.au/details/5781562829?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-30T10:55:15Z"
+    },
+    "score": {
+      "fit_score": 72,
+      "recommendation": "apply",
+      "one_line": "Solid fit for a front-end internship given Joseph's modern stack experience (React/TypeScript) and internship/group project front-end work, though the role is junior/intern level so credentials match.",
+      "met_requirements": [
+        "Experience with front-end development (React + TypeScript in group project)",
+        "Experience building responsive, user-friendly web interfaces (clinical-trial admin system at ANU)",
+        "Ability to work with a development team and lead (front-end lead + project coordinator role)",
+        "Modern web stack familiarity (TypeScript, React, Tailwind CSS, HTML, CSS)",
+        "Based in Melbourne, Australia"
+      ],
+      "partial_requirements": [
+        "Intern-level role \u2014 this is junior/intern-level and Joseph already has an internship under his belt, so may be slightly overqualified but still a reasonable fit"
+      ],
+      "missing_requirements": [
+        "No explicit requirement for AWS/cloud skills (which Joseph has) \u2014 not a gap, just unused strength"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5784597828": {
+    "job": {
+      "id": "5784597828",
+      "source": "adzuna",
+      "title": ".NET Developer",
+      "company": "XPT Software Australia Pty Ltd",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "We are looking for an experienced .NET Developer with strong expertise in developing scalable enterprise applications using the Microsoft technology stack. The ideal candidate will have hands-on experience in .NET/Core, Web API development, and Azure Cloud services, with the ability to build secure, high-performance, and cloud-native applications. Key Skills: Strong experience in .NET Framework/.NET Core (.NET 6/7/8) Hands-on experience with ASP.NET Core Web API development Good exposure to Mic\u2026",
+      "url": "https://www.adzuna.com.au/details/5784597828?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-02T09:20:54Z"
+    },
+    "score": {
+      "fit_score": 32,
+      "recommendation": "skip",
+      "one_line": "Joseph's stack (TypeScript/React/Node) doesn't match the .NET/C# ecosystem this role requires, and he lacks the senior experience level they're asking for.",
+      "met_requirements": [
+        "Location: Melbourne CBD"
+      ],
+      "partial_requirements": [
+        "Azure Cloud services \u2014 Joseph has Azure Fundamentals cert but no hands-on .NET-on-Azure experience"
+      ],
+      "missing_requirements": [
+        ".NET Framework / .NET Core (.NET 6/7/8) experience",
+        "ASP.NET Core Web API development",
+        "Strong experience building enterprise applications with Microsoft stack",
+        "Senior / experienced level (they explicitly say 'experienced .NET Developer')"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5637249793": {
+    "job": {
+      "id": "5637249793",
+      "source": "adzuna",
+      "title": "Business Systems Development Officer",
+      "company": "Chemist Warehouse",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Business Systems Development Officer role with Chemist Warehouse based in Melbourne, VIC, AU  Chemist Warehouse  Role Seniority - mid level More about the Business Systems Development Officer role at Chemist Warehouse About us From aspiring pharmacists to analytical payroll professionals, store support superstars to specialist skincare and cosmetic buyers and wise web developers to warehouse gurus - the opportunities really are limitless at Chemist Warehouse! Whether you're kick start\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5637249793?se=csMwI9qF8RGa14EqyXoy-w&utm_medium=api&utm_source=cf3b2c53&v=8D0135903BA512BFBB2F27D9F747A419107F167C",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-02-20T15:04:59Z"
+    },
+    "score": {
+      "fit_score": 52,
+      "recommendation": "maybe",
+      "one_line": "Fit is decent on skills but the role appears mid-level and Joseph is a junior/grad, which creates a seniority mismatch.",
+      "met_requirements": [
+        "TypeScript/JavaScript/Python/SQL skills",
+        "AWS certifications and experience",
+        "Database debugging and backend experience",
+        "React front-end experience",
+        "Melbourne based"
+      ],
+      "partial_requirements": [
+        "Business systems development - Joseph has backend/internship experience but no direct business systems or enterprise ERP/CRM experience",
+        "Mid-level seniority - Joseph is a junior/grad with ~3 months intern experience and a group project, roles labelled 'mid level' typically expect 2-4+ years"
+      ],
+      "missing_requirements": [
+        "Professional experience as a business systems developer specifically"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5782657798": {
+    "job": {
+      "id": "5782657798",
+      "source": "adzuna",
+      "title": "Full Stack Digital M",
+      "company": "Uplift Accounting",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Uplift Accounting is a reputed growing accounting firm in Australia that integrates modern cloud technologies, systems, and traditional proactive advice. Led by a professionally qualified and experienced principal accountant, Uplift Accounting aims to deliver higher quality work efficiently at all times to its clients. We promote work-life balance and welcome highly motivated and experienced accounting professionals who are willing to grow with the firm. DIGITAL MARKETING, WEB DESIGN AND DEVELO\u2026",
+      "url": "https://www.adzuna.com.au/details/5782657798?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-01T10:53:12Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "maybe",
+      "one_line": "A junior developer could certainly handle the web development portion, but the role is primarily a digital marketing and accounting-adjacent position where Joseph's engineering skills are only partially relevant.",
+      "met_requirements": [
+        "Web design and development",
+        "Full-stack skills (TypeScript, React, Node.js)",
+        "Located in Melbourne"
+      ],
+      "partial_requirements": [
+        "Digital marketing experience (no direct experience; transferable analytical skills from economics/commerce background)",
+        "Accounting/professional services context (no experience, but general tech integration understanding)"
+      ],
+      "missing_requirements": [
+        "Digital marketing hands-on experience",
+        "Experience with accounting firm workflows",
+        "Senior/mid-level experience (role likely expects more than junior/grad level)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5782104035": {
+    "job": {
+      "id": "5782104035",
+      "source": "adzuna",
+      "title": "Software Developer Intern\u00c2 - Melbourne",
+      "company": "Study and Work",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Software Developer Intern Location: Melbourne, VIC Employment Type: Internship (2-3 Days per Week) Duration: 12 Weeks Build Your Software Development Career with Australian Industry Experience We are seeking a motivated Software Developer Intern to join an innovative technology company in Melbourne. This internship is ideal for students and recent graduates looking to gain practical Australian industry experience while working on real software development projects. Key Responsibilities Assist w\u2026",
+      "url": "https://www.adzuna.com.au/details/5782104035?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-30T23:24:32Z"
+    },
+    "score": {
+      "fit_score": 40,
+      "recommendation": "maybe",
+      "one_line": "The job posting is too vague to assess fit, but an intern role in Melbourne is at least at the right level and location for a new graduate.",
+      "met_requirements": [
+        "Location: Melbourne",
+        "Level: Internship (suits recent graduates)",
+        "Interest in software development"
+      ],
+      "partial_requirements": [],
+      "missing_requirements": [],
+      "hard_blockers": [
+        "Job posting is extremely vague \u2014 no tech stack, no responsibilities beyond 'assist with...', no minimum requirements stated. Cannot assess genuine fit."
+      ]
+    }
+  },
+  "4851579974": {
+    "job": {
+      "id": "4851579974",
+      "source": "adzuna",
+      "title": ".Net Developer",
+      "company": "Dayne",
+      "location": "Melbourne, Melbourne Region",
+      "description": "ASP.NET WEB APPLICATION DEVELOPER Position Description: As a member of RealDecoy\u2019s Microsoft development group, the Junior ASP.NET Web Application Developer will implement web sites and applications using Microsoft technologies. The individual chosen will be expected to work concurrently on several projects with the support of each project\u2019s Technical Lead/Project Manager. Primary Responsibilities: \u2022 Web site and application development with Microsoft technologies. \u2022 Provide time estimates for \u2026",
+      "url": "https://www.adzuna.com.au/details/4851579974?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2024-09-04T21:20:41Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "maybe",
+      "one_line": "Joseph's stack is TypeScript/React/Node/Python/AWS, while this role is explicitly Microsoft/.NET \u2014 there is some junior crossover but the core tech mismatch is significant for a junior role that won't expect you to pick up a new stack fast.",
+      "met_requirements": [
+        "Web application development experience",
+        "Clear written/verbal English (Australia-based)",
+        "Can work concurrently on multiple projects"
+      ],
+      "partial_requirements": [
+        "Microsoft technologies \u2014 Joseph has Azure Fundamentals cert and some Azure awareness, but no .NET/C#/ASP.NET experience listed"
+      ],
+      "missing_requirements": [
+        "ASP.NET development experience",
+        ".NET / C# proficiency",
+        "Microsoft development group experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5215034012": {
+    "job": {
+      "id": "5215034012",
+      "source": "adzuna",
+      "title": "GraphQL Developer",
+      "company": "Tech Aalto",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Job description: GraphQL Developer We are seeking a talented GraphQL Developer to join our dynamic team and play a key role in building high-performance, scalable APIs for our web and mobile applications. As a GraphQL Developer, you will be responsible for designing, implementing, and maintaining GraphQL APIs that power our applications. You will work closely with our front-end and back-end development teams to ensure efficient data retrieval and manipulation, delivering seamless user experienc\u2026",
+      "url": "https://www.adzuna.com.au/details/5215034012?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2025-05-25T05:56:48Z"
+    },
+    "score": {
+      "fit_score": 30,
+      "recommendation": "skip",
+      "one_line": "This is a specialist GraphQL role and Joseph has no demonstrated GraphQL experience or seniority.",
+      "met_requirements": [
+        "TypeScript/JavaScript proficiency",
+        "Melbourne location",
+        "Right to work in Australia (no citizenship/clearance required)"
+      ],
+      "partial_requirements": [
+        "Backend API experience (Node.js, Nest.js, but no GraphQL specifically)",
+        "General web development knowledge"
+      ],
+      "missing_requirements": [
+        "Professional GraphQL experience (design, schema, resolvers, Apollo/Relay or similar)",
+        "Senior-level backend API engineering (the role implies mid-to-senior depth in GraphQL)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "4863794176": {
+    "job": {
+      "id": "4863794176",
+      "source": "adzuna",
+      "title": "Product Developer",
+      "company": "AquaCorp",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About Us Enterprise Co-operative Limited is the holding entity and single largest shareholder of the Social Enterprises. We aim to create a greater social force to do good by harnessing the capabilities of the social enterprises to meet pressing social needs in areas like health and eldercare, childcare, daily essentials, cooked food and financial services. Serving over two million customers, Enterprise wants to enable and empower all in Singapore to live better and more meaningful lives. The E\u2026",
+      "url": "https://www.adzuna.com.au/details/4863794176?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2024-09-14T21:51:58Z"
+    },
+    "score": {
+      "fit_score": 30,
+      "recommendation": "skip",
+      "one_line": "Vague posting for a Singapore-based social enterprise holding entity, not a software or product development role that matches Joseph's skills.",
+      "met_requirements": [
+        "Location: Melbourne"
+      ],
+      "partial_requirements": [
+        "Some interest in social impact / health tech could loosely align with the 'social needs' mission"
+      ],
+      "missing_requirements": [
+        "No clear technical requirements listed in the job posting to match against",
+        "Job appears to be for a holding entity of social enterprises in Singapore (not a clear tech role)",
+        "Role description is vague and focused on social enterprises in Singapore, not software/product development"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "4865388145": {
+    "job": {
+      "id": "4865388145",
+      "source": "adzuna",
+      "title": "Product Developer - TEST",
+      "company": "AquaCorp",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About Us Enterprise Co-operative Limited is the holding entity and single largest shareholder of the Social Enterprises. We aim to create a greater social force to do good by harnessing the capabilities of the social enterprises to meet pressing social needs in areas like health and eldercare, childcare, daily essentials, cooked food and financial services. Serving over two million customers, Enterprise wants to enable and empower all in Singapore to live better and more meaningful lives. The E\u2026",
+      "url": "https://www.adzuna.com.au/details/4865388145?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2024-09-16T22:06:24Z"
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "Very thin job posting with no technical requirements to evaluate, and the company is a Singapore-based social enterprise co-operative with no clear indication of an Australian presence or visa sponsorship. ",
+      "met_requirements": [
+        "Open to any tech role",
+        "Melbourne location matches"
+      ],
+      "partial_requirements": [],
+      "missing_requirements": [
+        "No technical requirements, stack, seniority level, or role responsibilities listed in the posting",
+        "No indication of work rights or visa sponsorship for Australia",
+        "Company appears to be Singapore-based; unclear if this is an Australian role"
+      ],
+      "hard_blockers": [
+        "The posting is effectively a stub - it doesn't describe what the actual role requires, so a fit score cannot meaningfully be determined"
+      ]
+    }
+  },
+  "5702228274": {
+    "job": {
+      "id": "5702228274",
+      "source": "adzuna",
+      "title": "Software Engineer",
+      "company": "Beca",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Software Engineer role with Beca based in Melbourne, VIC, AU  Beca  Role Seniority - junior, mid level More about the Software Engineer role at Beca Beca Digital Beca Digital is moving into a significant stage of growth in Australia, working with our clients to solve real world, complex and unique problems to make everyday better. Our clients work with us to leverage technology to solve problems that make our digital roles varied and unique. As a team, we play a central role in leadin\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5702228274?se=csMwI9qF8RGa14EqyXoy-w&utm_medium=api&utm_source=cf3b2c53&v=8CEE0C2FF8CCFA9FA225D38E4E526F2A4898F5BD",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-04-17T14:50:39Z"
+    },
+    "score": {
+      "fit_score": 70,
+      "recommendation": "apply",
+      "one_line": "Solid junior fit for a growing digital consultancy \u2014 Joseph's backend internship, cloud certs, and cross-functional project work align well, though no hard blockers present.",
+      "met_requirements": [
+        "Junior / graduate level (entry-level is appropriate)",
+        "Melbourne CBD location",
+        "Software engineering role open to modern stacks",
+        "Client-facing / project-based work (matches Honours project + startup experience)",
+        "Cloud familiarity (AWS certs + Azure Fundamentals + hands-on Lambda/DynamoDB/CloudWatch)"
+      ],
+      "partial_requirements": [
+        "Real-world problem solving / complex domain work (Joseph has startup + health service experience but this role may involve heavier infrastructure or consulting breadth)"
+      ],
+      "missing_requirements": [
+        "No explicit mention of consulting/agency experience (but junior role, so this is unlikely to be a hard requirement)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5762722070": {
+    "job": {
+      "id": "5762722070",
+      "source": "adzuna",
+      "title": "Automation Lead",
+      "company": "Northern Health",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Reference Number:\u00c2 [[id]]:\u00c2 \u00c2 [[title]] \u00c2 Employment Type:\u00c2 [[filter2]] \u00c2 Location:\u00c2 [[custJobl]] \u00c2 \u00c2 About Northern Health: \u00c2 As an organisation we have a clear focus on how we service and partner with our community, including our strategy of helping the community stay well when at home. Our reputation of community minded, inclusive and progressive is matched to none.\u00c2 Northern Health is located in the rapidly growing northern suburbs with projected growth the biggest in the state. With a boom\u2026",
+      "url": "https://www.adzuna.com.au/details/5762722070?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-14T06:15:29Z"
+    },
+    "score": {
+      "fit_score": 22,
+      "recommendation": "skip",
+      "one_line": "This is a senior/lead automation role at a health service, and Joseph is a junior/graduate with no automation or leadership experience.",
+      "met_requirements": [
+        "Located in Melbourne",
+        "Has some backend and cloud experience (AWS, Lambda, CloudWatch)"
+      ],
+      "partial_requirements": [
+        "Backend/integration work broadly relevant to some technical aspects",
+        "Health-tech exposure limited to intern stint, not enterprise health-service IT"
+      ],
+      "missing_requirements": [
+        "Automation Lead title implies senior/lead level, not junior/graduate",
+        "No demonstrated automation engineering or test automation experience",
+        "No team lead or management experience",
+        "No healthcare/hospital IT systems experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5751601326": {
+    "job": {
+      "id": "5751601326",
+      "source": "adzuna",
+      "title": "Marketing Technology Consultant",
+      "company": "Toll Group",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Marketing Technology Consultant role with Toll Group based in Melbourne, VIC, AU  Toll Group  Role Seniority - mid level More about the Marketing Technology Consultant role at Toll Group About Toll Group At Toll, we do more than just logistics - we move the businesses that move the world. Our 16,000 team members can help solve any logistics, transport, or supply chain challenge \u2013 big or small. We have been supporting our customers for more than 130 years. Today, we support more than 2\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5751601326?se=csMwI9qF8RGa14EqyXoy-w&utm_medium=api&utm_source=cf3b2c53&v=F7D9D8DCB2D7B13BC6CED97EE4331984B12C7B98",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-04T14:54:39Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a mid-level marketing tech role at a logistics company \u2014 Joseph is a junior backend / software engineering grad with no marketing technology experience, making this a poor fit.",
+      "met_requirements": [
+        "Located in Melbourne"
+      ],
+      "partial_requirements": [
+        "General technology consulting / analysis skills (Joseph has coordiantion and communication strengths)"
+      ],
+      "missing_requirements": [
+        "Mid-level seniority (3-5+ years expected for a Marketing Technology Consultant role)",
+        "Marketing technology / marketing domain experience",
+        "Experience with marketing platforms (e.g. CRM, marketing automation, analytics tools)",
+        "Supply chain / logistics industry experience or interest"
+      ],
+      "hard_blockers": [
+        "Senior-level / mid-level seniority (the role explicitly states 'mid level' and Toll Group typically expects several years experience for a Marketing Technology Consultant; Joseph is a junior/graduate)"
+      ]
+    }
+  },
+  "5669190211": {
+    "job": {
+      "id": "5669190211",
+      "source": "adzuna",
+      "title": "Software Engineer (Level 2)",
+      "company": "Australian Council for Educational Research",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Software Engineer (Level 2) role with Australian Council for Educational Research based in Melbourne, VIC, AU  Australian Council for Educational Research  Role Seniority - mid level More about the Software Engineer (Level 2) role at Australian Council for Educational Research We\u2019re hiring: Software Engineers (Level 2) Camberwell | Hybrid | 6-month Fixed Term | 2 Positions | International Not-for-profit The Australian Council for Educational Research (ACER) is seeking two Software Eng\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5669190211?se=csMwI9qF8RGa14EqyXoy-w&utm_medium=api&utm_source=cf3b2c53&v=79BF479B1161A85A6D6D6DF6C3FA245A097C156C",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-17T15:35:06Z"
+    },
+    "score": {
+      "fit_score": 58,
+      "recommendation": "maybe",
+      "one_line": "Joseph has relevant technical skills but the role is mid-level (Level 2), and he is a recent graduate with only one short internship, making the seniority a stretch.",
+      "met_requirements": [
+        "Located in Melbourne",
+        "Software engineering background (TypeScript, React, Node.js, Python)",
+        "Cloud experience (AWS Lambda, DynamoDB, CloudWatch)",
+        "Database debugging and API integration experience"
+      ],
+      "partial_requirements": [
+        "Could grow into the role but is currently at junior / graduate level; the 6-month fixed term may reduce the hiring risk for ACER"
+      ],
+      "missing_requirements": [
+        "Mid-level / Level 2 seniority (role is mid-level, Joseph is junior/graduate)",
+        "Not-for-profit / education research sector experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5764089519": {
+    "job": {
+      "id": "5764089519",
+      "source": "adzuna",
+      "title": "Software Developer - Fixed Term Contract (9 months)",
+      "company": "Hexagon Autonomy & Positioning",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "Responsibilities As the Software Developer, you will be part of a supportive and dynamic team, responsible for the development and maintenance of Hexagon\u2019s solutions to customers. You will apply your skills in software development technologies to large scale project delivery and execution, working closely across a range of business stakeholders to meet business objectives. You will be responsible and involved in all aspects of the software development process; analysis, design, coding, testing \u2026",
+      "url": "https://www.adzuna.com.au/details/5764089519?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-15T15:35:08Z"
+    },
+    "score": {
+      "fit_score": 60,
+      "recommendation": "maybe",
+      "one_line": "Solid junior dev foundations but no domain overlap with autonomy/positioning and the fixed-term contract is risky for a new grad seeking stability.",
+      "met_requirements": [
+        "Software development skills (TypeScript, JavaScript, Python, Java)",
+        "Located in Melbourne",
+        "Can work across the full development lifecycle (analysis, design, coding, testing)"
+      ],
+      "partial_requirements": [
+        "3-month internship + group project could pass for 'some' professional dev experience",
+        "Fixed-term 9-month contract suits a junior willing to take temporary work"
+      ],
+      "missing_requirements": [
+        "No professional experience in autonomy, positioning, geospatial or hardware-adjacent domains",
+        "No mention of large-scale project delivery experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5664858888": {
+    "job": {
+      "id": "5664858888",
+      "source": "adzuna",
+      "title": "Junior Cloud Engineer",
+      "company": "CGI",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Junior Cloud Engineer role with CGI based in Melbourne, VIC, AU  CGI  Role Seniority - junior More about the Junior Cloud Engineer role at CGI Position Description Recognised as one of the world\u2019s largest IT and business consulting firms, CGI has offices across Australia, supporting local public and private sector clients to solve real business problems. We have a newly created opportunity for Junior Cloud / Platform Engineers who want to further their experience building, migrating, \u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5664858888?se=1grLI9qF8RGa14EqyXoy-w&utm_medium=api&utm_source=cf3b2c53&v=56CBC7A2B87F34280A9228E00E7E7D3CC9F4B41A",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-14T16:52:46Z"
+    },
+    "score": {
+      "fit_score": 75,
+      "recommendation": "apply",
+      "one_line": "Good junior cloud role match \u2014 Joseph's AWS certs, Lambda/DynamoDB experience, and Melbourne location align well, but check if CGI requires citizenship for client work.",
+      "met_requirements": [
+        "AWS certifications (Cloud Practitioner, Developer Associate)",
+        "Cloud experience with AWS (Lambda, DynamoDB, CloudWatch)",
+        "Backend/infrastructure exposure from internship",
+        "Based in Melbourne",
+        "Junior-level role (aligned with candidate's experience level)"
+      ],
+      "partial_requirements": [
+        "CGI often works with government clients \u2014 may require citizenship or baseline clearance (job posting doesn't explicitly state it, but worth confirming)"
+      ],
+      "missing_requirements": [
+        "Australian citizenship (not stated as a requirement - verify)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5783899578": {
+    "job": {
+      "id": "5783899578",
+      "source": "adzuna",
+      "title": "Cloud Engineer",
+      "company": "Launch Recruitment",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Launch Recruitment is partnering with a large-scale, nationally significant organisation delivering critical infrastructure across Australia. They are currently looking to bring on experienced Cloud Engineers (AWS & Azure) to support major platform initiatives. You\u2019ll play a key role in designing, building and optimising cloud infrastructure, with a strong focus on automation, scalability and security . Key Responsibilities: Design and deploy cloud infrastructure (AWS or Azure) Build and manage\u2026",
+      "url": "https://www.adzuna.com.au/details/5783899578?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 1000.0,
+      "salary_max": 1000.0,
+      "remote": null,
+      "created": "2026-07-02T01:23:57Z"
+    },
+    "score": {
+      "fit_score": 30,
+      "recommendation": "skip",
+      "one_line": "This role is for an experienced Cloud Engineer at a nationally significant org, well above Joseph's junior level, and likely requires citizenship or clearance.",
+      "met_requirements": [
+        "AWS certifications (Cloud Practitioner + Developer Associate)",
+        "Azure Fundamentals certification",
+        "Located in Melbourne",
+        "Some AWS hands-on experience (Lambda, CloudWatch, DynamoDB)"
+      ],
+      "partial_requirements": [
+        "AWS exposure is real but limited to one internship's worth of Lambda/CloudWatch/DynamoDB \u2013 not production-scale cloud architecture",
+        "Azure cert shows foundational knowledge but no hands-on deployment experience"
+      ],
+      "missing_requirements": [
+        "Senior/experienced-level cloud engineering (design, build, optimise cloud infrastructure at scale)",
+        "Deep Azure experience beyond fundamentals",
+        "Infrastructure-as-code proficiency (likely Terraform, CDK, etc.) \u2013 not mentioned in profile"
+      ],
+      "hard_blockers": [
+        "Requires 'experienced' Cloud Engineer \u2013 senior-level role, Joseph is a junior/graduate",
+        "Likely requires Australian citizenship or security clearance given 'nationally significant organisation delivering critical infrastructure' \u2013 Joseph has neither"
+      ]
+    }
+  },
+  "5785057602": {
+    "job": {
+      "id": "5785057602",
+      "source": "adzuna",
+      "title": "Cloud Engineer",
+      "company": "Viva Energy Australia",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Job Description Join a high-impact Cloud Platform Team within a forward-thinking Technology and Digital function, where you\u2019ll play a key role in shaping and optimising modern cloud environments across Azure and AWS. In this role, you won\u2019t just maintain infrastructure you\u2019ll design, build and continuously improve scalable, cloud-native platforms that power critical systems. You\u2019ll take ownership of platform health and performance, proactively managing monitoring, incidents, and service request\u2026",
+      "url": "https://www.adzuna.com.au/details/5785057602?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-02T16:45:02Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "apply",
+      "one_line": "Joseph has relevant cloud certifications and some AWS hands-on experience, but this role expects a mid-level Cloud Engineer to design and own production platforms, which he lacks the professional experience for.",
+      "met_requirements": [
+        "Located in Melbourne, Australia (role is in Melbourne)",
+        "Has Azure Fundamentals certification (relevant to Azure environment)",
+        "Has AWS Certified Developer - Associate and Cloud Practitioner (relevant to cloud platform role)",
+        "Has hands-on AWS experience (Lambda, CloudWatch, DynamoDB)",
+        "Understands cloud-native services and serverless patterns"
+      ],
+      "partial_requirements": [
+        "Serverless and cloud service experience from internship (Lambda, DynamoDB, CloudWatch) is transferable but at a junior/intern level, not at a platform-ownership level",
+        "Azure certification shows awareness but no practical Azure experience"
+      ],
+      "missing_requirements": [
+        "Professional experience designing and building cloud infrastructure at scale (role likely expects mid-level cloud engineering)",
+        "Deep Azure experience beyond fundamentals (the role mentions Azure + AWS, candidate's Azure is only fundamentals certification)",
+        "Experience with infrastructure-as-code (Terraform, Bicep, CDK) - not mentioned",
+        "Experience owning platform health, monitoring, incident response in production at organisational scale"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5686772078": {
+    "job": {
+      "id": "5686772078",
+      "source": "adzuna",
+      "title": "Cloud Engineer",
+      "company": "Beyond Bank Australia",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "Company Description Full time (75 hours per fortnight) Hybrid work arrangement Be part of Beyond Bank-a bank that is for and with you . We are one of Australia's largest, 100% member owned mutual banks with a credit union heritage. With more than 300,000 members and more than 50 branches across five states & territories, we are working hard to be the best relationship bank for members and communities in Australia. When you join Beyond Bank, you will work for a B Corp and be part of a friendly, \u2026",
+      "url": "https://www.adzuna.com.au/details/5686772078?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-04-02T13:38:22Z"
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "maybe",
+      "one_line": "A junior-friendly cloud role at a bank in Melbourne with good certs overlap, but the posting likely expects mid-to-senior cloud experience that Joseph lacks.",
+      "met_requirements": [
+        "Melbourne CBD location (Joseph is Melbourne-based)",
+        "Hybrid work arrangement",
+        "Cloud certifications (AWS CCP, AWS Developer Associate, Azure Fundamentals)",
+        "AWS hands-on experience (Lambda, CloudWatch, DynamoDB, Cloudflare)",
+        "General tech/cloud aptitude (Bachelor of Advanced Computing)"
+      ],
+      "partial_requirements": [
+        "Internship (Focus Bear) was backend/cloud-adjacent but short (~3 months)",
+        "Cloud certs show foundational knowledge but no extensive production cloud engineering experience"
+      ],
+      "missing_requirements": [
+        "Senior-level cloud engineering experience likely required (mutual bank, B Corp, likely expects 3-5+ years in cloud roles)",
+        "Enterprise banking/infrastructure experience (compliance, security, production-grade cloud infra at scale)",
+        "No clear mention of junior/grad pathway in the posting"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5804896761": {
+    "job": {
+      "id": "5804896761",
+      "source": "adzuna",
+      "title": "IDAM Cloud Engineer",
+      "company": "Profusion PAC Pty Ltd",
+      "location": "Melbourne, Melbourne Region",
+      "description": "12-Month Contract Opportunity Work across AWS, Azure & GCP in a complex enterprise environment Drive Cloud Identity & Access Management initiatives and automation Company Overview: Our client is a well-established enterprise organisation undertaking significant cloud transformation and security uplift initiatives. With a strong focus on governance, automation and cloud-first technology, they are seeking an experienced Cloud IAM Engineer to support the ongoing evolution of their Identity and Acc\u2026",
+      "url": "https://www.adzuna.com.au/details/5804896761?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-17T22:57:52Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a senior-level IDAM specialist contract role focused on identity and access management across three clouds, which is a completely separate discipline from Joseph's junior full-stack/backend skills.",
+      "met_requirements": [
+        "Location: Melbourne",
+        "Has AWS experience (Lambda, CloudWatch, DynamoDB, certifications)",
+        "Has Azure fundamentals certification"
+      ],
+      "partial_requirements": [
+        "Cloud experience \u2014 Joseph has AWS and Azure foundations but not at the 'complex enterprise environment' level required"
+      ],
+      "missing_requirements": [
+        "IDAM / IAM (Identity and Access Management) expertise \u2014 core of the role",
+        "Enterprise-level cloud IAM engineering experience",
+        "Multi-cloud (AWS + Azure + GCP) IAM experience",
+        "Contract/consultant-level seniority \u2014 expects an 'experienced' professional, not a junior",
+        "Security-focused cloud engineering \u2014 Joseph's cloud work is backend/serverless, not identity/governance"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5808704775": {
+    "job": {
+      "id": "5808704775",
+      "source": "adzuna",
+      "title": "Cloud Engineering Lead",
+      "company": "AustralianSuper",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Description Cloud Engineering Lead \u2013 Member Platforms (Azure) Permanent, full\u2011time position Flexible, hybrid working environment A hands\u2011on Azure (incl. AKS) SME role supporting large\u2011scale digital platforms used by our member base At AustralianSuper , we truly care about our colleagues. We know work and life are intertwined. That\u2019s why we support the diverse needs of everyone and have policies that enable us all to thrive and be truly flexible. We ensure diversity is celebrated for the opportu\u2026",
+      "url": "https://www.adzuna.com.au/details/5808704775?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-21T11:14:11Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This is a senior/lead Azure role requiring deep hands-on SME experience, and Joseph is a junior backend intern with a different cloud stack.",
+      "met_requirements": [
+        "Located in Melbourne"
+      ],
+      "partial_requirements": [
+        "Some Azure fundamentals certified",
+        "Comfortable with cloud concepts (AWS)"
+      ],
+      "missing_requirements": [
+        "Senior/lead level experience required",
+        "Deep hands-on Azure expertise (AKS, Azure digital platforms)",
+        "5+ years of cloud engineering experience (implicit from 'Lead' title)",
+        "Experience managing/supporting large-scale member-facing digital platforms"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5791119765": {
+    "job": {
+      "id": "5791119765",
+      "source": "adzuna",
+      "title": "Cloud Systems Engineer",
+      "company": "Estia Investments Pty Ltd",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "At Estia Health, we\u2019re more than just a workplace: we\u2019re a community dedicated to enriching lives and making a difference. If you\u2019re passionate about aged care and want to be part of something meaningful, then we want to hear from you. Everyday, over 14,000 employees choose to make a difference at Estia Health, sharing a joint purpose to enrich and celebrate the lives of our residents. With 94 homes (and growing), across Queensland, New South Wales, South Australia and Victoria, you will play a\u2026",
+      "url": "https://www.adzuna.com.au/details/5791119765?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-08T01:34:22Z"
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "maybe",
+      "one_line": "Strong cloud certs and some AWS hands-on, but the role likely requires a more senior systems/cloud engineer and Joseph's total professional experience is ~3 months.",
+      "met_requirements": [
+        "AWS certifications (Cloud Practitioner, Developer - Associate, Azure Fundamentals)",
+        "Melbourne-based (Melbourne CBD)",
+        "Some AWS hands-on experience (Lambda, CloudWatch, DynamoDB) from internship",
+        "Interest in meaningful human-impact work (aged care / health-tech)"
+      ],
+      "partial_requirements": [
+        "Cloud systems engineering experience (internship was backend dev on AWS, not systems/infra engineering)",
+        "Experience in a production environment (limited to 3-month internship and a uni project)"
+      ],
+      "missing_requirements": [
+        "Senior-level cloud/systems engineering experience (typically 3-5+ years for a 'Cloud Systems Engineer' role)",
+        "Infrastructure-as-code (Terraform, CDK, etc.)",
+        "Systems administration / networking / IT operations background",
+        "Experience in the aged care or healthcare sector (not a hard req but relevant)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5786319134": {
+    "job": {
+      "id": "5786319134",
+      "source": "adzuna",
+      "title": "Cloud IAM Engineer",
+      "company": "Leidos",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Description  We're a 'Family Friendly' certified workplace - we understand the often many and varied roles our team members need to play within their own unique family setting and actively support them. Our team feel Leidos is a great place to work. Learn more about our culture and benefits by visiting us here Explore our careers (https://www.leidos.com/company/global/australia/careers) Do Work That Matters Leidos Australia delivers IT and airborne solutions that protect and advance the Austral\u2026",
+      "url": "https://www.adzuna.com.au/details/5786319134?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-03T12:48:22Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This role likely requires Australian citizenship (typical for Leidos defence/government work) and senior cloud IAM experience far beyond a junior's level.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Cloud foundations (AWS Certified, Azure Fundamentals) - could build into IAM over time",
+        "Some AWS hands-on from internship (Lambda, DynamoDB, CloudWatch)"
+      ],
+      "missing_requirements": [
+        "IAM-specific engineering experience (policies, roles, permissions, SSO, identity federation)",
+        "Senior-level cloud engineering experience (this role likely expects 5+ years)",
+        "Security/defence sector experience"
+      ],
+      "hard_blockers": [
+        "Australian citizenship (Leidos is a US defence contractor; Australian defence/govt roles require citizenship)",
+        "Seniority gap - junior/graduate level vs. what is typically a mid-senior IAM engineering role"
+      ]
+    }
+  },
+  "5783899953": {
+    "job": {
+      "id": "5783899953",
+      "source": "adzuna",
+      "title": "Solutions Engineer - Salesforce Marketing Cloud - Digital Entertainment!",
+      "company": "New Chapter Talent",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Are you passionate about building world-class marketing technology solutions that power exceptional customer experiences? We're partnering with a global leader in digital entertainment and live events to recruit a Solutions Engineer \u2013 Marketing Cloud . This is an exciting opportunity to join a rapidly growing Australian team while collaborating across the wider APAC region on large-scale customer engagement programs. You'll play a key role in designing, developing and supporting sophisticated m\u2026",
+      "url": "https://www.adzuna.com.au/details/5783899953?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 165000.0,
+      "salary_max": 185000.0,
+      "remote": null,
+      "created": "2026-07-02T01:24:24Z"
+    },
+    "score": {
+      "fit_score": 10,
+      "recommendation": "skip",
+      "one_line": "This is a Salesforce Marketing Cloud specialist role, not a software engineering role \u2014 Joseph's backend/internship skills don't transfer meaningfully.",
+      "met_requirements": [
+        "Melbourne-based"
+      ],
+      "partial_requirements": [
+        "Has some general tech/engineering background (could be trained on a specific platform over time)"
+      ],
+      "missing_requirements": [
+        "Salesforce Marketing Cloud platform experience (none)",
+        "Marketing technology / campaign engineering experience",
+        "Mid-to-senior level (the role partners with APAC on large-scale programs \u2014 junior grad unlikely to fit)",
+        "Solutions engineering or pre-sales experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5808725665": {
+    "job": {
+      "id": "5808725665",
+      "source": "adzuna",
+      "title": "Lead IT Operations & Integration Engineer - Cloud & Automation",
+      "company": "Aurec",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "Lead IT Operations & Integration Engineer - Cloud, M&A & Automation Rather than focusing on corporate bureaucracy and theoretical frameworks, our client's Technology division is driven by practical outcomes, technical delivery and continuous modernisation. We are looking for an experienced, hands-on Lead IT Operations & Integration Engineer - Cloud, M&A & Automationr to take ownership of the technical integration of newly acquired businesses into the organisation's enterprise environment. This \u2026",
+      "url": "https://www.adzuna.com.au/details/5808725665?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-21T11:51:11Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This is a senior lead role requiring hands-on M&A integration ownership and enterprise infrastructure management, far beyond a junior/graduate profile.",
+      "met_requirements": [
+        "AWS cloud fundamentals",
+        "Some automation/scripting awareness"
+      ],
+      "partial_requirements": [],
+      "missing_requirements": [
+        "Senior/lead level experience (the role title and description explicitly call for an 'experienced, hands-on Lead')",
+        "M&A / business integration experience",
+        "Enterprise IT operations ownership at scale",
+        "Automation and infrastructure-as-code at a senior level"
+      ],
+      "hard_blockers": [
+        "Title and description require senior/lead-level experience; Joseph is a junior/graduate."
+      ]
+    }
+  },
+  "5805609652": {
+    "job": {
+      "id": "5805609652",
+      "source": "adzuna",
+      "title": "Azure Engineer",
+      "company": "Talenza",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "Azure Engineer | Contract East Melbourne / Hybrid 3month contract with potential extension We're seeking an experienced Azure Engineer to support the delivery of a large-scale cloud, data and AI initiative within a Microsoft technology environment. This is a hands-on role focused on building and operationalising Azure-based solutions, data pipelines, automation and AI-enabled workflows. You'll work closely with architecture and platform teams to implement an established solution and help transi\u2026",
+      "url": "https://www.adzuna.com.au/details/5805609652?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 182000.0,
+      "salary_max": 234000.0,
+      "remote": null,
+      "created": "2026-07-18T11:48:53Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "skip",
+      "one_line": "Junior with ~3 months internship experience is far too junior for a contract role explicitly seeking an \"experienced Azure Engineer\" to deliver large-scale cloud/data/AI solutions.",
+      "met_requirements": [
+        "Some Azure fundamentals knowledge",
+        "Some exposure to cloud, data, AI concepts"
+      ],
+      "partial_requirements": [
+        "Hands-on Azure engineering (has Azure certs and AWS experience, but no real Azure build/delivery experience)"
+      ],
+      "missing_requirements": [
+        "Experienced Azure Engineer (role explicitly asks for experience)",
+        "Hands-on building Azure-based solutions, data pipelines, automation",
+        "Contract role expecting immediate delivery with minimal supervision",
+        "Scale of work \u2014 large-scale cloud/data/AI initiative"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5806625724": {
+    "job": {
+      "id": "5806625724",
+      "source": "adzuna",
+      "title": "Azure Engineer",
+      "company": "Talenza",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "East Melbourne / Hybrid 3month contract with potential extension We're seeking an experienced Azure Engineer to support the delivery of a large-scale cloud, data and AI initiative within a Microsoft technology environment. This is a hands-on role focused on building and operationalising Azure-based solutions, data pipelines, automation and AI-enabled workflows. You'll work closely with architecture and platform teams to implement an established solution and help transition it into ongoing opera\u2026",
+      "url": "https://www.adzuna.com.au/details/5806625724?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-19T10:13:22Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "skip",
+      "one_line": "Joseph's Azure fundamentals certification and AWS internship don't translate to the senior hands-on Azure engineering this contract requires.",
+      "met_requirements": [
+        "Azure Fundamentals certification shows some Azure awareness",
+        "Economics background suggests data comfort",
+        "Has some cloud experience (AWS) that is partially transferable"
+      ],
+      "partial_requirements": [
+        "Azure engineer experience: has Azure cert but no real-world Azure hands-on work",
+        "Data pipelines: has database debugging but not pipeline/ETL work",
+        "AI-enabled workflows: has done one OpenAI integration but at intern level, not architecting production AI solutions"
+      ],
+      "missing_requirements": [
+        "Senior/experienced Azure Engineer (role asks for 'experienced Azure Engineer')",
+        "Hands-on Azure solution building and operationalisation at a professional level",
+        "Data pipeline engineering",
+        "Automation at scale in Azure",
+        "3-month contract with expectation to deliver independently from day one"
+      ],
+      "hard_blockers": [
+        "Junior/graduate level applying for a senior hands-on contract role requiring immediate delivery"
+      ]
+    }
+  },
+  "5797478417": {
+    "job": {
+      "id": "5797478417",
+      "source": "adzuna",
+      "title": "Lead Solution Engineer | Service Cloud",
+      "company": "Salesforce",
+      "location": "Melbourne, Melbourne Region",
+      "description": "To get the best candidate experience, please consider applying for a maximum of 3 roles within 12 months to ensure you are not duplicating efforts. Job Category Sales Job Details About Salesforce Salesforce is the 1 AI CRM, where humans with agents drive customer success together. Here, ambition meets action. Tech meets trust. And innovation isn\u2019t a buzzword \u2014 it\u2019s a way of life. The world of work as we know it is changing and we're looking for Trailblazers who are passionate about bettering bu\u2026",
+      "url": "https://www.adzuna.com.au/details/5797478417?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-12T11:06:13Z"
+    },
+    "score": {
+      "fit_score": 5,
+      "recommendation": "skip",
+      "one_line": "This is a senior sales-engineering role requiring 5-10+ years of CRM/sales consulting experience with Salesforce products, completely mismatched with Joseph's junior backend/intern profile.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Has some cloud/CRM exposure through AWS certifications and backend internship"
+      ],
+      "missing_requirements": [
+        "Senior/lead-level experience (5-10+ years expected)",
+        "Salesforce product expertise or CRM consulting background",
+        "Pre-sales / solution engineering experience",
+        "Enterprise client-facing role experience",
+        "Australian citizenship or security clearance not stated as required, but the seniority gap alone is a hard mismatch"
+      ],
+      "hard_blockers": [
+        "Senior/lead title with years of experience requirement far beyond Joseph's internship-level profile"
+      ]
+    }
+  },
+  "5790000285": {
+    "job": {
+      "id": "5790000285",
+      "source": "adzuna",
+      "title": "Cloud Data Service Administrator",
+      "company": "BDO Administration Pty Ltd",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "We\u2019re BDO, a global professional services firm connected to local markets. Our people work together to provide specialist expertise, helping businesses achieve their goals. We inspire others, to go further. We create together, to reach higher. We build trust, to lead purposefully. Whether you're building your future or starting your career with us, you won\u2019t do it alone. From creating solutions for our clients to building careers for our people, we shape what matters , and that\u2019s where you come\u2026",
+      "url": "https://www.adzuna.com.au/details/5790000285?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-07T01:44:56Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "apply",
+      "one_line": "A junior role that fits Joseph's cloud certs and basic SQL/data comfort, but is more of a system-administration/operations position than a development or cloud engineering role.",
+      "met_requirements": [
+        "AWS Certified Cloud Practitioner & Developer Associate",
+        "Azure fundamentals (AZ-900)",
+        "SQL competency",
+        "Melbourne CBD location",
+        "Junior/entry-level (no senior years demanded)"
+      ],
+      "partial_requirements": [
+        "Data engineering/analytics experience \u2014 Joseph has SQL, database debugging, and an economics background but no dedicated data-pipeline or admin experience",
+        "Cloud infrastructure administration \u2014 has worked with AWS Lambda, CloudWatch, DynamoDB but not from a system-administration/operations angle"
+      ],
+      "missing_requirements": [
+        "Professional services / audit-adjacent firm experience",
+        "Data centre / cloud service administration as a primary role (not development)",
+        "Experience managing cloud service accounts, billing, or vendor relationships"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5659230612": {
+    "job": {
+      "id": "5659230612",
+      "source": "adzuna",
+      "title": "Data Analyst",
+      "company": "Infoxchange",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Data Analyst role with Infoxchange based in Melbourne, VIC, AU  Infoxchange  Role Seniority - mid level More about the Data Analyst role at Infoxchange About Infoxchange Infoxchange is a not\u2011for\u2011profit social enterprise that uses technology to improve outcomes for people and communities experiencing disadvantage. Our digital products, including the Digital Empowerment Suite, support government and community organisations across Australia to deliver vital services more effectively and \u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5659230612?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=E998656477A76C53F98744B4B68F3E36D98D8D35",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-09T17:00:22Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "apply",
+      "one_line": "Your data-analytics comfort and economics background are relevant, but this is a mid-level Data Analyst role, not an engineering role, and your hands-on data analysis experience is thin.",
+      "met_requirements": [
+        "Economics/BComm background shows numeracy and data comfort",
+        "Location (Melbourne CBD)",
+        "Not-for-profit/impact mission aligns with your interests"
+      ],
+      "partial_requirements": [
+        "Mid-level seniority - you are a junior/graduate, not mid-level",
+        "Data analysis skills - you have SQL and some data reasoning but no dedicated data analyst role or portfolio",
+        "Domain experience in community/government data - you have no track record here"
+      ],
+      "missing_requirements": [
+        "Professional experience as a data analyst",
+        "Data visualisation tools (e.g. Tableau, Power BI) - not mentioned in your profile",
+        "Statistical analysis / reporting experience at a mid-level standard"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5764065015": {
+    "job": {
+      "id": "5764065015",
+      "source": "adzuna",
+      "title": "Data Analyst",
+      "company": "Centorrino Technologies",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Data Analyst role with Centorrino Technologies based in Melbourne, VIC, AU  Centorrino Technologies  Role Seniority - junior, mid level More about the Data Analyst role at Centorrino Technologies Join Be Awesome Resources Pty Ltd: Innovate, Grow, and Thrive with Us! At Be Awesome Resources Pty Ltd, we\u2019re more than just a business\u2014we\u2019re a team that values innovation, collaboration, and continuous growth. We are passionate about delivering high-quality outcomes and creating an environme\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5764065015?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=D25806278E0316F70CF3D457EDDBBD7113FC633C",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-15T14:53:21Z"
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "maybe",
+      "one_line": "Joseph has SQL, data reasoning from his Economics background, and cloud certs, but the role's specifics are vague and his hands-on data analyst experience is limited.",
+      "met_requirements": [
+        "SQL literacy",
+        "Cloud literacy (AWS certs)",
+        "Melbourne-based",
+        "Open to junior/mid level"
+      ],
+      "partial_requirements": [
+        "Data analysis experience: Joseph has an Economics background (data reasoning) and internship database debugging, but not a dedicated data analyst role",
+        "Python for analysis: he knows Python but no mention of pandas/NumPy/analytics libraries specifically"
+      ],
+      "missing_requirements": [
+        "Dedicated data analyst experience (reporting, dashboards, BI tools)",
+        "No mention of tools like Tableau, Power BI, or Looker in his profile"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5654589134": {
+    "job": {
+      "id": "5654589134",
+      "source": "adzuna",
+      "title": "Data Analyst and Systems Officer",
+      "company": "CSIRO",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Data Analyst and Systems Officer role with CSIRO based in Melbourne, VIC, AU  CSIRO  Role Seniority - mid level More about the Data Analyst and Systems Officer role at CSIRO Acknowledgement of Country CSIRO acknowledges the Traditional Owners of the land, sea and waters, of the area that we live and work on across Australia. We acknowledge their continuing connection to their culture and pay our respects to their Elders past and present. View our vision towards reconciliation . Role h\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5654589134?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=7468940F13B4A34CEB2CE8AECEC9291602167F71",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-05T14:17:01Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "maybe",
+      "one_line": "Joseph has some data literacy and cloud certs, but this role is mid-level and likely expects more years of experience and deeper data analysis skills than he has.",
+      "met_requirements": [
+        "AWS Certified Cloud Practitioner and Developer - Associate",
+        "Azure Fundamentals certification",
+        "SQL knowledge",
+        "Melbourne-based",
+        "Economics background (Bachelor of Commerce) for data reasoning"
+      ],
+      "partial_requirements": [
+        "Data analysis experience \u2014 his background is mostly software engineering with limited hands-on data analytics work",
+        "Mid-level seniority \u2014 Joseph is a junior/graduate; the role is marked mid-level"
+      ],
+      "missing_requirements": [
+        "Proven data analyst experience (role title suggests hands-on analytics, dashboards, BI tools)",
+        "Systems administration or systems officer experience",
+        "Australian citizenship (likely required for CSIRO roles \u2014 need to verify)"
+      ],
+      "hard_blockers": [
+        "CSIRO is a Commonwealth agency and roles typically require Australian citizenship; Joseph is not a citizen."
+      ]
+    }
+  },
+  "4801319120": {
+    "job": {
+      "id": "4801319120",
+      "source": "adzuna",
+      "title": "Data Analyst",
+      "company": "CodeGen",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Data and Reporting Analyst An exciting opportunity has become available to join an established and growing superannuation provider based in Melbourne's CBD for a Data and Reporting Analyst to join their vibrant and supportive team. Being an integral part of this close knit organisation, you will be responsible for a supporting internal stakeholders of all data required as well as maintaining data management and reporting, the summary of this position will require the successful candidate to hav\u2026",
+      "url": "https://www.adzuna.com.au/details/4801319120?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2024-07-31T07:19:35Z"
+    },
+    "score": {
+      "fit_score": 45,
+      "recommendation": "maybe",
+      "one_line": "Joseph has some adjacent skills (SQL, cloud, analytical background) but lacks any real data analyst experience, reporting tooling, or superannuation domain knowledge.",
+      "met_requirements": [
+        "Location: Melbourne",
+        "SQL proficiency (listed in languages)",
+        "Comfortable reasoning about data (Economics background)",
+        "AWS certifications demonstrate data-adjacent cloud skills"
+      ],
+      "partial_requirements": [
+        "Data management and reporting: SQL is there, but no BI/reporting tool experience; his data work was debugging databases, not building reporting pipelines",
+        "Internal stakeholder support: has coordination/communication skills but not in a data-specific capacity"
+      ],
+      "missing_requirements": [
+        "No professional Data Analyst experience",
+        "No superannuation/financial services domain experience mentioned",
+        "No reporting/BI tooling (e.g. Power BI, Tableau) experience listed",
+        "No ETL pipeline or data warehousing practical experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5806269613": {
+    "job": {
+      "id": "5806269613",
+      "source": "adzuna",
+      "title": "Data Analyst",
+      "company": "Davidson",
+      "location": "Southbank, Melbourne",
+      "description": "Melbourne CBD | 12-month contract About the Company Our client is a large, well-established organisation with a strong reputation for delivering reliable services to its customers and communities. They offer a supportive and collaborative working environment, with a focus on continuous improvement, professional development and long-term career opportunities. About the Role An opportunity is available for a detail-focused Meter Data Analyst to join the team on an initial 12-month contract, with \u2026",
+      "url": "https://www.adzuna.com.au/details/5806269613?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-19T02:11:59Z"
+    },
+    "score": {
+      "fit_score": 60,
+      "recommendation": "apply",
+      "one_line": "Solid transferable skills (SQL, data reasoning, economics background, AWS) for a data analyst role, but lacks explicit meter-data or utility-domain experience and likely the contract asks for more senior independent delivery.",
+      "met_requirements": [
+        "SQL skills",
+        "Data reasoning & analytics background (Commerce/Economics degree)",
+        "AWS certified (Cloud Practitioner & Developer Associate)",
+        "Detail-oriented debugging experience (timezone edge case, database debugging)",
+        "Melbourne-based"
+      ],
+      "partial_requirements": [
+        "Meter data / utility domain knowledge (adjacent via general data analysis and backend database work, but no direct energy/utility experience)",
+        "12-month contract delivery at analyst level (internship + grad, not yet proven independently at analyst level)"
+      ],
+      "missing_requirements": [
+        "Explicit experience with meter data systems or utility industry",
+        "Years of professional data analyst experience (role likely targets 2+ years analyst experience)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5752830752": {
+    "job": {
+      "id": "5752830752",
+      "source": "adzuna",
+      "title": "Portfolio Data Analyst (Accounting), Engage Data",
+      "company": "HUB24",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Portfolio Data Analyst (Accounting), Engage Data role with HUB24 based in Melbourne, VIC, AU  HUB24  Role Seniority - mid level More about the Portfolio Data Analyst (Accounting), Engage Data role at HUB24 HUB24 leads the wealth industry as the best provider of integrated platform, technology and data solutions. At HUB24, we know the smartest investments start with our people. We are innovative and ambitious, and we move fast. At HUB24, we empower our employees to bring their ideas an\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5752830752?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=CD5BDDCE6A2267A6F0114D261739A365F6C354F8",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-05T15:01:18Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a mid-level accounting data analyst role in wealth management, requiring domain-specific experience Joseph lacks.",
+      "met_requirements": [
+        "SQL (listed in Joseph's languages)",
+        "Data comfort / data reasoning (Economics background)"
+      ],
+      "partial_requirements": [
+        "Python (likely useful but not a core accounting analyst requirement here)",
+        "General data analytics skills (Joseph has an Econ degree and some backend data work, but no accounting/portfolio data domain experience)"
+      ],
+      "missing_requirements": [
+        "Accounting domain knowledge",
+        "Portfolio / wealth management data experience",
+        "Mid-level seniority (Joseph is a junior/graduate)",
+        "Data analysis / accounting analyst specific experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5773043899": {
+    "job": {
+      "id": "5773043899",
+      "source": "adzuna",
+      "title": "Data Analyst - Marketing",
+      "company": "Aussie Broadband Limited",
+      "location": "Melbourne, Melbourne Region",
+      "description": "As our Data Analyst \u2013 Marketing, you'll partner with teams across Aussie to uncover insights and drive data activation across digital campaigns to optimise customer engagement, and support both customer acquisition and retention. If you're passionate about data, digital marketing, and understanding customer behaviour, this is an exciting opportunity! This role is a permanent, full-time opportunity with hybrid working arrangements. At Aussie Broadband we believe difference is something to celebr\u2026",
+      "url": "https://www.adzuna.com.au/details/5773043899?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-23T10:54:43Z"
+    },
+    "score": {
+      "fit_score": 65,
+      "recommendation": "apply",
+      "one_line": "Decent fit for a junior data analyst role: strong SQL/cloud/data foundations but no direct marketing analytics experience.",
+      "met_requirements": [
+        "SQL proficiency (listed under languages)",
+        "Cloud foundations (AWS Certified, Azure Fundamentals)",
+        "Data reasoning (Economics background, Bachelor of Commerce)",
+        "Melbourne-based",
+        "No citizenship/security clearance required (not mentioned)"
+      ],
+      "partial_requirements": [
+        "Marketing analytics experience \u2014 none, but has general data/analytics mindset from Economics degree and honours project",
+        "Data activation / digital campaigns \u2014 no direct experience, but transferable backend data debugging and API integration skills",
+        "Customer engagement analytics \u2014 adjacent experience from user-centric streak/engagement work at Focus Bear"
+      ],
+      "missing_requirements": [
+        "Professional data analyst experience",
+        "Marketing / digital campaign analytics experience",
+        "Data visualisation / BI tools (e.g. Looker, Tableau, Power BI \u2014 likely needed but not explicitly stated)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5644183354": {
+    "job": {
+      "id": "5644183354",
+      "source": "adzuna",
+      "title": "Commercial Data Analyst",
+      "company": "Sinch",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Description Sinch is a global leader in the growing market for Communication Platforms as a Service (CPaaS) and mobile customer engagement. We are specialists in allowing businesses to reach everyone on the planet, in seconds or less, through mobile messaging, email, voice, and video. With presence in more than 60 countries, whether you know us or not, you\u2019ve definitely used our tech. We reach every phone on earth, with over 147 billion conversations every year. Sinch's core values are Make it \u2026",
+      "url": "https://www.adzuna.com.au/details/5644183354?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-02-25T08:24:42Z"
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "maybe",
+      "one_line": "You have the SQL and data-reasoning background for data analysis, but this is a commercial/business analyst role requiring hands-on Tableau/Power BI, Looker, Google Analytics, and Salesforce reporting experience that your profile doesn't show.",
+      "met_requirements": [
+        "SQL skills",
+        "Economics background (Bachelor of Commerce) \u2014 comfortable with data reasoning",
+        "Melbourne-based",
+        "Work rights for Australia (no citizenship required)"
+      ],
+      "partial_requirements": [
+        "Data analysis/analytics \u2014 you have an economics degree and can reason about data, but no commercial data analyst experience or BI tool usage",
+        "AWS Cloud (certified) \u2014 relevant if they use AWS for data pipelines, but not mentioned in their stack"
+      ],
+      "missing_requirements": [
+        "Tableau or Power BI (primary BI tool)",
+        "Looker (secondary reporting tool)",
+        "Google Analytics",
+        "Salesforce reporting",
+        "Experience as a commercial data analyst in a business environment \u2014 the role sits in a commercial/sales finance team"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5794807738": {
+    "job": {
+      "id": "5794807738",
+      "source": "adzuna",
+      "title": "Policy and Data Analyst",
+      "company": "Victorian Government",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "Are you passionate about delivering great outcomes for children and families? We're looking for an Analyst II to actively contribute to policy development and data analysis as part of the Infrastructure and Local Planning team, working on the expansion of kindergarten and helping to deliver on a series of new reforms in early childhood education in Victoria. The Analyst II is responsible for supporting the maintenance and utilisation of a range of complex modelling tools \u2013 strong excel skills a\u2026",
+      "url": "https://www.adzuna.com.au/details/5794807738?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-10T09:16:44Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "skip",
+      "one_line": "This is a pure policy/data analyst role requiring strong Excel modelling and policy writing, not software engineering or cloud work.",
+      "met_requirements": [
+        "Melbourne CBD location \u2013 fits",
+        "Strong communication skills \u2013 fits",
+        "Economics background (Bachelor of Commerce) \u2013 relevant"
+      ],
+      "partial_requirements": [
+        "Data analysis comfort \u2013 the candidate has an economics background and SQL, but no mention of Excel modelling, dashboarding in Power BI/Tableau, or policy analysis"
+      ],
+      "missing_requirements": [
+        "Policy development experience \u2013 zero",
+        "Complex Excel modelling \u2013 not in profile",
+        "Infrastructure / early childhood education domain knowledge \u2013 zero",
+        "The role is titled 'Analyst II' \u2013 typically expects 2-3+ years of professional policy/data analysis experience, not a grad role"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5793772056": {
+    "job": {
+      "id": "5793772056",
+      "source": "adzuna",
+      "title": "Data Privacy Analyst",
+      "company": "Vanguard Australia",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Data Privacy Analyst role with Vanguard Australia based in Melbourne, VIC, AU  Vanguard Australia  Role Seniority - mid level More about the Data Privacy Analyst role at Vanguard Australia About Vanguard More than 45 years ago, John C. Bogle had a vision to start an investment company that did things differently. A company with no external shareholders. Where all the profits were invested back into the business and used to lower costs. Evidently, it was as bold as it was brilliant. To\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5793772056?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=7259A8D6D4296F2E46898BE2CBA0E3A506D3ABA1",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-09T15:00:42Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a mid-level data privacy compliance role with no stated technical requirements matching Joseph's backend/cloud skills, and his junior SWE profile doesn't align with privacy advisory work.",
+      "met_requirements": [
+        "Melbourne location"
+      ],
+      "partial_requirements": [
+        "Economics degree gives some business/finance context, but no privacy or compliance training",
+        "General data reasoning from economics background"
+      ],
+      "missing_requirements": [
+        "Mid-level / seniority (likely 3-5+ years, not junior)",
+        "Data privacy domain expertise",
+        "Compliance/regulatory experience",
+        "Investment/financial services background"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5752599716": {
+    "job": {
+      "id": "5752599716",
+      "source": "adzuna",
+      "title": "Portfolio Data Analyst (Accounting), Engage Data",
+      "company": "HUB24",
+      "location": "Melbourne, Melbourne Region",
+      "description": "HUB24 leads the wealth industry as the best provider of integrated platform, technology and data solutions. At HUB24, we know the smartest investments start with our people. We are innovative and ambitious, and we move fast. At HUB24, we empower our employees to bring their ideas and creativity to work. Rather than getting bogged down in bureaucracy and red tape, we build a culture that supports our team members to have a real impact on our business and the success of our customers. HUB24 Limit\u2026",
+      "url": "https://www.adzuna.com.au/details/5752599716?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-05T10:55:54Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "skip",
+      "one_line": "The role is an accounting data analyst position requiring Xero, accounting qualifications, and 2-5 years' experience \u2014 Joseph is a junior software engineer with none of those.",
+      "met_requirements": [
+        "SQL"
+      ],
+      "partial_requirements": [
+        "Data analytics / data reasoning (has Economics background)"
+      ],
+      "missing_requirements": [
+        "2-5 years of relevant experience (candidate is a fresh graduate with ~3 months intern exp.)",
+        "Xero or similar accounting software experience",
+        "Bachelor's degree in Accounting or related discipline (has Computing/Economics)",
+        "Professional accounting qualification or working towards one",
+        "Financial/accounting domain experience in a similar role"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5748763624": {
+    "job": {
+      "id": "5748763624",
+      "source": "adzuna",
+      "title": "Compliance, Data & Risk Analyst",
+      "company": "Starbucks",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Compliance, Data & Risk Analyst role with Starbucks based in Melbourne, VIC, AU  Starbucks  Role Seniority - mid level More about the Compliance, Data & Risk Analyst role at Starbucks Company Description A fantastic opportunity exists to join an iconic brand and elevate your career at Starbucks Australia. There are multiple benefits to joining us; we currently have over 95 stores and are aiming for a store network of more than 100 stores in the next two years. We often say that we are\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5748763624?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=0B16014FB86D9768101FDF40761AF5CF2E38F8D8",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-06-02T14:43:53Z"
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "The role is a mid-level compliance/risk/data analyst role far outside Joseph's software engineering skillset and requires senior years of experience he doesn't have.",
+      "met_requirements": [
+        "Melbourne CBD location"
+      ],
+      "partial_requirements": [
+        "Economics/commerce background (data reasoning skills)"
+      ],
+      "missing_requirements": [
+        "Mid-level / senior years of experience",
+        "Compliance or risk analysis domain experience",
+        "Commercial data analysis experience (Joseph has a data grounding but no actual analyst role)",
+        "Starbucks-specific or retail/FMCG industry knowledge"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5793400417": {
+    "job": {
+      "id": "5793400417",
+      "source": "adzuna",
+      "title": "Data Analyst, Mental Health Performance and Commissioning / Evidence Outcomes & Info System",
+      "company": "Victorian Government",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "About the role: The Data Analyst sits within the Business Systems team working in the Evidence Outcomes and InformationSystems unit of the Mental Health and Wellbeing division at the Department of Health.This role is responsible for a range of duties centred on the analysis of quantitative and qualitative data,primarily using Tableau Business Intelligence software, to inform program development, performancereporting and strategic planning for the Gambling Harm Prevention and Response (GHPR) pro\u2026",
+      "url": "https://www.adzuna.com.au/details/5793400417?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-09T09:04:58Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "maybe",
+      "one_line": "Your SQL and economics background help, but this is a public-sector Tableau BI analyst role with no stated software engineering work, which doesn't play to your strengths in full-stack or cloud development.",
+      "met_requirements": [
+        "Melbourne CBD location",
+        "SQL capability",
+        "Data analysis / economics background (Bachelor of Commerce)"
+      ],
+      "partial_requirements": [
+        "Quantitative data analysis \u2013 your economics degree and honours project involved data reasoning, but not formal BI/analyst work",
+        "Tableau \u2013 zero mention in your profile; some BI tools may be transferable from general analytics, but no direct experience"
+      ],
+      "missing_requirements": [
+        "Tableau BI software proficiency (core requirement of the role)",
+        "Mental health / gambling harm prevention domain experience",
+        "Public-sector / government commissioning or performance reporting experience",
+        "Qualitative data analysis methods"
+      ],
+      "hard_blockers": [
+        "No Australian citizenship required (per the job title 'Victorian Government' \u2013 most Vic Gov roles require Australian citizenship or permanent residency; check if PR is sufficient. If citizenship is mandatory, this becomes a hard blocker.)"
+      ]
+    }
+  },
+  "5790336010": {
+    "job": {
+      "id": "5790336010",
+      "source": "adzuna",
+      "title": "Analyst, Data & Analytics",
+      "company": "Victorian Government",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "About the role: The Analyst supports the delivery of high-quality, trusted data assets by contributing to the management and maintenance of data pipelines and the preparation of curated, business-ready datasets to enable consistent, accessible and locally-driven analytics and business intelligence within a decentralised analytics environment. Working within a collaborative multidisciplinary team, the Analyst undertakes data extraction, transformation and validation activities to support routine\u2026",
+      "url": "https://www.adzuna.com.au/details/5790336010?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-07T08:47:19Z"
+    },
+    "score": {
+      "fit_score": 65,
+      "recommendation": "apply",
+      "one_line": "Solid junior fit for a data analyst role \u2014 strong SQL, cloud certs, and analytical mindset from economics background, though lacks deep BI/pipeline tooling experience.",
+      "met_requirements": [
+        "SQL skills",
+        "AWS cloud certifications (Cloud Practitioner, Developer Associate)",
+        "Economics/Business background for data reasoning",
+        "Python skills for data extraction/transformation tasks",
+        "Collaborative multidisciplinary team experience (project groups, startup)"
+      ],
+      "partial_requirements": [
+        "Data pipeline management/maintenance (backend intern work involved debugging databases and serverless jobs, but not building/maintaining ETL pipelines as a primary focus)",
+        "Curated business-ready dataset preparation (has data reasoning skills but no direct BI or data warehousing role experience)",
+        "Decentralised analytics / business intelligence environment (no hands-on BI tooling like PowerBI/Tableau mentioned)"
+      ],
+      "missing_requirements": [
+        "Formal BI/analytics tools experience (Power BI, Tableau, or similar)",
+        "Proven experience managing production data pipelines end-to-end"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5786838727": {
+    "job": {
+      "id": "5786838727",
+      "source": "adzuna",
+      "title": "Data & Reporting Analyst - SSRS / SQL / Power BI",
+      "company": "Saltus Group",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Data & Reporting Analyst - SSRS / SQL / Power BI Contract Role | Initial 3 Months | Potential Extension | Immediate Start We are seeking a hands-on Data & Reporting Analyst to support a major Salesforce migration program. This role will focus on reviewing and understanding existing reporting assets, including SSRS reports, BI reports, and the underlying data sources used across the reporting environment. The successful candidate will act as a key point of contact for data and reporting queries,\u2026",
+      "url": "https://www.adzuna.com.au/details/5786838727?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 120000.0,
+      "salary_max": 120000.0,
+      "remote": null,
+      "created": "2026-07-03T23:10:11Z"
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "skip",
+      "one_line": "The role is a contract data/reporting analyst position centred on SSRS, Power BI, and supporting a Salesforce migration \u2014 far from Joseph's backend/cloud/LLM focus and junior level.",
+      "met_requirements": [
+        "SQL familiarity (Joseph knows SQL)",
+        "Analytical/data reasoning (Commerce/Economics background)"
+      ],
+      "partial_requirements": [
+        "Data/reporting experience \u2014 Joseph has database debugging and some data exposure, but no SSRS, Power BI, or formal BI/reporting analyst experience"
+      ],
+      "missing_requirements": [
+        "SSRS (SQL Server Reporting Services) \u2014 not in Joseph's skillset",
+        "Power BI \u2014 not mentioned in profile",
+        "Salesforce migration context \u2014 no Salesforce experience",
+        "Contract role requiring immediate start and hands-on BI analyst experience, not a junior/grad role"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5786204390": {
+    "job": {
+      "id": "5786204390",
+      "source": "adzuna",
+      "title": "Student Data Reporting Analyst (Melbourne/Sydney/Brisbane)",
+      "company": "JMC Pty",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Student Data Reporting Analyst ABOUT JMC Founded over 40 years ago, JMC is a heritage higher education provider specialising in the creative industries. We offer smaller classes, real studios with incredible equipment, and lecturers who still work in the industries they teach, from TV production to music theatre to game design. Our positioning is direct. JMC graduates, and our staff, are working creatives and collaborators. They excel at their own craft, and they\u2019re also exceptional team player\u2026",
+      "url": "https://www.adzuna.com.au/details/5786204390?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-03T10:59:28Z"
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "maybe",
+      "one_line": "Joseph's background is too engineering-heavy and lacks the dedicated reporting/BI analyst experience this role calls for.",
+      "met_requirements": [
+        "Analytical / data reasoning (Economics background + computing degree)",
+        "SQL skills",
+        "Australian location (Melbourne)",
+        "No citizenship/security clearance required"
+      ],
+      "partial_requirements": [
+        "SQL is listed but the profile emphasises backend/API work more than query-driven reporting",
+        "Data reasoning from economics degree is adjacent but not directly demonstrated in a reporting analyst capacity"
+      ],
+      "missing_requirements": [
+        "No explicit data reporting or data analyst work experience",
+        "Role likely requires a reporting/BI toolset (e.g. Power BI, Tableau, Excel pivots) not confirmed in profile",
+        "Role appears to be more traditional data/reporting analyst rather than software engineering"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5654644412": {
+    "job": {
+      "id": "5654644412",
+      "source": "adzuna",
+      "title": "Analyst Regulatory Reporting",
+      "company": "Bendigo Bank",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a Analyst Regulatory Reporting role with Bendigo Bank based in Melbourne, VIC, AU  Bendigo Bank  Role Seniority - mid level More about the Analyst Regulatory Reporting role at Bendigo Bank Are you a driven data professional with a passion for the intricate world of finance and risk? At BEN, we are building a culture we can all be proud of, guided by a clear vision and strategy. We're looking for an ambitious and technically skilled Data Analyst to join our expert Regulatory Reporting te\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5654644412?se=NpJWJNqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=8D3BF430E26799CEEE8950022C805E1D1FE42F75",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-05T15:35:40Z"
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "This is a mid-level regulatory banking role that requires domain experience Joseph doesn't have; his technical skills don't compensate for the seniority and specialist gap.",
+      "met_requirements": [
+        "SQL knowledge (from university and backend work)",
+        "Data reasoning ability (Economics background)",
+        "Melbourne-based",
+        "No security clearance or citizenship required"
+      ],
+      "partial_requirements": [
+        "Data skills \u2014 Joseph has SQL and some data reasoning from his Economics degree, but no hands-on data analysis or reporting role experience"
+      ],
+      "missing_requirements": [
+        "Mid-level/seniority (this is a mid-level role; Joseph is a junior/graduate)",
+        "Regulatory reporting domain expertise (APRA, Basel, banking regulations)",
+        "Financial services / banking experience",
+        "Data analysis / reporting as primary role experience"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5740973684": {
+    "job": {
+      "id": "5740973684",
+      "source": "adzuna",
+      "title": "AI Engineer",
+      "company": "NCS Group Australia",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "This is a AI Engineer role with NCS Group Australia based in Melbourne, VIC, AU  NCS Group Australia  Role Seniority - mid level, senior More about the AI Engineer role at NCS Group Australia Company Description At NCS Australia, we believe in doing technology services better. Our commitment to quality, focus on people, and willingness to challenge traditional thinking set us apart. Our team brings this belief to life by partnering with our clients and communities to make tomorrow together. We \u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5740973684?se=TG1QJdqF8RGTs-IkoUH23g&utm_medium=api&utm_source=cf3b2c53&v=17BB14E24F4458B09594B914525EB08D13853679",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-05-26T14:44:08Z"
+    },
+    "score": {
+      "fit_score": 40,
+      "recommendation": "maybe",
+      "one_line": "Joseph has foundational AI/ML knowledge and LLM integration experience, but this role targets mid-to-senior AI engineers, and he lacks the professional experience depth for that seniority.",
+      "met_requirements": [
+        "University foundations in ML, NLP, computer vision, neural networks",
+        "Practical LLM API integration (OpenAI) in a production feature",
+        "AWS Certified Developer - Associate and AWS Certified Cloud Practitioner",
+        "Located in Melbourne"
+      ],
+      "partial_requirements": [
+        "AI engineering role: his ML exposure is academic plus one internship LLM feature, not professional AI engineering depth",
+        "The role likely expects design/architecture of AI systems; Joseph has implemented a single OpenAI integration endpoint"
+      ],
+      "missing_requirements": [
+        "Mid-to-senior level experience (Joseph is a junior/graduate with ~3 months internship)",
+        "No commercial AI engineering role experience beyond a single internship feature"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5710700681": {
+    "job": {
+      "id": "5710700681",
+      "source": "adzuna",
+      "title": "AI Engineering Manager",
+      "company": "MYOB",
+      "location": "Melbourne, Melbourne Region",
+      "description": "We\u2019re a leading business management solution with a core purpose: helping more businesses in Australia and New Zealand start, survive and succeed. At MYOB, we believe what\u2019s good for one business is good for all business\u2014and for all of us. Whether you support them, work for them, or dream of building your own, when businesses run smoothly, everybody feels it. Owners, employees, customers, suppliers\u2014even families. That\u2019s why we\u2019re here: to give every person in business the tools they need to foc\u2026",
+      "url": "https://www.adzuna.com.au/details/5710700681?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-04-26T10:20:41Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This is an Engineering Manager role requiring senior leadership experience, which is multiple levels above a junior/graduate candidate.",
+      "met_requirements": [
+        "Located in Melbourne"
+      ],
+      "partial_requirements": [
+        "Some exposure to AI/ML concepts (university foundations, one API integration feature)",
+        "Familiarity with modern stacks and cloud services"
+      ],
+      "missing_requirements": [
+        "Engineering management / team-lead experience (likely 5-10+ years needed)",
+        "Senior-level industry experience (this is a manager role, not individual contributor)",
+        "Track record of leading engineers, hiring, performance management",
+        "Strategic technical decision-making at an organisational level"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5793514558": {
+    "job": {
+      "id": "5793514558",
+      "source": "adzuna",
+      "title": "Lead Gen AI Engineer (GCP)",
+      "company": "NTT",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Make an impact with NTT DATA Join a company that is pushing the boundaries of what is possible. We are renowned for our technical excellence and leading innovations, and for making a difference to our clients and society. Our workplace embraces diversity and inclusion \u2013 it\u2019s a place where you can grow, belong and thrive. NTT DATA is looking for a Lead Gen AI Engineer to deliver projects across AI transformation initiatives within top organisations in Australia. The Lead Generative AI Engineer w\u2026",
+      "url": "https://www.adzuna.com.au/details/5793514558?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-07-09T11:01:22Z"
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "The role requires a Lead-level Gen AI engineer with senior experience on GCP, while Joseph is a junior/graduate with no GCP experience.",
+      "met_requirements": [
+        "University foundations in ML/AI",
+        "Practical LLM API integration experience"
+      ],
+      "partial_requirements": [
+        "General AI/ML interest and foundations could partially transfer to Gen AI work, but the seniority gap is too large"
+      ],
+      "missing_requirements": [
+        "Lead/senior title (likely 7-10+ years experience required)",
+        "GCP experience (Joseph has AWS and Azure, not GCP)",
+        "Senior Gen AI production experience",
+        "Senior-level stakeholder/client delivery experience"
+      ],
+      "hard_blockers": [
+        "Seniority: 'Lead' level role requiring many years of experience; Joseph is a junior/graduate with >1 year professional experience"
+      ]
+    }
+  },
+  "5697080694": {
+    "job": {
+      "id": "5697080694",
+      "source": "adzuna",
+      "title": "AI Engineer - FDE (Forward Deployed Engineer)",
+      "company": "Databricks",
+      "location": "Melbourne, Melbourne Region",
+      "description": "CSQ227R47 The AI Forward Deployed Engineering (AI FDE) team is a highly specialized customer-facing AI team at Databricks. We deliver professional services engagements to help our customers build and productionize first-of-its-kind AI applications. We work cross-functionally to shape long-term strategic priorities and initiatives alongside engineering, product, and developer relations, as well as support internal subject matter expert (SME) teams. We view our team as an ensemble: we look for in\u2026",
+      "url": "https://www.adzuna.com.au/details/5697080694?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-04-12T10:14:05Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a senior customer-facing AI platform engineering role at a top-tier company requiring deep production ML/DE experience, not a junior role that fits Joseph's current level.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Some AWS and cloud experience",
+        "AI/ML academic foundations and some practical LLM API work",
+        "Melbourne-based (location fit)"
+      ],
+      "missing_requirements": [
+        "Senior-level production AI/ML engineering experience (this is not a grad/junior role)",
+        "Forward-deployed / customer-facing professional services experience",
+        "Deep productionisation experience with AI applications at scale",
+        "Experience with Databricks platform and tooling"
+      ],
+      "hard_blockers": [
+        "Seniority mismatch: this role requires experienced engineers (typically 5+ years), Joseph is a junior/grad with one internship",
+        "Even truncated description signals high bar; this is not an entry-level AI engineering role"
+      ]
+    }
+  },
+  "5636060577": {
+    "job": {
+      "id": "5636060577",
+      "source": "adzuna",
+      "title": "AI ML Engineer",
+      "company": "Infosys Singapore & Australia",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Infosys Consulting is the worldwide management and IT consultancy unit of the Infosys Group (NYSE: INFY), a global advisor to leading companies for strategy, process engineering and technology-enabled transformation programs. We partner with clients to design and implement customized solutions to address their complex business challenges, and to help them in a post-modern ERP world. By combining innovative and human-centric approaches with the latest technological advances, we enable organizati\u2026",
+      "url": "https://www.adzuna.com.au/details/5636060577?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-02-20T01:27:11Z"
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a senior consultancy role requiring deep ML/AI experience and likely client-facing enterprise delivery that Joseph as a junior graduate is not equipped for.",
+      "met_requirements": [
+        "University foundations in ML, NLP, computer vision",
+        "Some practical LLM API integration experience",
+        "AWS certifications and cloud familiarity",
+        "Melbourne-based"
+      ],
+      "partial_requirements": [
+        "AI/ML engineer title could partially overlap with LLM integration work",
+        "Consulting/consultancy environment interest could be transferable"
+      ],
+      "missing_requirements": [
+        "Senior-level professional ML/AI engineering experience (Infosys Consulting typically expects 5+ years for this role)",
+        "Enterprise client-facing delivery and strategy experience",
+        "Deep production ML pipeline experience (beyond one OpenAI API integration)",
+        "Track record in designing and deploying ML models at scale"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5443235975": {
+    "job": {
+      "id": "5443235975",
+      "source": "adzuna",
+      "title": "AI Infrastructure Engineer",
+      "company": "Maincode",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About Maincode Maincode is an AI research and engineering company and home to Matilda, Australia\u2019s first and only large language model trained from scratch. We operate our own advanced AI infrastructure in local data-centres; designing, building, and running everything from the racks up through model training and serving systems. We\u2019re building an AI Model Factory , a new kind of compute infrastructure that powers frontier AI research and production systems that work at scale. About the Role Th\u2026",
+      "url": "https://www.adzuna.com.au/details/5443235975?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2025-10-12T04:16:38Z"
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "This role is senior infrastructure/platform engineering for a company that builds their own GPU clusters and trains LLMs from scratch \u2014 Joseph's junior backend internship and cloud certs are far from what this requires.",
+      "met_requirements": [
+        "Location: Melbourne (matches)",
+        "Some cloud foundations (AWS Certified Cloud Practitioner, AWS Developer Associate, Azure Fundamentals)",
+        "University ML foundations"
+      ],
+      "partial_requirements": [
+        "AWS knowledge could transfer to infra-adjacent tasks, but the role is about building/tuning data-centre compute from the metal up, not serverless functions",
+        "ML foundations provide some conceptual awareness of model training/serving but no hands-on infra experience with it"
+      ],
+      "missing_requirements": [
+        "Senior-level AI infrastructure / platform engineering experience",
+        "Experience building/tuning large-scale compute infrastructure (racks, networking, GPU clusters)",
+        "Experience training or serving large language models in production",
+        "Deep systems/infra engineering skills (likely Linux, networking, hardware, distributed systems)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5656765768": {
+    "job": {
+      "id": "5656765768",
+      "source": "adzuna",
+      "title": "AI Software Engineer (Model Training)",
+      "company": "Maincode",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About the role Maincode is training Matilda, the first large language model built and trained from scratch in Australia. Our new compute cluster is live, and we are now scaling the next version. This role sits directly inside that training stack. You will build the pipelines, infrastructure, and tooling that determine how efficiently Matilda trains, how stable long runs are, and how fast new experiments can be executed. Training runs last days or weeks. Small changes propagate through complex s\u2026",
+      "url": "https://www.adzuna.com.au/details/5656765768?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-07T08:16:51Z"
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "Joseph's background is in application-layer and API work, not the deep systems/infrastructure engineering required to train an LLM from scratch.",
+      "met_requirements": [
+        "Python (used in internship and university)",
+        "University foundations in ML/NLP",
+        "Melbourne location"
+      ],
+      "partial_requirements": [
+        "LLM experience: Joseph has used OpenAI APIs for integration work, but has zero experience with model training pipelines, distributed training, or training infrastructure"
+      ],
+      "missing_requirements": [
+        "Experience building training/inference pipelines for large models",
+        "Experience with distributed computing / HPC / GPU cluster tooling",
+        "Understanding of training run stability, checkpointing, and long-running job orchestration",
+        "Deep ML engineering skills beyond API integration and university coursework",
+        "Senior/junior level mismatch: this is a model-training infrastructure role, not an integration or application role",
+        "Any demonstrated systems-level engineering (CUDA, NCCL, ML frameworks like PyTorch/TensorFlow at a training level)"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5661001712": {
+    "job": {
+      "id": "5661001712",
+      "source": "adzuna",
+      "title": "AI Software Engineer (Back End)",
+      "company": "Maincode",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About the role Maincode is training Matilda, a large language model built and trained from scratch in Australia. Our new compute cluster is now live, and we are scaling the next version and deploying it publicly. This role sits inside the production system that serves Matilda. You will build and maintain the back end services that make the model usable in the real world: APIs, infrastructure, and the systems that turn a trained model into a reliable public capability. We build AI systems end to\u2026",
+      "url": "https://www.adzuna.com.au/details/5661001712?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-11T08:28:26Z"
+    },
+    "score": {
+      "fit_score": 60,
+      "recommendation": "apply",
+      "one_line": "Joseph has backend and LLM API experience plus AWS certs that align with this role, but as a junior he may be stretched by the production-scope expectations.",
+      "met_requirements": [
+        "Backend services experience (API integration, serverless jobs, database debugging)",
+        "LLM/ML adjacent experience (OpenAI integration in production feature)",
+        "AWS Certified Developer - Associate and Cloud Practitioner",
+        "TypeScript/Python/SQL (relevant languages)",
+        "Melbourne-based"
+      ],
+      "partial_requirements": [
+        "Building and maintaining production APIs at scale (junior, may need ramp-up)",
+        "Deploying a trained model into a reliable public service (limited to a single OpenAI API integration, not training/infra at this depth)"
+      ],
+      "missing_requirements": [
+        "No explicit mention of experience building/operating LLM inference serving infrastructure"
+      ],
+      "hard_blockers": []
+    }
+  },
+  "5656777087": {
+    "job": {
+      "id": "5656777087",
+      "source": "adzuna",
+      "title": "AI Software Engineer (Front End)",
+      "company": "Maincode",
+      "location": "Melbourne, Melbourne Region",
+      "description": "About the role Maincode is training the next version of Matilda, the first large language model built and trained from scratch in Australia. We are now scaling the model and deploying it as a live production system. To do that, we build AI systems from first principles. We design the architectures, run the infrastructure, shape the training process, and operate the systems that serve our models. Matilda is a production system, not a research prototype, built to be deployed and served for open p\u2026",
+      "url": "https://www.adzuna.com.au/details/5656777087?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-03-07T08:21:22Z"
+    },
+    "score": {
+      "fit_score": 62,
+      "recommendation": "apply",
+      "one_line": "Decent front-end + AI/LLM overlap, but this role appears to involve hands-on LLM training/internals work, which Joseph hasn't done.",
+      "met_requirements": [
+        "Live in Melbourne (Joseph is in Melbourne)",
+        "Front-end skills (TypeScript, React \u2014 led front-end on a real project)",
+        "AI/LLM practical experience (built an OpenAI-powered production feature at Focus Bear)",
+        "Cloud/AWS experience (Lambda, CloudWatch, DynamoDB, certifications)",
+        "Comfortable with production systems and deployment"
+      ],
+      "partial_requirements": [
+        "University ML foundations (NLP, neural networks) \u2014 provides conceptual understanding but not applied model-training experience",
+        "AWS certifications and intern experience show cloud readiness, but the role seems to need deeper infra for model training/serving"
+      ],
+      "missing_requirements": [
+        "Experience building/training LLMs from scratch (this role works on 'training the next version of Matilda' from first principles) \u2014 Joseph has ML foundations but no model-training experience",
+        "Senior/junior level? Unclear, but 'next version' and 'building from first principles' implies deeper model-internals knowledge than Joseph's profile shows"
+      ],
+      "hard_blockers": []
+    }
+  }
+}

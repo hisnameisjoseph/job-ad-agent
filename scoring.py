@@ -1,20 +1,50 @@
 """Score one job against the candidate profile using an LLM.
 
 LiteLLM gives us a single call that works across OpenAI, Gemini, DeepSeek,
-OpenRouter, Groq, etc. Instructor forces the model to return a valid
-ScoreResult and retries automatically if a (possibly free/weaker) model
-returns malformed JSON.
+OpenRouter, etc. Instructor forces the model to return a valid ScoreResult and
+retries if the JSON is malformed. On top of that, we retry with backoff on
+TRANSIENT errors (rate limits, 'resource exhausted', server overload) so a job
+is never dropped just because a free model was momentarily jammed.
 """
 
 from __future__ import annotations
+
+import time
 
 import instructor
 from litellm import completion
 
 from models import JobPosting, ScoreResult
 
-# Wrap LiteLLM's completion with Instructor so we can pass response_model.
 _client = instructor.from_litellm(completion)
+
+
+# Substrings that mark an error as temporary and worth retrying. Note that
+# billing errors like 'Key limit exceeded' are deliberately NOT here, because
+# retrying a depleted key is pointless.
+_TRANSIENT_MARKERS = (
+    "rate limit",
+    "ratelimit",
+    "resource exhausted",
+    "resourceexhausted",
+    "limit reached",
+    "overloaded",
+    "unavailable",
+    "timeout",
+    "timed out",
+    "try again",
+    "429",
+    "500",
+    "502",
+    "503",
+    "504",
+    "internal server",
+)
+
+
+def _is_transient(err: Exception) -> bool:
+    text = f"{type(err).__name__} {err}".lower()
+    return any(m in text for m in _TRANSIENT_MARKERS)
 
 
 SYSTEM_PROMPT = """\
@@ -53,7 +83,13 @@ Description:
 """
 
 
-def score_job(profile_text: str, job: JobPosting, model: str) -> ScoreResult:
+def score_job(
+    profile_text: str,
+    job: JobPosting,
+    model: str,
+    max_transient_retries: int = 3,
+    retry_base_delay: float = 5.0,
+) -> ScoreResult:
     user = USER_TEMPLATE.format(
         profile=profile_text,
         title=job.title,
@@ -61,13 +97,24 @@ def score_job(profile_text: str, job: JobPosting, model: str) -> ScoreResult:
         location=job.location or "Unknown",
         description=job.description[:6000],  # keep tokens (and cost) small
     )
-    result: ScoreResult = _client.chat.completions.create(
-        model=model,
-        response_model=ScoreResult,
-        max_retries=2,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user},
-        ],
-    )
-    return result
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user},
+    ]
+
+    attempt = 0
+    while True:
+        try:
+            return _client.chat.completions.create(
+                model=model,
+                response_model=ScoreResult,
+                max_retries=2,  # Instructor: retries on malformed JSON
+                messages=messages,
+            )
+        except Exception as err:
+            if _is_transient(err) and attempt < max_transient_retries:
+                delay = retry_base_delay * (2 ** attempt)  # 5s, 10s, 20s
+                time.sleep(delay)
+                attempt += 1
+                continue
+            raise

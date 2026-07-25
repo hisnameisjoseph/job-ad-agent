@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Matcher</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <h1>job matches</h1>
+    <p class="count" id="count">loading&hellip;</p>
+  </header>
+
+  <main>
+    <table id="jobs">
+      <thead>
+        <tr>
+          <th class="col-score">Fit</th>
+          <th>Role</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Call</th>
+          <th>Posting</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <p class="empty" id="empty" hidden>
+      No jobs scored yet. Run <code>python main.py</code> to populate this list.
+    </p>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

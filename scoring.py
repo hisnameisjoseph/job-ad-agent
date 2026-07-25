@@ -19,6 +19,62 @@ from models import JobPosting, ScoreResult
 _client = instructor.from_litellm(completion)
 
 
+# --- Cache telemetry -------------------------------------------------------
+# AI model providers cache repeated prompt PREFIXES server
+# side and bill them at a large discount. It is applied silently, so the only
+# way to know it is working is to read the usage object. We accumulate totals
+# here and print them at the end of a run.
+CACHE_STATS = {"prompt_tokens": 0, "cached_tokens": 0, "requests": 0}
+
+
+def _record_usage(raw) -> None:
+    """Pull cached-token counts out of a raw completion, defensively.
+
+    Providers disagree on field names and OpenRouter does not always pass them
+    through, so every lookup is optional and failure is silent.
+    """
+    try:
+        usage = getattr(raw, "usage", None)
+        if usage is None:
+            return
+        prompt_tokens = getattr(usage, "prompt_tokens", 0) or 0
+
+        # OpenAI-style (LiteLLM normalises to this): prompt_tokens_details
+        cached = 0
+        details = getattr(usage, "prompt_tokens_details", None)
+        if details is not None:
+            cached = getattr(details, "cached_tokens", 0) or 0
+
+        # DeepSeek native field, if it survives the OpenRouter hop
+        if not cached:
+            cached = getattr(usage, "prompt_cache_hit_tokens", 0) or 0
+
+        CACHE_STATS["prompt_tokens"] += prompt_tokens
+        CACHE_STATS["cached_tokens"] += cached
+        CACHE_STATS["requests"] += 1
+    except Exception:
+        pass  # telemetry must never break scoring
+
+
+def cache_summary() -> str:
+    total = CACHE_STATS["prompt_tokens"]
+    cached = CACHE_STATS["cached_tokens"]
+    if CACHE_STATS["requests"] == 0:
+        return "No LLM requests made."
+    if total == 0:
+        return "Token usage not reported by this provider."
+    if cached == 0:
+        return (
+            f"Prompt cache: 0 hits across {total:,} prompt tokens "
+            "(provider may not cache, or may not report it)."
+        )
+    pct = cached / total * 100
+    return (
+        f"Prompt cache: {cached:,} of {total:,} prompt tokens served from cache "
+        f"({pct:.0f}%)."
+    )
+
+
 # Substrings that mark an error as temporary and worth retrying. Note that
 # billing errors like 'Key limit exceeded' are deliberately NOT here, because
 # retrying a depleted key is pointless.
@@ -105,12 +161,14 @@ def score_job(
     attempt = 0
     while True:
         try:
-            return _client.chat.completions.create(
+            result, raw = _client.chat.completions.create_with_completion(
                 model=model,
                 response_model=ScoreResult,
                 max_retries=2,  # Instructor: retries on malformed JSON
                 messages=messages,
             )
+            _record_usage(raw)
+            return result
         except Exception as err:
             if _is_transient(err) and attempt < max_transient_retries:
                 delay = retry_base_delay * (2 ** attempt)  # 5s, 10s, 20s

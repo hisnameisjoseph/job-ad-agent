@@ -20,7 +20,7 @@ from cache import load_cache, save_cache
 from filters import prefilter_reason
 from models import ScoredJob
 from profile_loader import load_profile, profile_to_text
-from scoring import score_job
+from scoring import cache_summary, score_job
 from sources.adzuna import AdzunaSource
 
 console = Console()
@@ -136,6 +136,7 @@ def main() -> None:
         f"Filtered pre-LLM: {stats['filtered']}  |  Already cached: {stats['cached']}  |  "
         f"Failed (retry next run): {stats['failed']}"
     )
+    console.print(f"[dim]{cache_summary()}[/dim]")
 
 
 if __name__ == "__main__":

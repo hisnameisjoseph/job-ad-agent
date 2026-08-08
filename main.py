@@ -21,6 +21,7 @@ from filters import prefilter_reason
 from models import ScoredJob
 from profile_loader import load_profile, profile_to_text
 from scoring import cache_summary, score_job
+from visibility import hidden_reason
 from sources.adzuna import AdzunaSource
 
 console = Console()
@@ -57,7 +58,10 @@ def score_new_jobs(profile_text: str, jobs: list, cache: dict) -> dict:
             stats["cached"] += 1
             continue
         reason = prefilter_reason(
-            job, config.EXCLUDE_TITLE_KEYWORDS, config.MAX_YEARS_EXPERIENCE
+            job,
+            config.EXCLUDE_TITLE_KEYWORDS,
+            config.MAX_YEARS_EXPERIENCE,
+            config.MAX_POSTING_AGE_DAYS,
         )
         if reason:
             stats["filtered"] += 1
@@ -87,14 +91,15 @@ def score_new_jobs(profile_text: str, jobs: list, cache: dict) -> dict:
 
 
 def build_ranking(jobs: list, cache: dict) -> list[ScoredJob]:
-    """Rank jobs from THIS run using cached scores, dropping hard-blocked ones.
+    """Rank jobs from THIS run, hiding blocked / stale / over-experienced ones.
 
-    Using this run's jobs means expired postings fall off the list naturally.
+    Visibility rules are re-applied here (not just at ingestion) so that
+    already-cached jobs respect current config thresholds.
     """
     ranked = []
     for job in jobs:
         sj = cache.get(job.id)
-        if sj and not (config.DROP_HARD_BLOCKERS and sj.score.hard_blockers):
+        if sj and hidden_reason(sj) is None:
             ranked.append(sj)
     ranked.sort(key=lambda s: s.score.fit_score, reverse=True)
     return ranked

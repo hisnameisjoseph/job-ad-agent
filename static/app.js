@@ -65,6 +65,7 @@ function renderRow(item) {
   tr.appendChild(roleTd);
 
   tr.appendChild(el("td", j.company || "\u2014"));
+  tr.appendChild(el("td", new Date(j.created).toLocaleDateString() || "\u2014"));
   tr.appendChild(el("td", j.location || "\u2014"));
   tr.appendChild(el("td", s.recommendation, "rec"));
 

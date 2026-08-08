@@ -19,6 +19,7 @@ from fastapi.staticfiles import StaticFiles
 import config
 from cache import load_cache
 from models import ScoredJob
+from visibility import visible_ranked
 
 app = FastAPI(title="Job Matcher")
 
@@ -26,14 +27,9 @@ STATIC_DIR = Path(__file__).parent / "static"
 
 
 def _ranked() -> list[ScoredJob]:
-    cache = load_cache(config.CACHE_PATH)
-    jobs = [
-        sj
-        for sj in cache.values()
-        if not (config.DROP_HARD_BLOCKERS and sj.score.hard_blockers)
-    ]
-    jobs.sort(key=lambda s: s.score.fit_score, reverse=True)
-    return jobs
+    """Currently-visible jobs. Shares visibility rules with main.py, so the
+    web viewer and the terminal table can never disagree."""
+    return visible_ranked(load_cache(config.CACHE_PATH))
 
 
 @app.get("/api/jobs")

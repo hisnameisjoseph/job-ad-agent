@@ -1,13 +1,26 @@
-# Copy this to profile.yaml and fill in your real details.
-# profile.yaml is gitignored so your personal data never hits GitHub.
-# This one file feeds BOTH the job scorer and the cover-letter generator.
+# Copy this to profile.yaml and adjust for your working copy.
+# profile.yaml is gitignored so anything extra you add stays private.
+# This file feeds BOTH the job scorer and the cover-letter generator.
 
 name: Joseph
 location: Melbourne, Australia
 level: Junior / graduate software engineer
-target_roles:
-  - Backend engineer
-  - Full-stack engineer
+
+# Open to any tech role. The scorer should rank by fit to each posting's
+# required skills and experience, NOT filter by job title.
+open_to: >
+  Any tech role that fits my skills: software engineering (front-end, back-end,
+  full-stack, web app), cloud, data analytics / data centre, and AI / LLM
+  integration work. Rank by overall fit to the role's requirements, not by title.
+example_titles:
+  - Back-end (Backend) engineer (developer)
+  - Full-stack / web app developer
+  - Front-end (Frontend) engineer (developer)
+  - Cloud / platform engineer
+  - Data / analytics engineer
+  - AI / LLM integration engineer
+  - Technology consultant / analyst
+  - IT support / IT operations
 
 # Hard constraints. The scorer treats these as automatic blockers.
 work_rights:
@@ -15,17 +28,21 @@ work_rights:
   security_clearance: false
   notes: >
     No Australian citizenship or security clearance. Roles requiring either are
-    automatic no-gos and should be flagged as hard blockers.
+    automatic no-gos and should be flagged as hard blockers. Current Subclass 485 Post-Study Work Visa (valid until February 2028).
 
 skills:
-  languages: [TypeScript, JavaScript, Python]
-  frameworks: [React]
+  languages: [TypeScript, JavaScript, Python, SQL, Java]
+  frameworks: [React, Node.js, Nest.js, Next.js, CSS, HTML, Tailwind CSS, PostgreSQL, OPENAI API]
   cloud: [AWS Lambda, CloudWatch, DynamoDB, Cloudflare, Azure fundamentals]
   ai_ml:
     - University foundations in ML, NLP, computer vision, neural networks
     - Practical LLM API integration (OpenAI) in a production feature
   backend:
     - Database debugging, serverless/scheduled jobs, timezone-aware logic, API integration
+  data:
+    - Economics background (Bachelor of Commerce), comfortable reasoning about data
+    - Data analysis and visualisation in Python (pandas, matplotlib, seaborn) and MATLAB
+    - SQL queries and database schema design
 
 certifications:
   - AWS Certified Cloud Practitioner
@@ -37,27 +54,53 @@ experience:
     company: Focus Bear (health-tech startup)
     length: ~3 months, 2025
     highlights:
-      - Built an OpenAI-powered feature generating personalised encouragement messages tied to each user's routines.
-      - Diagnosed and fixed a timezone streak bug in a scheduled AWS Lambda running in GMT+0 that broke streaks for users in AU, Europe, and Asia.
-      - Worked with AWS tooling (Lambda, CloudWatch, logs, hosted DB) and Cloudflare.
-      - Handled PII and health-data privacy across multiple jurisdictions in a globally distributed team.
+      - Contributed to a routine-building, distraction-blocking, habit-streak app for people with ADHD and autism, where streaks drive user retention.
+      - Built an OpenAI-powered feature generating encouragement messages matched to each user's tone, context, and daily routine.
+      - Diagnosed and fixed a timezone streak bug: a scheduled AWS Lambda running in GMT+0 miscalculated streaks for users in AU, Europe, and Asia; a prior engineer had missed the edge case.
+      - Worked across AWS tooling (Lambda, CloudWatch, logs, hosted database) and Cloudflare, and maintained/debugged the database.
+      - Handled PII and health-data privacy across multiple jurisdictions in a globally distributed team, valuing the flexible cross-timezone collaboration.
+      - Maintained a production codebase with TypeScript, PostgreSQL, and contributed to CI/CD pipelines.
+      - Designed and implemented new backend API endpoints using REST, including database schema changes and migrations.
   - role: Honours Group Project (Front-End Lead and Project Coordinator)
-    company: Canberra Health Services / ANU
+    company: Canberra Health Services, ACT Health / Australian National University (ANU)
     length: Final year
     highlights:
-      - Led front-end development in TypeScript and React for a clinical-trial time-tracking system delivered to a real client.
-      - Coordinated scheduling, stakeholder communication, and contingency planning when teammates hit burnout, keeping the project on track.
+      - Took the initiative to hold both the front-end lead and project coordinator roles.
+      - Led front-end development in TypeScript and React (a deliberate modern-stack choice) for a clinical-trial time-tracking and admin system delivered to a real external client.
+      - Bridged the hierarchy gap between project manager, teammates, client, and course convener; supported scheduling, timetables, and weekly reporting.
+      - When teammates went unresponsive, investigated the root cause (usually burnout or illness), ran contingency plans, reassigned tasks, and focused on preventing recurrence rather than only chasing deadlines.
+      - Team ran extra upskilling workshops while everyone carried a full four-course load.
 
 education:
-  - Bachelor of Advanced Computing (Honours), ML / Intelligent Systems, ANU
-  - Bachelor of Commerce (Economics), ANU
+  - Bachelor of Advanced Computing (Honours), ML / Intelligent Systems, Australian National University (ANU)
+  - Bachelor of Commerce (Economics), Australian National University (ANU)
+
+interests:
+  - Helping make AI a better assistive tool for people rather than a job replacer
+  - Enjoy both front-end and ML; drawn to AI-adjacent engineering without needing a pure research background
+  - Products with genuine human impact, especially health and accessibility tech
+  - Go to gym, join run clubs and marathons actively
+  - Passion for building products that have a genuine human impact
 
 strengths:
   - Coordination and communication under pressure
+  - Initiative and ownership (took on a dual lead/coordinator role unprompted)
+  - Root-cause, prevention-focused problem solving
   - User-centric attention to edge cases (e.g. timezones)
   - Self-directed learner who picks up new stacks fast
+  - Comfortable in globally distributed, cross-timezone teams
+  - Good at debugging and problem-solving, with execellent analytical skills
 
 preferences:
-  - Companies with global users/teams
+  - Companies with global users/teams and flexible/distributed work
   - Products with genuine human impact
   - Cloud (AWS) and modern stacks
+
+# Guidance for the (future) cover-letter generator.
+post_graduation:
+  outcomes: >
+    Self-directed period after graduation: earned three cloud certifications and
+    completed a backend internship.
+  cover_letter_use: >
+    Mention the certifications and internship only when they are relevant to the
+    specific role. Do NOT mention any medical or military-service details.

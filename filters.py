@@ -9,6 +9,7 @@ them to be conservative and let a few borderline jobs through to be scored.
 from __future__ import annotations
 
 import re
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from models import JobPosting
@@ -42,13 +43,41 @@ def min_years_required(description: str) -> Optional[int]:
     return min(found) if found else None
 
 
+def days_since_posted(created: Optional[str]) -> Optional[int]:
+    """Age of the posting in days, or None if the date is missing/unparseable.
+
+    Adzuna returns ISO 8601 like '2025-11-03T09:14:22Z'. Unknown dates return
+    None so the job is KEPT rather than silently dropped.
+    """
+    if not created:
+        return None
+    try:
+        text = created.strip().replace("Z", "+00:00")
+        dt = datetime.fromisoformat(text)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        delta = datetime.now(timezone.utc) - dt
+        return max(delta.days, 0)
+    except Exception:
+        return None
+
+
 def prefilter_reason(
-    job: JobPosting, exclude_keywords: list[str], max_years: int
+    job: JobPosting,
+    exclude_keywords: list[str],
+    max_years: int,
+    max_age_days: Optional[int] = None,
 ) -> Optional[str]:
     """Return why a job should be skipped before the LLM, or None to keep it."""
     reason = title_excluded(job.title, exclude_keywords)
     if reason:
         return reason
+
+    if max_age_days is not None:
+        age = days_since_posted(job.created)
+        if age is not None and age > max_age_days:
+            return f"posted {age} days ago"
+
     yrs = min_years_required(job.description)
     if yrs is not None and yrs >= max_years:
         return f"requires ~{yrs}+ years experience"

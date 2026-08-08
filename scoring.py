@@ -20,7 +20,7 @@ _client = instructor.from_litellm(completion)
 
 
 # --- Cache telemetry -------------------------------------------------------
-# AI model providers cache repeated prompt PREFIXES server
+# DeepSeek (and some other providers) cache repeated prompt PREFIXES server
 # side and bill them at a large discount. It is applied silently, so the only
 # way to know it is working is to read the usage object. We accumulate totals
 # here and print them at the end of a run.
@@ -118,10 +118,20 @@ Rules:
   clearly meets most core requirements.
 - Do NOT estimate probability of getting an interview. Give a fit score and an
   honest breakdown of met / partial / missing requirements instead.
-- HARD BLOCKERS: if the job requires something the candidate cannot satisfy
-  (for this candidate: Australian citizenship, a security clearance, or senior
-  years of experience they lack), list it in hard_blockers. If there is any
-  hard blocker, the recommendation must be "skip" regardless of skill fit.
+- YEARS OF EXPERIENCE, follow this exactly:
+  1. Find any stated minimum years of professional experience in the posting
+     (e.g. "5+ years", "minimum 3 years", "2-4 years"). Check the requirements
+     section carefully.
+  2. Compare it against the candidate's actual professional experience, which
+     is roughly 3 months of software internship plus non-technical part-time
+     work.
+  Do not soften a stated numeric requirement into a preference. Phrases like
+  "likely expects mid-level experience" are wrong when the posting states a
+  number: report the number, unless the posting does not state one.
+- HARD BLOCKERS also include anything else the candidate cannot satisfy, in
+  particular Australian citizenship or a security clearance.
+- If there is ANY hard blocker, recommendation must be "skip" and fit_score
+  must be at most 30, regardless of how well the skills otherwise match.
 - "partial" is for transferable or adjacent experience, not wishful thinking.
 - Keep one_line to a single honest sentence.
 """

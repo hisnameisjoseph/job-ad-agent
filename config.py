@@ -52,7 +52,7 @@ DROP_HARD_BLOCKERS = True
 # Whole-word title matches that are auto-skipped. Tune freely.
 EXCLUDE_TITLE_KEYWORDS = [
     "senior", "snr", "principal", "staff", "head of", "director",
-    "vice president", "vp",
+    "vice president", "vp", "sr", "manager"
 ]
 # Drop postings that clearly require this many years of experience or more.
 # Set to 3 for a graduate: with ~3 months professional experience, anything

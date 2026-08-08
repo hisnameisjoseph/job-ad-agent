@@ -43,6 +43,32 @@ def min_years_required(description: str) -> Optional[int]:
     return min(found) if found else None
 
 
+# Phrases that reliably indicate a citizenship or clearance requirement.
+# Deliberately narrow: these must be near-unambiguous, because a false match
+# hides a job you could have applied for. Softer phrasing is left to the LLM.
+_CLEARANCE_PATTERNS = [
+    re.compile(p, re.I)
+    for p in (
+        r"\b(must|required to)\s+(be|hold)\s+(an?\s+)?australian\s+citizen",
+        r"\baustralian\s+citizenship\s+is\s+(a\s+)?(mandatory|required|essential)",
+        r"\bmust\s+(hold|have|possess)\s+.{0,30}security\s+clearance",
+        r"\b(nv1|nv2|baseline|negative\s+vetting)\s+.{0,20}clearance\b",
+        r"\bsecurity\s+clearance\s+is\s+(mandatory|required|essential)",
+        r"\beligibility\s+for\s+.{0,30}security\s+clearance",
+        r"\bcitizens?\s+only\b",
+    )
+]
+
+
+def clearance_required(description: str) -> Optional[str]:
+    """Matched phrase if the posting clearly requires citizenship/clearance."""
+    for pattern in _CLEARANCE_PATTERNS:
+        m = pattern.search(description or "")
+        if m:
+            return m.group(0).strip()
+    return None
+
+
 def days_since_posted(created: Optional[str]) -> Optional[int]:
     """Age of the posting in days, or None if the date is missing/unparseable.
 
@@ -78,7 +104,15 @@ def prefilter_reason(
         if age is not None and age > max_age_days:
             return f"posted {age} days ago"
 
-    yrs = min_years_required(job.description)
-    if yrs is not None and yrs >= max_years:
-        return f"requires ~{yrs}+ years experience"
+    # Only trust the years check on FULL descriptions. A 500-char teaser
+    # rarely contains the requirements section, so a "no match" there means
+    # "not visible", not "no requirement".
+    if not job.description_truncated:
+        yrs = min_years_required(job.description)
+        if yrs is not None and yrs >= max_years:
+            return f"requires ~{yrs}+ years experience"
+
+        phrase = clearance_required(job.description)
+        if phrase:
+            return f"citizenship/clearance required ('{phrase}')"
     return None

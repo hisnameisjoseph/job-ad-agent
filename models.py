@@ -28,6 +28,14 @@ class JobPosting(BaseModel):
     salary_max: Optional[float] = None
     remote: Optional[bool] = None
     created: Optional[str] = None  # ISO date string from the source
+    description_truncated: bool = False
+    """True when `description` is a summary, not the full posting.
+
+    Adzuna's search API caps descriptions at 500 characters, usually too short
+    to include the requirements section. Downstream code (filters, scoring
+    prompt) must know this so it never treats an unseen requirement as an
+    absent one.
+    """
 
 
 class Recommendation(str, Enum):
@@ -55,6 +63,13 @@ class ScoreResult(BaseModel):
     )
     missing_requirements: list[str] = Field(
         default_factory=list, description="Requirements the candidate lacks"
+    )
+    insufficient_information: bool = Field(
+        default=False,
+        description=(
+            "True when the posting text was too short or vague to judge "
+            "properly, e.g. a truncated summary with no requirements section."
+        ),
     )
     hard_blockers: list[str] = Field(
         default_factory=list,

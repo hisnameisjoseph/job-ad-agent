@@ -23,29 +23,110 @@ from profile_loader import load_profile, profile_to_text
 from scoring import cache_summary, score_job
 from visibility import hidden_reason
 from sources.adzuna import AdzunaSource
+from sources.greenhouse import GreenhouseSource
+from sources.lever import LeverSource
+from sources.ashby import AshbySource
 
 console = Console()
 
 
 def collect_jobs() -> list:
-    if not config.ADZUNA_APP_ID or not config.ADZUNA_APP_KEY:
-        console.print("[red]Missing Adzuna credentials. Set them in .env[/red]")
-        sys.exit(1)
+    """Gather jobs from every enabled source, deduped by id.
 
-    source = AdzunaSource(
-        config.ADZUNA_APP_ID, config.ADZUNA_APP_KEY, config.ADZUNA_COUNTRY
-    )
-    seen: set[str] = set()
+    ATS boards (Greenhouse, Lever) run first because they return the COMPLETE
+    description; Adzuna adds breadth but its descriptions are truncated to 500
+    characters and are flagged as such.
+    """
     jobs = []
-    for s in config.SEARCHES:
-        console.print(f"Fetching: [cyan]{s['query']}[/cyan] in {s['location']}")
-        for job in source.fetch(
-            s["query"], s["location"], config.MAX_RESULTS_PER_SEARCH
-        ):
-            if job.id and job.id not in seen:  # dedupe by id within this run
+    seen: set[str] = set()
+
+    def add(new_jobs: list) -> int:
+        added = 0
+        for job in new_jobs:
+            if job.id and job.id not in seen:
                 seen.add(job.id)
                 jobs.append(job)
-    console.print(f"Collected [bold]{len(jobs)}[/bold] unique jobs.\n")
+                added += 1
+        return added
+
+    if config.ENABLE_ATS:
+        boards = config.load_companies()
+        keywords = boards["title_keywords"]
+
+        if boards["greenhouse"]:
+            console.print(
+                f"Fetching [cyan]{len(boards['greenhouse'])}[/cyan] Greenhouse board(s)"
+            )
+            n = add(
+                GreenhouseSource(
+                    boards["greenhouse"], keywords, config.ALLOWED_LOCATIONS
+                ).fetch(
+                    max_results=config.MAX_RESULTS_PER_BOARD
+                )
+            )
+            console.print(f"  +{n} roles")
+
+        if boards["lever"]:
+            console.print(
+                f"Fetching [cyan]{len(boards['lever'])}[/cyan] Lever board(s)"
+            )
+            n = add(
+                LeverSource(
+                    boards["lever"], keywords, config.ALLOWED_LOCATIONS
+                ).fetch(
+                    max_results=config.MAX_RESULTS_PER_BOARD
+                )
+            )
+            console.print(f"  +{n} roles")
+
+        if boards["ashby"]:
+            console.print(
+                f"Fetching [cyan]{len(boards['ashby'])}[/cyan] Ashby board(s)"
+            )
+            n = add(
+                AshbySource(
+                    boards["ashby"], keywords, config.ALLOWED_LOCATIONS
+                ).fetch(
+                    max_results=config.MAX_RESULTS_PER_BOARD
+                )
+            )
+            console.print(f"  +{n} roles")
+
+        if not any(boards[k] for k in ("greenhouse", "lever", "ashby")):
+            console.print(
+                "[yellow]No ATS boards configured. Copy companies.example.yaml to "
+                "companies.yaml to get full job descriptions.[/yellow]"
+            )
+
+    if config.ENABLE_ADZUNA:
+        if not config.ADZUNA_APP_ID or not config.ADZUNA_APP_KEY:
+            console.print("[red]Missing Adzuna credentials. Set them in .env[/red]")
+            if not jobs:
+                sys.exit(1)
+        else:
+            adzuna = AdzunaSource(
+                config.ADZUNA_APP_ID,
+                config.ADZUNA_APP_KEY,
+                config.ADZUNA_COUNTRY,
+                max_days_old=config.ADZUNA_MAX_DAYS_OLD,
+                sort_by=config.ADZUNA_SORT_BY,
+            )
+            for s in config.SEARCHES:
+                console.print(
+                    f"Fetching: [cyan]{s['query']}[/cyan] in {s['location']}"
+                )
+                add(
+                    adzuna.fetch(
+                        s["query"], s["location"], config.MAX_RESULTS_PER_SEARCH
+                    )
+                )
+
+    full = sum(1 for j in jobs if not j.description_truncated)
+    console.print(
+        f"\nCollected [bold]{len(jobs)}[/bold] unique jobs "
+        f"([green]{full}[/green] full descriptions, "
+        f"[yellow]{len(jobs) - full}[/yellow] truncated).\n"
+    )
     return jobs
 
 

@@ -121,13 +121,17 @@ Rules:
 - YEARS OF EXPERIENCE, follow this exactly:
   1. Find any stated minimum years of professional experience in the posting
      (e.g. "5+ years", "minimum 3 years", "2-4 years"). Check the requirements
-     section carefully.
+     section carefully. Count only paid professional work, NOT study, academic
+     projects, or coursework.
   2. Compare it against the candidate's actual professional experience, which
      is roughly 3 months of software internship plus non-technical part-time
-     work.
+     work. Academic and honours projects do NOT count toward this total.
+  3. If the posting's stated minimum exceeds the candidate's actual years, that
+     IS a hard blocker. Add it to hard_blockers verbatim, e.g.
+     "requires 5+ years experience, candidate has ~3 months".
   Do not soften a stated numeric requirement into a preference. Phrases like
   "likely expects mid-level experience" are wrong when the posting states a
-  number: report the number, unless the posting does not state one.
+  number: report the number.
 - HARD BLOCKERS also include anything else the candidate cannot satisfy, in
   particular Australian citizenship or a security clearance.
 - If there is ANY hard blocker, recommendation must be "skip" and fit_score
@@ -144,9 +148,17 @@ JOB POSTING:
 Title: {title}
 Company: {company}
 Location: {location}
-Description:
+{truncation_note}Description:
 {description}
 """
+
+_TRUNCATION_NOTE = (
+    "NOTE: the description below is a TRUNCATED SUMMARY (~500 characters), not "
+    "the full posting. The requirements section is probably missing. Do NOT "
+    "infer hard blockers you cannot actually see: if citizenship or a years-of-"
+    "experience bar is not stated in the text below, do not assert one. Set "
+    "insufficient_information to true and score on what is visible.\n"
+)
 
 
 def score_job(
@@ -161,7 +173,8 @@ def score_job(
         title=job.title,
         company=job.company or "Unknown",
         location=job.location or "Unknown",
-        description=job.description[:6000],  # keep tokens (and cost) small
+        truncation_note=_TRUNCATION_NOTE if job.description_truncated else "",
+        description=job.description[:12000],  # full ATS postings need headroom
     )
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},

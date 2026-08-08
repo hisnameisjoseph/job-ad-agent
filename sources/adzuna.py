@@ -1,29 +1,48 @@
 """Adzuna job source.
 
-Docs: https://developer.adzuna.com/  (free app_id + app_key, generous limits)
-We hit the AU endpoint. Each result is mapped into our JobPosting shape.
+Docs: https://developer.adzuna.com/  (free app_id + app_key)
+
+IMPORTANT: Adzuna's search API truncates `description` to ~500 characters, so
+postings from this source are marked description_truncated=True. That teaser
+rarely includes the requirements section, which is why the ATS sources
+(greenhouse, lever) are preferred for accurate scoring. Adzuna is kept for
+breadth of coverage.
 """
 
 from __future__ import annotations
+
+from typing import Optional
 
 import httpx
 
 from models import JobPosting
 from sources.base import JobSource
 
-_BASE = "https://api.adzuna.com/v1/api/jobs/{country}/search/1"
+_BASE = "https://api.adzuna.com/v1/api/jobs/{country}/search/{page}"
+
+# Adzuna truncates at 500; anything at or above this is assumed cut off.
+_TRUNCATION_LENGTH = 500
 
 
 class AdzunaSource(JobSource):
     name = "adzuna"
 
-    def __init__(self, app_id: str, app_key: str, country: str = "au"):
+    def __init__(
+        self,
+        app_id: str,
+        app_key: str,
+        country: str = "au",
+        max_days_old: Optional[int] = None,
+        sort_by: str = "date",
+    ):
         self.app_id = app_id
         self.app_key = app_key
         self.country = country
+        self.max_days_old = max_days_old
+        self.sort_by = sort_by
 
     def fetch(
-        self, query: str, location: str, max_results: int = 20
+        self, query: str, location: str, max_results: int = 20, page: int = 1
     ) -> list[JobPosting]:
         params = {
             "app_id": self.app_id,
@@ -33,25 +52,33 @@ class AdzunaSource(JobSource):
             "results_per_page": max_results,
             "content-type": "application/json",
         }
-        url = _BASE.format(country=self.country)
+        # Ask the API to exclude stale ads rather than filtering them locally.
+        if self.max_days_old is not None:
+            params["max_days_old"] = self.max_days_old
+        if self.sort_by:
+            params["sort_by"] = self.sort_by
+
+        url = _BASE.format(country=self.country, page=page)
         resp = httpx.get(url, params=params, timeout=30)
         resp.raise_for_status()
         data = resp.json()
 
         jobs: list[JobPosting] = []
         for r in data.get("results", []):
+            description = r.get("description", "") or ""
             jobs.append(
                 JobPosting(
                     id=str(r.get("id", "")),
                     source=self.name,
-                    title=r.get("title", "").strip(),
+                    title=(r.get("title") or "").strip(),
                     company=(r.get("company") or {}).get("display_name"),
                     location=(r.get("location") or {}).get("display_name"),
-                    description=r.get("description", ""),
+                    description=description,
                     url=r.get("redirect_url", ""),
                     salary_min=r.get("salary_min"),
                     salary_max=r.get("salary_max"),
                     created=r.get("created"),
+                    description_truncated=len(description) >= _TRUNCATION_LENGTH,
                 )
             )
         return jobs

@@ -1,6 +1,6 @@
 """Backend for the job-matcher viewer.
 
-Serves the scored jobs the pipeline wrote to .cache/scored_jobs.json:
+Serves the scored jobs the pipeline wrote to the store:
   - GET /api/jobs   ranked jobs as JSON
   - everything else  static frontend from ./static (index.html, style.css, app.js)
 
@@ -17,8 +17,8 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 import config
-from cache import load_cache
 from models import ScoredJob
+from store import JsonStore
 from visibility import visible_ranked
 
 app = FastAPI(title="Job Matcher")
@@ -28,8 +28,12 @@ STATIC_DIR = Path(__file__).parent / "static"
 
 def _ranked() -> list[ScoredJob]:
     """Currently-visible jobs. Shares visibility rules with main.py, so the
-    web viewer and the terminal table can never disagree."""
-    return visible_ranked(load_cache(config.CACHE_PATH))
+    web viewer and the terminal table can never disagree.
+
+    The store is re-read per request so the page reflects a run that finished
+    after the server started.
+    """
+    return visible_ranked(JsonStore(config.CACHE_PATH).all())
 
 
 @app.get("/api/jobs")

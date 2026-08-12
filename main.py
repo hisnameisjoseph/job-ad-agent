@@ -1,14 +1,19 @@
-"""Phase 1 entry point.
+"""CLI entry point.
 
-Fetch jobs from Adzuna, skip ones we have already scored (local cache) and ones
-the cheap pre-filters reject, score the rest with pacing + retry, then rank and
-print. No cloud, no email yet.
+Fetch jobs from every enabled source, skip ones already scored and ones the
+cheap pre-filters reject, score the rest CONCURRENTLY, then rank and print.
+
+Scores are written through to the store as they arrive rather than saved once
+at the end, so an interrupt (Ctrl-C, OOM, or a Lambda timeout) costs at most a
+few jobs instead of the whole run.
 
 Run:  python main.py
 """
 
 from __future__ import annotations
 
+import asyncio
+import logging
 import sys
 import time
 
@@ -16,26 +21,29 @@ from rich.console import Console
 from rich.table import Table
 
 import config
-from cache import load_cache, save_cache
 from filters import prefilter_reason
 from models import ScoredJob
 from profile_loader import load_profile, profile_to_text
 from scoring import cache_summary, score_job
+from store import JsonStore, Store, job_key
 from visibility import hidden_reason
 from sources.adzuna import AdzunaSource
+from sources.ashby import AshbySource
 from sources.greenhouse import GreenhouseSource
 from sources.lever import LeverSource
-from sources.ashby import AshbySource
 
 console = Console()
 
 
 def collect_jobs() -> list:
-    """Gather jobs from every enabled source, deduped by id.
+    """Gather jobs from every enabled source, deduped by (source, id).
 
-    ATS boards (Greenhouse, Lever) run first because they return the COMPLETE
-    description; Adzuna adds breadth but its descriptions are truncated to 500
-    characters and are flagged as such.
+    ATS boards (Greenhouse, Lever, Ashby) run first because they return the
+    COMPLETE description; Adzuna adds breadth but its descriptions are
+    truncated to 500 characters and are flagged as such.
+
+    A source that fails is logged and skipped: one bad board or one 429 from
+    Adzuna must not discard everything else already fetched.
     """
     jobs = []
     seen: set[str] = set()
@@ -43,59 +51,46 @@ def collect_jobs() -> list:
     def add(new_jobs: list) -> int:
         added = 0
         for job in new_jobs:
-            if job.id and job.id not in seen:
-                seen.add(job.id)
+            key = job_key(job)
+            if job.id and key not in seen:
+                seen.add(key)
                 jobs.append(job)
                 added += 1
         return added
+
+    def safe(label: str, fn) -> None:
+        try:
+            n = add(fn())
+            console.print(f"  +{n} roles")
+        except Exception as e:
+            console.print(f"  [yellow]{label} failed, skipping: {e}[/yellow]")
 
     if config.ENABLE_ATS:
         boards = config.load_companies()
         keywords = boards["title_keywords"]
 
-        if boards["greenhouse"]:
+        for provider, cls in (
+            ("greenhouse", GreenhouseSource),
+            ("lever", LeverSource),
+            ("ashby", AshbySource),
+        ):
+            names = boards.get(provider) or []
+            if not names:
+                continue
             console.print(
-                f"Fetching [cyan]{len(boards['greenhouse'])}[/cyan] Greenhouse board(s)"
+                f"Fetching [cyan]{len(names)}[/cyan] {provider} board(s)"
             )
-            n = add(
-                GreenhouseSource(
-                    boards["greenhouse"], keywords, config.ALLOWED_LOCATIONS
-                ).fetch(
-                    max_results=config.MAX_RESULTS_PER_BOARD
-                )
+            safe(
+                provider,
+                lambda cls=cls, names=names: cls(
+                    names, keywords, config.ALLOWED_LOCATIONS
+                ).fetch(max_results=config.MAX_RESULTS_PER_BOARD),
             )
-            console.print(f"  +{n} roles")
 
-        if boards["lever"]:
+        if not any(boards.get(k) for k in ("greenhouse", "lever", "ashby")):
             console.print(
-                f"Fetching [cyan]{len(boards['lever'])}[/cyan] Lever board(s)"
-            )
-            n = add(
-                LeverSource(
-                    boards["lever"], keywords, config.ALLOWED_LOCATIONS
-                ).fetch(
-                    max_results=config.MAX_RESULTS_PER_BOARD
-                )
-            )
-            console.print(f"  +{n} roles")
-
-        if boards["ashby"]:
-            console.print(
-                f"Fetching [cyan]{len(boards['ashby'])}[/cyan] Ashby board(s)"
-            )
-            n = add(
-                AshbySource(
-                    boards["ashby"], keywords, config.ALLOWED_LOCATIONS
-                ).fetch(
-                    max_results=config.MAX_RESULTS_PER_BOARD
-                )
-            )
-            console.print(f"  +{n} roles")
-
-        if not any(boards[k] for k in ("greenhouse", "lever", "ashby")):
-            console.print(
-                "[yellow]No ATS boards configured. Copy companies.example.yaml to "
-                "companies.yaml to get full job descriptions.[/yellow]"
+                "[yellow]No ATS boards configured. Copy companies.example.yaml "
+                "to companies.yaml to get full job descriptions.[/yellow]"
             )
 
     if config.ENABLE_ADZUNA:
@@ -112,13 +107,12 @@ def collect_jobs() -> list:
                 sort_by=config.ADZUNA_SORT_BY,
             )
             for s in config.SEARCHES:
-                console.print(
-                    f"Fetching: [cyan]{s['query']}[/cyan] in {s['location']}"
-                )
-                add(
-                    adzuna.fetch(
+                console.print(f"Fetching: [cyan]{s['query']}[/cyan] in {s['location']}")
+                safe(
+                    f"adzuna {s['query']!r}",
+                    lambda s=s: adzuna.fetch(
                         s["query"], s["location"], config.MAX_RESULTS_PER_SEARCH
-                    )
+                    ),
                 )
 
     full = sum(1 for j in jobs if not j.description_truncated)
@@ -130,48 +124,87 @@ def collect_jobs() -> list:
     return jobs
 
 
-def score_new_jobs(profile_text: str, jobs: list, cache: dict) -> dict:
-    """Score only jobs not already cached and not pre-filtered. Mutates cache."""
-    stats = {"cached": 0, "filtered": 0, "scored": 0, "blocked": 0, "failed": 0}
+async def score_new_jobs(
+    profile_text: str, jobs: list, store: Store, deadline: float
+) -> dict:
+    """Score uncached, un-prefiltered jobs concurrently, writing each through.
+
+    deadline is a time.monotonic() value. Work is never STARTED past it, so the
+    run always ends cleanly rather than being killed mid-call.
+    """
+    stats = {
+        "cached": 0, "filtered": 0, "scored": 0, "blocked": 0,
+        "failed": 0, "deferred": 0, "out_of_time": 0,
+    }
+
     to_score = []
     for job in jobs:
-        if job.id in cache:
+        if store.get(job_key(job)) is not None:
             stats["cached"] += 1
             continue
-        reason = prefilter_reason(
+        if prefilter_reason(
             job,
             config.EXCLUDE_TITLE_KEYWORDS,
             config.MAX_YEARS_EXPERIENCE,
             config.MAX_POSTING_AGE_DAYS,
-        )
-        if reason:
+        ):
             stats["filtered"] += 1
             continue
         to_score.append(job)
 
+    # Newest first, so a capped run keeps the freshest postings and the rest
+    # are picked up tomorrow.
+    to_score.sort(key=lambda j: j.created or "", reverse=True)
+    if len(to_score) > config.MAX_JOBS_PER_RUN:
+        stats["deferred"] = len(to_score) - config.MAX_JOBS_PER_RUN
+        to_score = to_score[: config.MAX_JOBS_PER_RUN]
+
     total = len(to_score)
-    for i, job in enumerate(to_score, 1):
-        console.print(f"  Scoring {i}/{total}: {job.title[:60]}")
-        try:
-            result = score_job(profile_text, job, config.SCORING_MODEL)
-        except Exception as e:
-            # Not cached, so it is retried on the next run rather than lost.
-            stats["failed"] += 1
-            console.print(f"  [yellow]Failed (will retry next run): {e}[/yellow]")
-            time.sleep(config.REQUEST_INTERVAL_SECONDS)
-            continue
+    if not total:
+        return stats
 
-        cache[job.id] = ScoredJob(job=job, score=result)  # cache even if blocked
-        if result.hard_blockers:
-            stats["blocked"] += 1
-        else:
-            stats["scored"] += 1
-        time.sleep(config.REQUEST_INTERVAL_SECONDS)  # pace to stay under RPM
+    console.print(
+        f"Scoring [bold]{total}[/bold] new jobs "
+        f"(concurrency {config.SCORING_CONCURRENCY})..."
+    )
 
+    sem = asyncio.Semaphore(config.SCORING_CONCURRENCY)
+    done = 0
+
+    async def worker(job) -> None:
+        nonlocal done
+        if time.monotonic() >= deadline:
+            stats["out_of_time"] += 1
+            return
+        async with sem:
+            # Re-check: a coroutine can sit on the semaphore for a long time.
+            if time.monotonic() >= deadline:
+                stats["out_of_time"] += 1
+                return
+            try:
+                result = await score_job(profile_text, job, config.SCORING_MODEL)
+            except Exception as e:
+                stats["failed"] += 1
+                console.print(
+                    f"  [yellow]Failed (retry next run): {job.title[:45]} — {e}[/yellow]"
+                )
+                return
+
+            # Written through immediately. No await between here and the store
+            # write, so this is atomic with respect to other coroutines.
+            store.put(job_key(job), ScoredJob(job=job, score=result))
+            if result.hard_blockers:
+                stats["blocked"] += 1
+            else:
+                stats["scored"] += 1
+            done += 1
+            console.print(f"  [{done}/{total}] {job.title[:60]}")
+
+    await asyncio.gather(*(worker(j) for j in to_score))
     return stats
 
 
-def build_ranking(jobs: list, cache: dict) -> list[ScoredJob]:
+def build_ranking(jobs: list, store: Store) -> list[ScoredJob]:
     """Rank jobs from THIS run, hiding blocked / stale / over-experienced ones.
 
     Visibility rules are re-applied here (not just at ingestion) so that
@@ -179,7 +212,7 @@ def build_ranking(jobs: list, cache: dict) -> list[ScoredJob]:
     """
     ranked = []
     for job in jobs:
-        sj = cache.get(job.id)
+        sj = store.get(job_key(job))
         if sj and hidden_reason(sj) is None:
             ranked.append(sj)
     ranked.sort(key=lambda s: s.score.fit_score, reverse=True)
@@ -205,24 +238,46 @@ def print_table(scored: list[ScoredJob]) -> None:
     console.print(table)
 
 
-def main() -> None:
-    profile = load_profile()
-    profile_text = profile_to_text(profile)
-    cache = load_cache(config.CACHE_PATH)
+async def run() -> None:
+    profile_text = profile_to_text(load_profile())
+    store = JsonStore(config.CACHE_PATH, flush_every=config.CACHE_FLUSH_EVERY)
     jobs = collect_jobs()
 
-    stats = score_new_jobs(profile_text, jobs, cache)
-    save_cache(config.CACHE_PATH, cache)
+    deadline = time.monotonic() + config.RUN_BUDGET_SECONDS
+    try:
+        stats = await score_new_jobs(profile_text, jobs, store, deadline)
+    finally:
+        store.flush()  # nothing scored is ever lost, however we exit
 
-    ranking = build_ranking(jobs, cache)
-    print_table(ranking[: config.TOP_N])
+    print_table(build_ranking(jobs, store)[: config.TOP_N])
 
     console.print(
         f"\nNew scored: {stats['scored']}  |  Blocked: {stats['blocked']}  |  "
         f"Filtered pre-LLM: {stats['filtered']}  |  Already cached: {stats['cached']}  |  "
         f"Failed (retry next run): {stats['failed']}"
     )
+    if stats["deferred"]:
+        console.print(
+            f"[dim]Deferred {stats['deferred']} jobs "
+            f"(MAX_JOBS_PER_RUN={config.MAX_JOBS_PER_RUN}). Run again to score them.[/dim]"
+        )
+    if stats["out_of_time"]:
+        console.print(
+            f"[yellow]Ran out of time budget with {stats['out_of_time']} jobs "
+            f"unscored. They are not cached, so they retry next run.[/yellow]"
+        )
     console.print(f"[dim]{cache_summary()}[/dim]")
+
+
+def main() -> None:
+    logging.basicConfig(
+        level=logging.WARNING, format="%(levelname)s %(name)s: %(message)s"
+    )
+    try:
+        asyncio.run(run())
+    except KeyboardInterrupt:
+        console.print("\n[yellow]Interrupted. Scores already written are safe.[/yellow]")
+        sys.exit(130)
 
 
 if __name__ == "__main__":

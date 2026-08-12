@@ -3,20 +3,28 @@
 LiteLLM gives us a single call that works across OpenAI, Gemini, DeepSeek,
 OpenRouter, etc. Instructor forces the model to return a valid ScoreResult and
 retries if the JSON is malformed. On top of that, we retry with backoff on
-TRANSIENT errors (rate limits, 'resource exhausted', server overload) so a job
-is never dropped just because a free model was momentarily jammed.
+TRANSIENT errors so a job is never dropped just because a provider was
+momentarily jammed.
+
+Async: scoring is almost entirely spent waiting on the network, so calls are
+issued concurrently (see main.py) rather than paced with sleeps. This module
+must never print — it runs in Lambda, where stdout is CloudWatch.
 """
 
 from __future__ import annotations
 
-import time
+import asyncio
+import logging
 
 import instructor
-from litellm import completion
+import litellm
+from litellm import acompletion
 
 from models import JobPosting, ScoreResult
 
-_client = instructor.from_litellm(completion)
+log = logging.getLogger(__name__)
+
+_client = instructor.from_litellm(acompletion)
 
 
 # --- Cache telemetry -------------------------------------------------------
@@ -34,6 +42,11 @@ def _record_usage(raw) -> None:
     through, so every lookup is optional and failure is silent.
     """
     try:
+        # Counted first: a provider that omits usage entirely still made a
+        # request, and reporting "No LLM requests made." after a successful
+        # run is worse than reporting no token data.
+        CACHE_STATS["requests"] += 1
+
         usage = getattr(raw, "usage", None)
         if usage is None:
             return
@@ -51,7 +64,6 @@ def _record_usage(raw) -> None:
 
         CACHE_STATS["prompt_tokens"] += prompt_tokens
         CACHE_STATS["cached_tokens"] += cached
-        CACHE_STATS["requests"] += 1
     except Exception:
         pass  # telemetry must never break scoring
 
@@ -75,32 +87,25 @@ def cache_summary() -> str:
     )
 
 
-# Substrings that mark an error as temporary and worth retrying. Note that
-# billing errors like 'Key limit exceeded' are deliberately NOT here, because
-# retrying a depleted key is pointless.
-_TRANSIENT_MARKERS = (
-    "rate limit",
-    "ratelimit",
-    "resource exhausted",
-    "resourceexhausted",
-    "limit reached",
-    "overloaded",
-    "unavailable",
-    "timeout",
-    "timed out",
-    "try again",
-    "429",
-    "500",
-    "502",
-    "503",
-    "504",
-    "internal server",
-)
-
-
-def _is_transient(err: Exception) -> bool:
-    text = f"{type(err).__name__} {err}".lower()
-    return any(m in text for m in _TRANSIENT_MARKERS)
+# Retry only on genuinely transient failures, identified by EXCEPTION TYPE.
+# The previous version substring-matched the stringified error for "500", which
+# also matched permanent errors whose message merely contained a token count
+# ("you requested 17500 tokens"), burning 35s of backoff on a doomed call.
+# Billing/quota errors are absent on purpose: retrying a depleted key is futile.
+_TRANSIENT_EXCEPTIONS = tuple(
+    exc
+    for exc in (
+        getattr(litellm, name, None)
+        for name in (
+            "RateLimitError",
+            "ServiceUnavailableError",
+            "InternalServerError",
+            "Timeout",
+            "APIConnectionError",
+        )
+    )
+    if isinstance(exc, type) and issubclass(exc, BaseException)
+) or (TimeoutError,)
 
 
 SYSTEM_PROMPT = """\
@@ -161,13 +166,14 @@ _TRUNCATION_NOTE = (
 )
 
 
-def score_job(
+async def score_job(
     profile_text: str,
     job: JobPosting,
     model: str,
     max_transient_retries: int = 3,
     retry_base_delay: float = 5.0,
 ) -> ScoreResult:
+    """Score one posting. Raises if it cannot be scored after retries."""
     user = USER_TEMPLATE.format(
         profile=profile_text,
         title=job.title,
@@ -184,7 +190,7 @@ def score_job(
     attempt = 0
     while True:
         try:
-            result, raw = _client.chat.completions.create_with_completion(
+            result, raw = await _client.chat.completions.create_with_completion(
                 model=model,
                 response_model=ScoreResult,
                 max_retries=2,  # Instructor: retries on malformed JSON
@@ -192,10 +198,13 @@ def score_job(
             )
             _record_usage(raw)
             return result
-        except Exception as err:
-            if _is_transient(err) and attempt < max_transient_retries:
-                delay = retry_base_delay * (2 ** attempt)  # 5s, 10s, 20s
-                time.sleep(delay)
-                attempt += 1
-                continue
-            raise
+        except _TRANSIENT_EXCEPTIONS as err:
+            if attempt >= max_transient_retries:
+                raise
+            delay = retry_base_delay * (2**attempt)  # 5s, 10s, 20s
+            log.warning(
+                "Transient %s scoring %r, retrying in %.0fs",
+                type(err).__name__, job.title[:50], delay,
+            )
+            await asyncio.sleep(delay)  # async: does not block other jobs
+            attempt += 1

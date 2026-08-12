@@ -64,11 +64,25 @@ MAX_YEARS_EXPERIENCE = 3
 MAX_POSTING_AGE_DAYS = 45
 
 # --- Persistence ---
-CACHE_PATH = ".cache/scored_jobs.json"
+# Env-overridable: Lambda can only write to /tmp, and the CWD-relative default
+# silently yields an empty list if the server is started from another folder.
+CACHE_PATH = os.getenv("CACHE_PATH", ".cache/scored_jobs.json")
+# Rewriting the whole JSON file per job is O(n); batch a few writes. A crash
+# loses at most this many scores. DynamoDB will make this per-job.
+CACHE_FLUSH_EVERY = int(os.getenv("CACHE_FLUSH_EVERY", "5"))
 
-# --- Pacing and retries (defaults suit a free tier like Gemini Flash-Lite:
-# ~15 requests/minute). Raise the interval if you still see rate-limit errors. ---
-REQUEST_INTERVAL_SECONDS = 4.0
+# --- Concurrency and run budget ---
+# Replaces the old REQUEST_INTERVAL_SECONDS sleep. Overlapping LLM waits inside
+# one process is both faster and (on Lambda, which bills wall-clock including
+# idle I/O) cheaper than pacing serially. Lower this if you hit rate limits.
+SCORING_CONCURRENCY = int(os.getenv("SCORING_CONCURRENCY", "5"))
+# Hard cap on LLM calls per run, so one invocation is always bounded. Newest
+# postings are scored first; the rest are picked up on the next run.
+MAX_JOBS_PER_RUN = int(os.getenv("MAX_JOBS_PER_RUN", "150"))
+# Stop STARTING new scoring work after this many seconds. Locally this is a
+# generous ceiling; on Lambda it is derived from the remaining invocation time
+# so the run always exits cleanly instead of being SIGKILLed mid-flight.
+RUN_BUDGET_SECONDS = float(os.getenv("RUN_BUDGET_SECONDS", "3600"))
 
 # --- Display ---
 TOP_N = 25
@@ -78,7 +92,7 @@ TOP_N = 25
 # Adzuna truncates descriptions at 500 chars; Greenhouse and Lever return the
 # complete posting, so the experience/citizenship filters can actually read the
 # requirements. Configure boards in companies.yaml.
-COMPANIES_PATH = "companies.yaml"
+COMPANIES_PATH = os.getenv("COMPANIES_PATH", "companies.yaml")
 ENABLE_ADZUNA = True
 ENABLE_ATS = True
 MAX_RESULTS_PER_BOARD = 50
@@ -100,7 +114,7 @@ def load_companies() -> dict:
     import yaml
 
     if not os.path.exists(COMPANIES_PATH):
-        return {"greenhouse": [], "lever": [], "title_keywords": []}
+        return {"greenhouse": [], "lever": [], "ashby": [], "title_keywords": []}
     with open(COMPANIES_PATH, "r", encoding="utf-8") as f:
         cfg = yaml.safe_load(f) or {}
     clean = lambda key: [x for x in (cfg.get(key) or []) if isinstance(x, str)]

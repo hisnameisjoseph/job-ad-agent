@@ -8219,5 +8219,895 @@
         "requires 8-10 years of network security experience, candidate has ~3 months of software internship plus non-technical part-time work"
       ]
     }
+  },
+  "greenhouse:easygo:5208919007": {
+    "job": {
+      "id": "greenhouse:easygo:5208919007",
+      "source": "greenhouse",
+      "title": "Backend Engineer - Engine",
+      "company": "Easygo",
+      "location": "Melbourne, Victoria, Australia",
+      "description": "Build the platform behind one of the fastest-growing businesses in crypto.\n\n'Engine' is the remote gaming server behind one of the world's largest online casino platforms, enabling game developers from around the world to integrate, launch and scale their games. Join our engineering team to build the backend platform, infrastructure and services powering thousands of games, billions of bets, and the future of online gaming.\n\nIn just 18 months, we've grown to over 2,000 games, doubled in size this year alone, and continue expanding into new markets around the world. Our engineering team remains lean, giving every engineer real ownership and the opportunity to make decisions that directly shape the platform.\n\nWhy Stake Engine?\n\nWe believe great engineers should spend their time solving hard problems - not repetitive ones.\n\nAI is becoming a core part of how we build software. We're investing in AI-assisted development, evolving our Rust codebase and engineering standards so engineers can move faster, automate repetitive work, and focus on architecture, performance and product innovation.\n\nWe're looking for engineers who embrace modern tooling and see AI as a force multiplier, not a replacement for strong engineering fundamentals.\n\nWhat you'll do\n\nThis is a backend first role with exposure across Platform, DevOps and Data Engineering.\n\n- Build and scale backend services using Go and Rust.\n\n- Own production systems from design through to deployment.\n\n- Build and optimise scalable cloud infrastructure with Kubernetes and Terraform.\n\n- Contribute to data platforms powered by ClickHouse.\n\n- Help evolve our architecture as we continue to scale globally.\n\n- High ownership and autonomy from day one.\n\n- Work across backend, infrastructure and data engineering.\n\n- Build technology operating at significant global scale.\n\nWhat we're looking for\n\nYou'll thrive here if you:\n\n- Proven experience designing and building scalable backend systems, distributed architectures, and microservices.\n\n- Enjoy owning systems end-to-end.\n\n- Are comfortable balancing feature delivery with operational excellence.\n\n- Have exposure to cloud infrastructure or DevOps.\n\n- Love solving complex technical problems at scale.\n\n\u00a0\n\nSome of the perks of working with us:\n\nOffice Perks & Environment\n\n- In-house baristas serving free coffee, tea, fresh juices, and smoothies\n\n- Daily catered breakfast and regular company-wide events\n\n- Snack walls and drink fridges on every floor\n\n- Fun /modern office spaces with pool tables, table tennis, gaming consoles, and an F1 simulator\n\nWellbeing & Personal Development\n\n- Access to our Employee Assistance Program for you and your loved ones\n\n- 9,000+ courses on our Learning & Development platform\n\n- One paid volunteer day per year\n\n- Weekly Wednesday massages by professional masseuses\n\nTeam Connection & Rewards\n\n- Team budgets for lunches and activities to celebrate achievements\n\n- Social sports teams and participation in Corporate Games\n\n- Easygo branded swag\n\n- Birthday and work anniversary gift vouchers, plus a chance to win prizes\u00a0\n\nEvents & Experiences\n\n- Company-wide talks with key partners such as Everton FC and Team Sauber in Formula 1\n\n- Office visits from big-name streamers\n\n- Meet Ambassadors like Alex Pereira, Israel Adesanya\n\n- Ballots for exclusive tickets to events like Formula 1, UFC, and more sporting and music events\n\nWe believe that the unique contributions of everyone at Easygo are the driver of our success. To make sure that our products and culture continue to incorporate everyone's perspectives and experiences, we never discriminate on the basis of race, religion, nationality, gender identity or expression, sexual orientation, age, or marital, veteran, or disability status.\n\nWe\u2019re a global team of dreamers, creators, and game-changers from every walk of life, united by a passion for entertainment that inspires the world.\n\nWe believe that the best ideas come from different perspectives, so we actively welcome and champion talent from all backgrounds, cultures, identities, and experiences. Whether you're just starting out or bringing decades of experience, your unique voice matters here.",
+      "url": "https://job-boards.greenhouse.io/easygo/jobs/5208919007",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T00:31:44-04:00",
+      "description_truncated": false
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "Requires Go/Rust backend experience at scale and mid-senior level; Joseph's 3-month internship and academic projects are well short of the stated experience bar.",
+      "met_requirements": [
+        "Strong problem-solving and debugging skills",
+        "Good communication and stakeholder coordination",
+        "Self-directed learner"
+      ],
+      "partial_requirements": [
+        "Cloud infrastructure exposure (AWS Lambda, CloudWatch, Cloudflare, Azure Fundamentals)",
+        "Backend experience (TypeScript/Node.js, PostgreSQL, REST APIs, serverless)",
+        "End-to-end ownership (owned features at Focus Bear)"
+      ],
+      "missing_requirements": [
+        "Go or Rust programming experience",
+        "Kubernetes and Terraform experience",
+        "Designing and building scalable distributed systems / microservices",
+        "Experience with ClickHouse or similar data platforms",
+        "Working at significant global scale (billions of bets, thousands of games)"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": [
+        "Stated expectations imply mid-to-senior level; requires proven experience designing and building scalable backend systems, candidate has ~3 months professional backend internship"
+      ]
+    }
+  },
+  "ashby:netwealth:155b7259-a14b-439d-9099-0ff86f33b70a": {
+    "job": {
+      "id": "ashby:netwealth:155b7259-a14b-439d-9099-0ff86f33b70a",
+      "source": "ashby",
+      "title": "Service Desk Analyst",
+      "company": "netwealth",
+      "location": "Melbourne Office",
+      "description": "About Netwealth\n\nNetwealth isn't just a company.  We're shaping the future of wealth in Australia.  Our award-winning platform and NextGen technology empower advisers and investors to achieve more, and we're proud to be recognised as one of Australia's most innovative FinTech businesses.\n\nSince 1999, we've grown rapidly by challenging the status quo. We move fast, think big, and stay agile.  Free from unnecessary bureaucracy so we can deliver smarter solutions for our clients and create real impact.\n\nBut what truly sets us apart?  Our people.  We're a team of curious, optimistic and courageous individuals who collaborate to make life better for more Australians.  We value authenticity, and agility, and we believe in creating an environment where you can do your best work, grow your career, and feel part of something meaningful.\n\nIf you're looking for  a place where your ideas matter, where innovation is celebrated, and where you can help shape a brighter financial future, join us at Netwealth.\n\nThe opportunity\n\nTechnology is central to how our people at Netwealth work, connect, and succeed. As our next IT Service Desk Analyst, you\u2019ll play a key role in making sure everything runs smoothly, supporting colleagues, solving problems, and helping shape a great tech experience across the organisation.\n\nYou\u2019ll work closely with our IT Service Desk Coordinator and the broader IT team, contributing to daily operations while continuously improving how we deliver support.\n\n\n\n\n\nTECHNICAL SUPPORT & SERVICE DELIVERY\n\n - Provide hands\u2011on support across Azure RBAC, Microsoft Intune, Power Automate and Power Apps\n\n - Build and configure Surface, Dell, and Mac laptops\n\n - Troubleshoot hardware, software, network, and access issues\n\n - Resolve incidents and service requests in line with SLAs\n\n\nSERVICE DESK OPERATIONS\n\n - Triage, prioritise, and escalate tickets\n\n - Keep accurate records in our ITSM system\n\n - Suggest improvements to enhance the user experience\n   \n   Collaboration & Continuous Improvement\n\n - Support project work and operational tasks\n\n - Share insights to help refine processes\n\n - Assist new starters with device setup and system basics\n\n - Support meeting room AV setups and hybrid meeting tech\n\n\nABOUT YOU\n\nYou\u2019re someone who blends technical confidence with a warm, supportive approach. You enjoy helping others and staying one step ahead of problems.\n\nYou bring:\n\n - Expertise with Microsoft 365, Azure AD, RBAC\n\n - Knowledge of Microsoft Intune and modern device management\n\n - Familiarity with Power Automate and Power Apps\n\n - Troubleshooting skills across Windows, macOS, and mobile\n\n - Strong communication and a customer\u2011first mindset\n\n - Experience building Surface, Dell, and Mac laptops\n\n - Knowledge of Active Directory fundamentals\n\n - Basic networking understanding (DNS, DHCP, VPN, Wi\u2011Fi)\n   \n   \n\nLife At Netwealth\n\nAt Netwealth, we believe a fulfilling career is built on growth, balance, and belonging. Our people are our greatest strength, and we\u2019re committed to supporting you at every stage of life because when you thrive, so do we.\n\nWe're proud to be recognised as one of Australia's top 5 companies for Career Development (endorsed by WORK180).  From further education and diverse training opportunities to strong support for internal mobility.  Your career can grow here.\n\nOur flexible hybrid model supports balance, with just 4 days in the office each fortnight. When you\u2019re in, you\u2019ll enjoy working from one of our modern, thoughtfully designed spaces across Australia \u2013 including our state-of-the-art Melbourne CBD office. All locations feature contemporary facilities to make your day comfortable, and in Melbourne, you\u2019ll also enjoy perks like end-of-trip amenities and daily breakfast to make your commute easier.\n\nWe offer benefits designed for your wellbeing and personal development, including;\n\n - Family-friendly support: Paid parental leave and a fully funded school holiday program\n\n - Wellness perks:  CU Health (virtual healthcare), income protection, flu shots, wellness weeks, retail discounts and financial wellbeing services\n\n - A vibrant culture:  social events, trivia nights, and corporate sports\n\n - Employee Resource Groups:  LGBTQIA+, DAWN (Development and Accelerating Women at Netwealth), Culture Group and Carers Group\n\n - Community Impact:  Paid volunteering and our Netwealth Impact Group\n\nWe're proud of our inclusive and diverse workforce and encourage everyone to bring their genuine selves to work. It's one of our core values.  We're committed to equity and inclusion through our gender equality, disability, LGBTQIA+, wellbeing and cultural initiatives.  And we're certified by WORK180, Family Friendly Workplaces and Great Places to Work.\n\nIf you're excited by the opportunity but don't meet every requirements, we still encourage you to apply.  Research shows people often hesitate unless they tick every box.  We value potential and passion just as much.\n\nNeed adjustments during the recruitment process?  Contact us at talent@netwealth.com.au\n\nApply now and help us shape a brighter financial future!",
+      "url": "https://jobs.ashbyhq.com/netwealth/155b7259-a14b-439d-9099-0ff86f33b70a",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": true,
+      "created": "2026-08-11T00:38:46.469+00:00",
+      "description_truncated": false
+    },
+    "score": {
+      "fit_score": 28,
+      "recommendation": "skip",
+      "one_line": "Joseph has strong technical skills but no IT service desk or enterprise IT support experience, and the posting requires hands-on expertise with Azure RBAC, Intune, AD, device provisioning, and networking that he likely cannot demonstrate from his backend internship alone.",
+      "met_requirements": [
+        "Strong communication and customer-first mindset (transferable from hotel, bar, and leadership roles)",
+        "Troubleshooting mindset and analytical problem-solving"
+      ],
+      "partial_requirements": [
+        "Azure fundamentals (has Azure Fundamentals cert but no hands-on RBAC/Intune/AD experience)",
+        "Basic networking concepts (has cloud and serverless experience but not DNS/DHCP/VPN specifically)"
+      ],
+      "missing_requirements": [
+        "Hands-on experience with Microsoft Intune and modern device management",
+        "Experience building and configuring Surface, Dell, and Mac laptops",
+        "Active Directory administration knowledge",
+        "Power Automate and Power Apps practical experience",
+        "ITSM ticket triage and SLA-driven service desk operations",
+        "Meeting room AV setup and hybrid meeting tech support"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": [
+        "No IT service desk or enterprise IT support experience; role is an IT support position requiring hands-on device provisioning, AD/Intune/Azure RBAC administration, and SLA-driven ticket resolution that Joseph's backend internship does not cover"
+      ]
+    }
+  },
+  "5827457545": {
+    "job": {
+      "id": "5827457545",
+      "source": "adzuna",
+      "title": "PHP Software Developer",
+      "company": "Robert Half Australia",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Temporary, hybrid role Full-time Melbourne CBD The Company Our client is a well-established Victorian construction and infrastructure business that provides specialist services to some of Australia's largest civil and infrastructure projects. Over the past few years, the business has invested heavily in digitising its operations, partnering with an external vendor to modernise a suite of internal business applications. As this transformation enters its final stage, they're looking to bring the \u2026",
+      "url": "https://www.adzuna.com.au/details/5827457545?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-04T15:50:36Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 30,
+      "recommendation": "skip",
+      "one_line": "The posting is truncated (~500 chars) and specifies PHP as the core language, which the candidate has no experience in, making this a poor fit.",
+      "met_requirements": [
+        "Located in Melbourne",
+        "Hybrid work arrangement",
+        "Full-time availability"
+      ],
+      "partial_requirements": [
+        "Modernising/transformation projects (candidate contributed to a modern stack via internship and honours project)"
+      ],
+      "missing_requirements": [
+        "PHP software development experience",
+        "Construction/infrastructure industry experience"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5835619962": {
+    "job": {
+      "id": "5835619962",
+      "source": "adzuna",
+      "title": "ServiceNow Engineer, 12 month FTC",
+      "company": "Rest",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Job Description Established in 1988, Rest is one of Australia\u2019s largest profit-to-member superannuation funds. We support more than two million members, with around $100 billion of funds under management and are recognised as a responsible investment leader*. We believe when members understand and engage with their super, they\u2019re more likely to get a better retirement outcome. Everything we do at Rest is underpinned by our values and behaviours, we want to Be Daring, Keep it Simple, Take Action\u2026",
+      "url": "https://www.adzuna.com.au/details/5835619962?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T23:53:30Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "Truncated job summary mentions ServiceNow Engineer, a platform the candidate has zero experience with, and the role likely requires specialist ServiceNow skills Joseph lacks.",
+      "met_requirements": [
+        "Melbourne-based (Joseph is in Melbourne)"
+      ],
+      "partial_requirements": [],
+      "missing_requirements": [
+        "ServiceNow platform expertise (candidate has no experience with ServiceNow)",
+        "ServiceNow engineering experience (likely requires specific ServiceNow development, administration, and configuration skills)"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5835370802": {
+    "job": {
+      "id": "5835370802",
+      "source": "adzuna",
+      "title": "Software Engineer - Fullstack Engineer",
+      "company": "Medibank",
+      "location": "West Melbourne, Melbourne",
+      "description": "You\u2019re only human. It\u2019s a strange thing to say, because us humans are capable of incredible things. And at Medibank, we know our greatest potential lies in the people who work with us. We strive to make real, fundamental change, driven by a simple purpose: to create the best health and wellbeing for all of Australia. We're looking for a Senior Software Engineer to join our Digital Engineering team and play a key role in delivering scalable, customer-focused web solutions. What You'll Do Design,\u2026",
+      "url": "https://www.adzuna.com.au/details/5835370802?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T18:19:56Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "The posting seeks a Senior Software Engineer and is truncated, but the seniority mismatch alone makes this a skip for a junior/grad candidate.",
+      "met_requirements": [
+        "Full-stack web development skills (TypeScript, React, Node.js, PostgreSQL)",
+        "AWS certifications and hands-on experience (Lambda, CloudWatch, DynamoDB)"
+      ],
+      "partial_requirements": [
+        "Scalable, customer-focused web solutions \u2013 relevant internship and project experience but at junior scale"
+      ],
+      "missing_requirements": [
+        "Senior-level experience \u2013 candidate has ~3 months internship and no full-time professional software engineering role"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": [
+        "Posting title: 'Senior Software Engineer' \u2013 candidate is a junior/grad with ~3 months internship, not a senior"
+      ]
+    }
+  },
+  "5837679154": {
+    "job": {
+      "id": "5837679154",
+      "source": "adzuna",
+      "title": "Data Engineer",
+      "company": "NTT America, Inc.",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Make an impact with NTT DATA Join a company that is pushing the boundaries of what is possible. We are renowned for our technical excellence and leading innovations, and for making a difference to our clients and society. Our workplace embraces diversity and inclusion - it's a place where you can grow, belong and thrive. We are seeking an experienced Data Engineer to join our Data & AI practice. You will design, build and optimise modern cloud data platforms, enabling organisations to unlock va\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5837679154?se=HCT6D_-V8RGm9Zg0skSm5g&utm_medium=api&utm_source=cf3b2c53&v=F83C4F80914E3196B08C1ADE607FB64ED207E773",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-12T13:02:25Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "Truncated posting describes an \"experienced\" Data Engineer role in cloud data platforms, and Joseph's ~3 months of backend internship is well below what this implies, plus we have almost no detail to assess fit.",
+      "met_requirements": [
+        "Some AWS experience (Lambda, CloudWatch, DynamoDB, Cloud Practitioner + Developer Associate certs)",
+        "Some cloud/data platform exposure through internship"
+      ],
+      "partial_requirements": [
+        "Data engineering / cloud data platform experience \u2013 Joseph has backend AWS experience and data analysis skills but not data pipeline/platform engineering specifically"
+      ],
+      "missing_requirements": [
+        "The posting labels the role as 'experienced' which typically requires several years of professional data engineering experience"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5836811739": {
+    "job": {
+      "id": "5836811739",
+      "source": "adzuna",
+      "title": "Data Engineer",
+      "company": "NTT",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Make an impact with NTT DATA Join a company that is pushing the boundaries of what is possible. We are renowned for our technical excellence and leading innovations, and for making a difference to our clients and society. Our workplace embraces diversity and inclusion \u2013 it\u2019s a place where you can grow, belong and thrive. We are seeking an experienced Data Engineer to join our Data & AI practice. You will design, build and optimise modern cloud data platforms, enabling organisations to unlock va\u2026",
+      "url": "https://www.adzuna.com.au/details/5836811739?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-12T00:42:54Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "The posting seeks an \"experienced\" Data Engineer, while Joseph is a junior/graduate with ~3 months of backend internship; the truncated posting is too vague to judge properly.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Cloud fundamentals: Joseph holds AWS Certified Cloud Practitioner, AWS Developer Associate, and Azure Fundamentals certifications, and used AWS Lambda/DynamoDB/CloudWatch in his internship.",
+        "Data skills: Economics background, comfortable with SQL, pandas, matplotlib, and database schema design.",
+        "Python: Used in data analysis and for an ML project component."
+      ],
+      "missing_requirements": [
+        "Professional data engineering experience: Joseph has 0 years as a data engineer; only ~3 months as a backend intern with no dedicated data engineering role."
+      ],
+      "insufficient_information": false,
+      "hard_blockers": [
+        "Seeks an 'experienced' Data Engineer; candidate is junior/graduate with ~3 months internship experience."
+      ]
+    }
+  },
+  "5835393919": {
+    "job": {
+      "id": "5835393919",
+      "source": "adzuna",
+      "title": "Platform & Security Engineer",
+      "company": "Racing Victoria",
+      "location": "Kensington, Melbourne",
+      "description": "Racing Victoria Group (RVG) is one of Australia\u2019s leading sporting organisations and the independent governing body of thoroughbred racing in Victoria. We develop, promote and manage the conduct of the racing of thoroughbred horses in Victoria to safeguard its integrity. We seek a hands-on and technically capable Platform & Security Engineer to support the delivery, operation and continual improvement of our technology platforms, cloud infrastructure, deployment pipelines, observability, automa\u2026",
+      "url": "https://www.adzuna.com.au/details/5835393919?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T18:24:18Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "Truncated posting mentions neither years requirement nor citizenship, but this is clearly a mid-senior platform/security role requiring deep infrastructure expertise Joseph doesn't yet have after a 3-month internship.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Cloud infrastructure experience \u2014 has AWS certs and some hands-on Lambda/DynamoDB/CloudWatch from internship",
+        "Deployment pipelines / CI/CD \u2014 contributed to CI/CD in internship"
+      ],
+      "missing_requirements": [
+        "Platform engineering experience at mid-senior level \u2014 candidate has only 3 months of backend internship",
+        "Security engineering expertise \u2014 no evidence of security engineering skills in profile"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5835370425": {
+    "job": {
+      "id": "5835370425",
+      "source": "adzuna",
+      "title": "Public Cloud Engineer",
+      "company": "NEC Corporation",
+      "location": "West Melbourne, Melbourne",
+      "description": "Build, automate and optimise cloud platforms that power mission-critical services. At NEC Australia, you\u2019ll join a supportive cloud team that works with customers to solve real technology challenges. You\u2019ll use your AWS and Azure experience to build, automate and improve enterprise cloud environments, helping make services more secure, reliable and easier to manage. As part of our Agile Scrum team, you'll collaborate closely with Senior Engineers, Architects and Project teams to deliver secure,\u2026",
+      "url": "https://www.adzuna.com.au/details/5835370425?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T18:19:53Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 35,
+      "recommendation": "maybe",
+      "one_line": "Truncated posting mentions AWS/Azure cloud engineering which Joseph has certs and some intern experience in, but he's junior-level and this likely targets mid-level engineers.",
+      "met_requirements": [
+        "AWS certifications (Cloud Practitioner, Developer - Associate)",
+        "Azure fundamentals certification",
+        "Some AWS hands-on experience (Lambda, CloudWatch, DynamoDB, serverless)"
+      ],
+      "partial_requirements": [
+        "Cloud platform automation and optimisation at enterprise scale (Joseph has only intern-level cloud experience, not enterprise-level)",
+        "Agile Scrum team collaboration (Joseph has worked in a cross-timezone startup team but no explicit Scrum experience mentioned)"
+      ],
+      "missing_requirements": [
+        "Professional cloud engineering experience at a senior/journey level"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5834038485": {
+    "job": {
+      "id": "5834038485",
+      "source": "adzuna",
+      "title": "Cloud Security Engineer",
+      "company": "Blackbook Executive",
+      "location": "East Melbourne, Melbourne",
+      "description": "Cloud Security Engineer East Melbourne Permanent Secure a complex AWS environment, driving cloud security, DevSecOps, and application security across a growing engineering team. The Opportunity An exciting opportunity has become available for a Cloud Security Engineer to take ownership of AWS security across a complex, multi-account cloud environment. Role You will be responsible for designing, implementing and maintaining AWS security controls while working closely with software engineering te\u2026",
+      "url": "https://www.adzuna.com.au/details/5834038485?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-09T09:28:25Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "This is a senior cloud security specialist role requiring DevSecOps and AWS security ownership, far beyond Joseph's junior backend internship and cloud associate certifications.",
+      "met_requirements": [
+        "AWS Certified Cloud Practitioner",
+        "AWS Certified Developer - Associate",
+        "Some AWS hands-on experience (Lambda, CloudWatch, DynamoDB, Cloudflare)"
+      ],
+      "partial_requirements": [
+        "Cloud security knowledge \u2014 Joseph has AWS certs and some hands-on AWS use but zero dedicated security engineering experience",
+        "Application security \u2014 no evidence of AppSec, DevSecOps or security controls work in his background"
+      ],
+      "missing_requirements": [
+        "Cloud Security Engineer level/seniority \u2014 expects someone to 'take ownership of AWS security across a complex multi-account environment', which is senior IC or lead-level, not junior/graduate",
+        "DevSecOps pipeline security experience",
+        "Designing/implementing AWS security controls as a primary responsibility"
+      ],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
+  },
+  "5837500450": {
+    "job": {
+      "id": "5837500450",
+      "source": "adzuna",
+      "title": "Chief Nursing Information Officer (CNIO)",
+      "company": "theroyalch",
+      "location": "Parkville, Melbourne",
+      "description": "The Hospital: The Royal Children\u2019s Hospital\u2019s (RCH) Vision is \u201cA world where all kids thrive\u201d. RCH is a cornerstone member of the Melbourne Children\u2019s Campus, partnering with Murdoch Children\u2019s Research Institute, The University of Melbourne Department of Paediatrics and The Royal Children\u2019s Hospital Foundation. RCH has cared for the children and young people of Victoria for more than 150 years since it was founded in 1870. A full range of paediatrics and adolescent health services are provided\u2026",
+      "url": "https://www.adzuna.com.au/details/5837500450?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-12T10:27:50Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 5,
+      "recommendation": "skip",
+      "one_line": "This is a senior clinical leadership role (Chief Nursing Information Officer) requiring a registered nurse with extensive health IT leadership experience, which is entirely outside Joseph's profile as a junior software engineer.",
+      "met_requirements": [],
+      "partial_requirements": [],
+      "missing_requirements": [
+        "Registered Nurse qualification and clinical nursing experience",
+        "Senior health IT / informatics leadership experience (C-level or equivalent)",
+        "Understanding of clinical workflows and nursing informatics"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5837500444": {
+    "job": {
+      "id": "5837500444",
+      "source": "adzuna",
+      "title": "Consultant - Medical Informatics",
+      "company": "theroyalch",
+      "location": "Parkville, Melbourne",
+      "description": "The Hospital: The Royal Children\u2019s Hospital\u2019s (RCH) Vision is \u201cA world where all kids thrive\u201d. RCH is a cornerstone member of the Melbourne Children\u2019s Campus, partnering with Murdoch Children\u2019s Research Institute, The University of Melbourne Department of Paediatrics and The Royal Children\u2019s Hospital Foundation. RCH has cared for the children and young people of Victoria for more than 150 years since it was founded in 1870. A full range of paediatrics and adolescent health services are provided\u2026",
+      "url": "https://www.adzuna.com.au/details/5837500444?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-12T10:27:50Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 40,
+      "recommendation": "maybe",
+      "one_line": "Healthcare mission and some transferable skills match, but the posting is truncated and there is no indication of a technical software/cloud role.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Teamwork and stakeholder communication (from Senior Resident, hotel, and student leadership roles)",
+        "Initiative and ownership (demonstrated across multiple non-tech roles)"
+      ],
+      "missing_requirements": [
+        "No stated technical requirements visible in truncated posting",
+        "Unclear if the role is medical informatics consulting requiring clinical/health informatics domain expertise the candidate lacks"
+      ],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
+  },
+  "5836714190": {
+    "job": {
+      "id": "5836714190",
+      "source": "adzuna",
+      "title": "Data Migration Analyst - NetSuite",
+      "company": "FourQuarters",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Data Analyst required to migrate data from source systems to NetSuite ERP platform for a leading manufacturing business. Responsibilities: leading migration of data to NetSuite managing data governance and integrity developing and maintaining a data dictionary Requirements: strong background working across NetSuite platform good knowledge of ETL tools previous experience working on data migration projects strong SQL and Excel skills If you have strong NetSuite expertise, click on the 'Apply' bu\u2026",
+      "url": "https://www.adzuna.com.au/details/5836714190?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 182000.0,
+      "salary_max": 182000.0,
+      "remote": null,
+      "created": "2026-08-11T23:13:57Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "This role is pure NetSuite data migration work requiring deep NetSuite platform expertise and prior migration experience, neither of which Joseph has.",
+      "met_requirements": [
+        "Strong SQL skills",
+        "Excel skills"
+      ],
+      "partial_requirements": [
+        "Strong SQL and Excel skills \u2014 Joseph has SQL but Excel is not highlighted in his profile"
+      ],
+      "missing_requirements": [
+        "Strong background across NetSuite platform",
+        "Good knowledge of ETL tools",
+        "Previous experience working on data migration projects",
+        "Leading data migration to NetSuite \u2014 no ERP or data migration experience"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5835378352": {
+    "job": {
+      "id": "5835378352",
+      "source": "adzuna",
+      "title": "Project Officer",
+      "company": "theroyalch",
+      "location": "Parkville, Melbourne",
+      "description": "The Hospital: The Royal Children\u2019s Hospital\u2019s (RCH) Vision is \u201cA world where all kids thrive\u201d. RCH is a cornerstone member of the Melbourne Children\u2019s Campus, partnering with Murdoch Children\u2019s Research Institute, The University of Melbourne Department of Paediatrics and The Royal Children\u2019s Hospital Foundation. RCH has cared for the children and young people of Victoria for more than 150 years since it was founded in 1870. A full range of paediatrics and adolescent health services are provided\u2026",
+      "url": "https://www.adzuna.com.au/details/5835378352?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T18:21:11Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 10,
+      "recommendation": "skip",
+      "one_line": "This is a Project Officer role at a hospital, not a tech role, and the truncated summary provides no technical requirements to evaluate fit against.",
+      "met_requirements": [
+        "None clearly visible from the truncated posting"
+      ],
+      "partial_requirements": [
+        "If the role involves any coordination or stakeholder communication, Joseph's leadership and hotel-front-desk experience would transfer"
+      ],
+      "missing_requirements": [
+        "No visible technical/software engineering requirements in the posting"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5837678522": {
+    "job": {
+      "id": "5837678522",
+      "source": "adzuna",
+      "title": "Data Scientist(Agent Evaluations)",
+      "company": "Cognizant",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.), Cognizant combines a passion for client satisfaction, technology innovation, deep industry and business process expertise, and a global, collaborative workforce that embodies the future of work. Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5837678522?se=FINlEf-V8RGNO6Otl_gSEA&utm_medium=api&utm_source=cf3b2c53&v=0196B427F42524E9BF2CE94769B5398F8252E967",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-12T13:02:09Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 22,
+      "recommendation": "skip",
+      "one_line": "Truncated posting titled \"Data Scientist (Agent Evaluations)\" with nearly no requirements visible, so judgement is largely incomplete.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Data analysis in Python (pandas, matplotlib) and SQL",
+        "University foundations in ML / NLP \u2014 could be relevant to evaluating AI agents"
+      ],
+      "missing_requirements": [
+        "Unable to assess \u2014 posting is a truncated company summary with essentially no technical requirements."
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5837678518": {
+    "job": {
+      "id": "5837678518",
+      "source": "adzuna",
+      "title": "AI Security Architect",
+      "company": "Cognizant",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.), Cognizant combines a passion for client satisfaction, technology innovation, deep industry and business process expertise, and a global, collaborative workforce that embodies the future of work. Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5837678518?se=FINlEf-V8RGNO6Otl_gSEA&utm_medium=api&utm_source=cf3b2c53&v=00BC43A5CEE640E0AD22F8B6F2F3B20F91DFB904",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-12T13:02:09Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "The posting title \"AI Security Architect\" suggests a senior security role far beyond Joseph's junior/grad level, and the truncated summary lacks enough detail to assess any match.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Some Lambda/cloud exposure could touch on security-adjacent topics"
+      ],
+      "missing_requirements": [
+        "Senior/architect-level role",
+        "Security specialization not present in Joseph's profile",
+        "Likely requires deep infrastructure and security experience"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5836354520": {
+    "job": {
+      "id": "5836354520",
+      "source": "adzuna",
+      "title": "AI Security Architect",
+      "company": "Cognizant",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.), Cognizant combines a passion for client satisfaction, technology innovation, deep industry and business process expertise, and a global, collaborative workforce that embodies the future of work. Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes\u2026",
+      "url": "https://www.adzuna.com.au/details/5836354520?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T13:41:26Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "The truncated summary describes an \"AI Security Architect\" role at Cognizant with no requirements listed, but the title alone indicates a senior architect-level security role far beyond Joseph's junior/graduate profile.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Some AI/ML foundations and LLM API experience could marginally transfer to an AI-security context"
+      ],
+      "missing_requirements": [
+        "Senior/architect-level security expertise not present",
+        "Professional security engineering experience"
+      ],
+      "insufficient_information": true,
+      "hard_blockers": [
+        "Title 'AI Security Architect' implies senior architect-level role, candidate is a junior/graduate with ~3 months internship"
+      ]
+    }
+  },
+  "5836354518": {
+    "job": {
+      "id": "5836354518",
+      "source": "adzuna",
+      "title": "Data Scientist(Agent Evaluations)",
+      "company": "Cognizant",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.), Cognizant combines a passion for client satisfaction, technology innovation, deep industry and business process expertise, and a global, collaborative workforce that embodies the future of work. Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes\u2026",
+      "url": "https://www.adzuna.com.au/details/5836354518?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T13:41:26Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 25,
+      "recommendation": "skip",
+      "one_line": "Truncated summary with no requirements visible, but the title \"Data Scientist\" and company profile suggest a senior role well beyond Joseph's junior profile.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "Data/analytics background (Bachelor of Commerce, Economics, data analysis in Python)",
+        "University ML foundations (ML, NLP, computer vision, neural networks)"
+      ],
+      "missing_requirements": [
+        "No professional data science experience (3-month backend internship, zero data scientist roles)",
+        "Agent evaluations role implies senior/journey-level applied ML experience Joseph lacks"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5836354509": {
+    "job": {
+      "id": "5836354509",
+      "source": "adzuna",
+      "title": "Platform Engineer",
+      "company": "Cognizant",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.), Cognizant combines a passion for client satisfaction, technology innovation, deep industry and business process expertise, and a global, collaborative workforce that embodies the future of work. Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes\u2026",
+      "url": "https://www.adzuna.com.au/details/5836354509?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T13:41:23Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 40,
+      "recommendation": "apply",
+      "one_line": "Reasonable platform engineering fit for a junior \u2014 cloud certs and AWS internship experience match well, but the truncated posting lacks enough detail to confirm seniority level or specific requirements.",
+      "met_requirements": [
+        "Melbourne location",
+        "Cloud fundamentals (AWS Certified Cloud Practitioner, Developer - Associate, Azure Fundamentals)",
+        "Serverless/AWS experience (Lambda, CloudWatch, DynamoDB)",
+        "TypeScript/Node.js backend experience"
+      ],
+      "partial_requirements": [
+        "Platform engineering professional experience \u2014 candidate has ~3 months backend internship and academic projects only"
+      ],
+      "missing_requirements": [],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
+  },
+  "5836339947": {
+    "job": {
+      "id": "5836339947",
+      "source": "adzuna",
+      "title": "Quality Engineer ( Playwright)",
+      "company": "Cognizant",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Cognizant (NASDAQ: CTSH) is a leading provider of information technology, consulting, and business process services, dedicated to helping the world's leading companies build stronger businesses. Headquartered in Teaneck, New Jersey (U.S.), Cognizant combines a passion for client satisfaction, technology innovation, deep industry and business process expertise, and a global, collaborative workforce that embodies the future of work. Cognizant is a member of the NASDAQ-100, the S&P 500, the Forbes\u2026",
+      "url": "https://www.adzuna.com.au/land/ad/5836339947?se=FINlEf-V8RGNO6Otl_gSEA&utm_medium=api&utm_source=cf3b2c53&v=793C68C57029D6BFB2CA1620EC490CE2223BCC39",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T13:00:31Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 30,
+      "recommendation": "skip",
+      "one_line": "Truncated posting mentions \"Quality Engineer (Playwright)\" with no requirements section, and the candidate has no demonstrated QA/automation testing experience using Playwright or similar tools.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "General software engineering background (TypeScript/JavaScript, debugging skills) could transfer to writing test scripts"
+      ],
+      "missing_requirements": [
+        "No experience with Playwright or QA/test automation frameworks",
+        "No quality engineering / testing role experience"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5836184378": {
+    "job": {
+      "id": "5836184378",
+      "source": "adzuna",
+      "title": "Network Engineer - AI/GPU/HCI (Pre-Sales)",
+      "company": "Halcyon Knights",
+      "location": "Melbourne CBD, Melbourne",
+      "description": "We are partnering with a global technology organisation at the forefront of AI infrastructure to recruit an experienced Systems Engineer /Presales Architect (AI/GPU Clusters/Networks). The presales can be taught so only a good to have. This is a rare opportunity to work with some of the world's largest AI deployments, partnering with enterprise customers to design and architect next-generation GPU networking environments ranging from 4,000 to over 100,000 GPUs . Best Role in Australia - RElocat\u2026",
+      "url": "https://www.adzuna.com.au/details/5836184378?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T10:24:56Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 10,
+      "recommendation": "skip",
+      "one_line": "This is an experienced pre-sales architect role for AI/GPU networking at massive scale; Joseph is a junior/intern-level backend developer with no networking, GPU cluster, or pre-sales experience.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "AI/LLM familiarity (OpenAI integration work, university ML foundations) - partial at best, this role is about GPU cluster networking not LLM API integration"
+      ],
+      "missing_requirements": [
+        "System engineering / pre-sales architecture experience",
+        "AI/GPU cluster and networking experience",
+        "Experience designing GPU networking environments at 4,000-100,000 GPU scale",
+        "Enterprise customer solution design and architecture"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": []
+    }
+  },
+  "5836022172": {
+    "job": {
+      "id": "5836022172",
+      "source": "adzuna",
+      "title": "AI-Native Product Engineer - Phantm",
+      "company": "Black Nova Venture Capital Pty Ltd",
+      "location": "Melbourne, Melbourne Region",
+      "description": "AI-Native Product Engineer Melbourne VIC Full-time Phantm is looking for an exceptional AI-Native Product Engineer to help accelerate the next stage of our product and business. This is not a traditional developer role. We want someone who can design, build and ship across the full stack, using modern AI-native tools to operate with the speed and output of a small team. You will work directly with the founders and customer engagement team to turn customer feedback, commercial insight and indust\u2026",
+      "url": "https://www.adzuna.com.au/details/5836022172?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-11T07:39:04Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 30,
+      "recommendation": "maybe",
+      "one_line": "Joseph has the right stack base (TS/React/Node/Python/AWS) and a startup internship, but the posting is too truncated to assess seniority expectations or hard requirements, making a fair score impossible.",
+      "met_requirements": [
+        "TypeScript/JavaScript",
+        "React (full-stack)",
+        "Node.js / backend API experience",
+        "AWS cloud (certified, hands-on with Lambda/DynamoDB/CloudWatch)",
+        "AI/LLM integration experience (OpenAI API in production)",
+        "Startup experience (3-month internship in health-tech startup)",
+        "Melbourne location"
+      ],
+      "partial_requirements": [
+        "Full-stack ownership (limited professional full-stack experience beyond internship and honours project)",
+        "Working directly with founders/customer engagement team (limited exposure, mainly through honours project client)"
+      ],
+      "missing_requirements": [],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
+  },
+  "5835578119": {
+    "job": {
+      "id": "5835578119",
+      "source": "adzuna",
+      "title": "Tech Lead",
+      "company": "iterate",
+      "location": "Melbourne, Melbourne Region",
+      "description": "A profitable, global technology company is entering its next phase of growth \u2014 and investing seriously in engineering leadership to get there. We're looking for a hands-on Senior Tech Lead to own architecture and delivery for a core product squad, act as a trusted right hand to the Head of Engineering, and set the standard for agentic AI-native development across the wider engineering team. This isn't a typical Tech Lead role. You'll be hands-on enough to shape technical direction and review co\u2026",
+      "url": "https://www.adzuna.com.au/details/5835578119?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": 200000.0,
+      "salary_max": 200000.0,
+      "remote": null,
+      "created": "2026-08-10T23:20:56Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 20,
+      "recommendation": "skip",
+      "one_line": "Senior/Staff-level Tech Lead role requiring extensive hands-on engineering leadership experience, far beyond a junior/graduate profile.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "TypeScript/Node.js experience (3-month internship)",
+        "Some AWS exposure (certifications + internship)",
+        "OpenAI/LLM integration experience (internship feature)"
+      ],
+      "missing_requirements": [
+        "Senior/Staff-level Tech Lead: owns architecture and delivery for a core product squad",
+        "Hands-on engineering leadership setting technical direction",
+        "Acting as trusted right hand to Head of Engineering",
+        "Setting standard for agentic AI-native development across wider team",
+        "Multiple years of professional software engineering experience expected for this level"
+      ],
+      "insufficient_information": false,
+      "hard_blockers": [
+        "Senior Tech Lead role \u2014 requires substantial professional engineering leadership experience, candidate is a junior/graduate with ~3 months internship"
+      ]
+    }
+  },
+  "5835402531": {
+    "job": {
+      "id": "5835402531",
+      "source": "adzuna",
+      "title": "Business AI Architect",
+      "company": "The Body Shop",
+      "location": "Southbank, Melbourne",
+      "description": "We help the world run better At SAP, we keep it simple: you bring your best to us, and we'll bring out the best in you. We're builders touching over 20 industries and 80% of global commerce, and we need your unique talents to help shape what's next. The work is challenging \u2013 but it matters. You'll find a place where you can be yourself, prioritize your wellbeing, and truly belong. What's in it for you? Constant learning, skill growth, great benefits, and a team that wants you to grow and succee\u2026",
+      "url": "https://www.adzuna.com.au/details/5835402531?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T18:26:29Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 15,
+      "recommendation": "skip",
+      "one_line": "The truncated summary is about SAP, not The Body Shop, doesn't state the actual role requirements, and is too vague to judge fit.",
+      "met_requirements": [],
+      "partial_requirements": [
+        "No concrete requirements visible to assess"
+      ],
+      "missing_requirements": [
+        "No concrete requirements visible to assess"
+      ],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
+  },
+  "5835400415": {
+    "job": {
+      "id": "5835400415",
+      "source": "adzuna",
+      "title": "AI and Automation Specialist - Risk",
+      "company": "Insignia Financial",
+      "location": "West Melbourne, Melbourne",
+      "description": "Are you passionate about using data, automation and AI to solve complex business problems? We're looking for a technically strong Data Scientist or Data Engineer to join our Enterprise Risk team and help transform the way operational risk is managed. This is an opportunity to move beyond traditional reporting and build intelligent, automated risk solutions that provide real-time insights and support better decision-making across the business. Working alongside Risk specialists, you'll combine d\u2026",
+      "url": "https://www.adzuna.com.au/details/5835400415?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-10T18:25:57Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "apply",
+      "one_line": "Solid foundational fit for a data/AI role at junior level, but the posting is truncated so seniority expectations and requirements are unclear.",
+      "met_requirements": [
+        "Python (data analysis, ML foundations)",
+        "SQL / database skills",
+        "AWS tooling experience (Lambda, DynamoDB, CloudWatch)",
+        "AI/LLM API integration (OpenAI)",
+        "Data analysis and visualisation (pandas, matplotlib, seaborn)",
+        "AWS Certified Cloud Practitioner & Developer \u2013 Associate",
+        "Economics background business / data context"
+      ],
+      "partial_requirements": [
+        "Data Engineer / Data Scientist title \u2013 candidate has a backend internship and ML coursework, not a dedicated data role; transferable but not direct experience",
+        "Building real-time / automated risk solutions \u2013 candidate has not worked in risk or financial services, but has built automated serverless pipelines"
+      ],
+      "missing_requirements": [
+        "Enterprise risk / operational risk domain experience"
+      ],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
+  },
+  "5833561842": {
+    "job": {
+      "id": "5833561842",
+      "source": "adzuna",
+      "title": "Machine Learning Engineer - Intern",
+      "company": "Pluralis Research",
+      "location": "Melbourne, Melbourne Region",
+      "description": "Pluralis Research is pioneering Protocol Learning - a fully decentralised way to train and deploy AI models that opens this layer to individuals rather than well resourced corporates. By pooling compute from many participants, incentivising their efforts, and preventing any single party from controlling a model's full weights, we're creating a genuinely open, collaborative path to frontier-scale AI. As a Machine Learning Engineer Intern, you'll work on Agora - our production decentralised train\u2026",
+      "url": "https://www.adzuna.com.au/details/5833561842?utm_medium=api&utm_source=cf3b2c53",
+      "salary_min": null,
+      "salary_max": null,
+      "remote": null,
+      "created": "2026-08-09T00:45:45Z",
+      "description_truncated": true
+    },
+    "score": {
+      "fit_score": 55,
+      "recommendation": "maybe",
+      "one_line": "Strong theoretical ML foundations and some practical backend/cloud skills, but the posting is too truncated to judge core requirements and this is an intern-level role where the candidate's actual professional experience is limited.",
+      "met_requirements": [
+        "University foundations in ML, NLP, computer vision, neural networks",
+        "Practical LLM API integration (OpenAI) in production",
+        "AWS certifications and hands-on cloud experience",
+        "TypeScript/Python programming",
+        "Interest in decentralised/accessible AI"
+      ],
+      "partial_requirements": [
+        "Decentralised / distributed training experience (some distributed/cloud work but not specifically decentralised ML training)"
+      ],
+      "missing_requirements": [
+        "No evidence of experience with production distributed training systems"
+      ],
+      "insufficient_information": true,
+      "hard_blockers": []
+    }
   }
 }

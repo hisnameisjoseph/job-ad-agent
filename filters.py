@@ -11,6 +11,7 @@ drop costs a job the candidate never sees. Everything below errs towards keeping
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 import re
 from typing import Optional
 
@@ -98,15 +99,71 @@ def min_years_required(description: str) -> Optional[int]:
         found.append(years)
     return min(found) if found else None
 
+_CLEARANCE_PATTERNS = [
+    re.compile(p, re.I)
+    for p in (
+        r"\b(must|required to)\s+(be|hold)\s+(an?\s+)?australian\s+citizen",
+        r"\baustralian\s+citizenship\s+is\s+(a\s+)?(mandatory|required|essential)",
+        r"\bmust\s+(hold|have|possess)\s+.{0,30}security\s+clearance",
+        r"\b(nv1|nv2|baseline|negative\s+vetting)\s+.{0,20}clearance\b",
+        r"\bsecurity\s+clearance\s+is\s+(mandatory|required|essential)",
+        r"\beligibility\s+for\s+.{0,30}security\s+clearance",
+        r"\bcitizens?\s+only\b",
+    )
+]
 
 def prefilter_reason(
-    job: JobPosting, exclude_keywords: list[str], max_years: int
+    job: JobPosting,
+    exclude_keywords: list[str],
+    max_years: int,
+    max_age_days: Optional[int] = None,
 ) -> Optional[str]:
     """Return why a job should be skipped before the LLM, or None to keep it."""
     reason = title_excluded(job.title, exclude_keywords)
     if reason:
         return reason
-    yrs = min_years_required(job.description)
-    if yrs is not None and yrs >= max_years:
-        return f"requires ~{yrs}+ years experience"
+
+    if max_age_days is not None:
+        age = days_since_posted(job.created)
+        if age is not None and age > max_age_days:
+            return f"posted {age} days ago"
+
+    # Only trust the years check on FULL descriptions. A 500-char teaser
+    # rarely contains the requirements section, so a "no match" there means
+    # "not visible", not "no requirement".
+    if not job.description_truncated:
+        yrs = min_years_required(job.description)
+        if yrs is not None and yrs >= max_years:
+            return f"requires ~{yrs}+ years experience"
+
+        phrase = clearance_required(job.description)
+        if phrase:
+            return f"citizenship/clearance required ('{phrase}')"
     return None
+
+
+def clearance_required(description: str) -> Optional[str]:
+    """Matched phrase if the posting clearly requires citizenship/clearance."""
+    for pattern in _CLEARANCE_PATTERNS:
+        m = pattern.search(description or "")
+        if m:
+            return m.group(0).strip()
+    return None
+
+def days_since_posted(created: Optional[str]) -> Optional[int]:
+    """Age of the posting in days, or None if the date is missing/unparseable.
+
+    Adzuna returns ISO 8601 like '2025-11-03T09:14:22Z'. Unknown dates return
+    None so the job is KEPT rather than silently dropped.
+    """
+    if not created:
+        return None
+    try:
+        text = created.strip().replace("Z", "+00:00")
+        dt = datetime.fromisoformat(text)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        delta = datetime.now(timezone.utc) - dt
+        return max(delta.days, 0)
+    except Exception:
+        return None

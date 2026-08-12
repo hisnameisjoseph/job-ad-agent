@@ -91,6 +91,18 @@ uvicorn server:app --reload
 # open http://localhost:8000
 ```
 
+Rescoring listed job ads if profile gets updated.
+
+```bash
+python rescore.py --all
+```
+
+Update cahced job postings and drop the ones that's older than 45 days.
+
+```bash
+python rescore.py --all --stale-days 45 --dry-run
+```
+
 Useful knobs in `config.py`:
 
 - `SEARCHES` – the queries and locations to pull from Adzuna

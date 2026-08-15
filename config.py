@@ -71,6 +71,13 @@ CACHE_PATH = os.getenv("CACHE_PATH", ".cache/scored_jobs.json")
 # loses at most this many scores. DynamoDB will make this per-job.
 CACHE_FLUSH_EVERY = int(os.getenv("CACHE_FLUSH_EVERY", "5"))
 
+# --- Storage backend -------------------------------------------------------
+# "json" for local files, "dynamodb" once the CDK stack is deployed. The
+# pipeline is identical either way; only this line changes.
+STORE_BACKEND = os.getenv("STORE_BACKEND", "json")
+STORE_TABLE_NAME = os.getenv("STORE_TABLE_NAME", "job-ad-agent-scored-jobs")
+AWS_REGION = os.getenv("AWS_REGION", "ap-southeast-2")
+
 # --- Concurrency and run budget ---
 # Replaces the old REQUEST_INTERVAL_SECONDS sleep. Overlapping LLM waits inside
 # one process is both faster and (on Lambda, which bills wall-clock including

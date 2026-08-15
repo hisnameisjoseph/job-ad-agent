@@ -16,6 +16,7 @@ import asyncio
 import logging
 import sys
 import time
+import hashlib
 
 from rich.console import Console
 from rich.table import Table
@@ -24,8 +25,8 @@ import config
 from filters import prefilter_reason
 from models import ScoredJob
 from profile_loader import load_profile, profile_to_text
-from scoring import cache_summary, score_job
-from store import JsonStore, Store, job_key
+from scoring import cache_summary, score_job, PROMPT_VERSION
+from store import JsonStore, Store, job_key, make_store
 from visibility import hidden_reason
 from sources.adzuna import AdzunaSource
 from sources.ashby import AshbySource
@@ -240,7 +241,14 @@ def print_table(scored: list[ScoredJob]) -> None:
 
 async def run() -> None:
     profile_text = profile_to_text(load_profile())
-    store = JsonStore(config.CACHE_PATH, flush_every=config.CACHE_FLUSH_EVERY)
+
+    # Recorded with every score so a prompt/model/profile change is detectable
+    # later. Phase 2 stores it; invalidation comes after.
+    store = make_store(metadata={
+        "model": config.SCORING_MODEL,
+        "prompt_version": PROMPT_VERSION,
+        "profile_hash": hashlib.sha256(profile_text.encode()).hexdigest()[:16],
+    })
     jobs = collect_jobs()
 
     deadline = time.monotonic() + config.RUN_BUDGET_SECONDS

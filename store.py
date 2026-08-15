@@ -16,6 +16,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import time
 from typing import Optional, Protocol
 
 from models import JobPosting, ScoredJob
@@ -120,3 +121,91 @@ class JsonStore:
 
     def __len__(self) -> int:
         return len(self._data)
+    
+# --- DynamoDB backend ------------------------------------------------------
+
+
+class DynamoStore:
+    """Scored jobs in DynamoDB. Same four methods as JsonStore.
+
+    This is the payoff for the Store protocol: the pipeline never learns which
+    backend it is using. Writes here are genuinely per-item, so the flush_every
+    batching JsonStore needs disappears entirely.
+
+    The ScoredJob is stored as a JSON STRING rather than a DynamoDB Map. That
+    is deliberate: DynamoDB has no float type, and JobPosting.salary_min /
+    salary_max are floats, so a Map would need Decimal conversion in both
+    directions. A JSON string sidesteps the whole problem.
+    """
+
+    def __init__(
+        self,
+        table_name: str,
+        region: Optional[str] = None,
+        ttl_days: int = 90,
+        metadata: Optional[dict] = None,
+    ):
+        import boto3  # imported lazily so local JSON runs need no AWS deps
+
+        self._table = boto3.resource("dynamodb", region_name=region).Table(table_name)
+        self._ttl_seconds = ttl_days * 24 * 3600
+        self._metadata = metadata or {}
+
+    def get(self, key: str) -> Optional[ScoredJob]:
+        resp = self._table.get_item(Key={"job_key": key})
+        item = resp.get("Item")
+        if not item or "payload" not in item:
+            return None
+        try:
+            return ScoredJob.model_validate_json(item["payload"])
+        except Exception:
+            log.warning("Cached item %s no longer matches the schema.", key)
+            return None
+
+    def put(self, key: str, scored: ScoredJob) -> None:
+        now = int(time.time())
+        item = {
+            "job_key": key,
+            "payload": scored.model_dump_json(),
+            "scored_at": now,
+            "expires_at": now + self._ttl_seconds,  # DynamoDB TTL evicts this
+            "fit_score": scored.score.fit_score,  # denormalised for eyeballing
+            **self._metadata,
+        }
+        self._table.put_item(Item=item)
+
+    def all(self) -> dict[str, ScoredJob]:
+        """Full table scan. Fine below a few thousand items; revisit if it grows."""
+        out: dict[str, ScoredJob] = {}
+        kwargs: dict = {}
+        while True:
+            resp = self._table.scan(**kwargs)
+            for item in resp.get("Items", []):
+                try:
+                    out[item["job_key"]] = ScoredJob.model_validate_json(item["payload"])
+                except Exception:
+                    continue
+            if "LastEvaluatedKey" not in resp:
+                return out
+            kwargs["ExclusiveStartKey"] = resp["LastEvaluatedKey"]
+
+    def flush(self) -> None:
+        pass  # every put_item is already durable
+
+    def __len__(self) -> int:
+        return self._table.item_count  # approximate; updated ~every 6 hours
+
+
+def make_store(metadata: Optional[dict] = None) -> Store:
+    """Build the store named by config. One switch, two backends."""
+    import config
+
+    if config.STORE_BACKEND == "dynamodb":
+        if not config.STORE_TABLE_NAME:
+            raise RuntimeError("STORE_BACKEND=dynamodb requires STORE_TABLE_NAME")
+        return DynamoStore(
+            config.STORE_TABLE_NAME,
+            region=config.AWS_REGION,
+            metadata=metadata,
+        )
+    return JsonStore(config.CACHE_PATH, flush_every=config.CACHE_FLUSH_EVERY)

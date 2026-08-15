@@ -107,7 +107,7 @@ _TRANSIENT_EXCEPTIONS = tuple(
     if isinstance(exc, type) and issubclass(exc, BaseException)
 ) or (TimeoutError,)
 
-
+PROMPT_VERSION = "1"
 SYSTEM_PROMPT = """\
 You are a blunt, experienced technical recruiter helping ONE specific candidate
 decide which jobs are worth applying to. You are honest, not encouraging: an

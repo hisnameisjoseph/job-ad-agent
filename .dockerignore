@@ -1,0 +1,22 @@
+.git
+.venv
+venv
+__pycache__
+*.pyc
+.cache
+infra
+static
+node_modules
+
+# Secrets and personal data must never enter an image layer.
+.env
+profile.yaml
+companies.yaml
+
+# Not needed at runtime
+test_*.py
+*.md
+migrate_to_dynamo.py
+discover_boards.py
+check_boards.py
+rescore.py

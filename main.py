@@ -240,7 +240,10 @@ def print_table(scored: list[ScoredJob]) -> None:
 
 
 async def run() -> None:
+    # before
     profile_text = profile_to_text(load_profile())
+    # after
+    profile_text = profile_to_text(load_profile(config.PROFILE_PATH))
 
     # Recorded with every score so a prompt/model/profile change is detectable
     # later. Phase 2 stores it; invalidation comes after.

@@ -100,6 +100,9 @@ TOP_N = 25
 # complete posting, so the experience/citizenship filters can actually read the
 # requirements. Configure boards in companies.yaml.
 COMPANIES_PATH = os.getenv("COMPANIES_PATH", "companies.yaml")
+# Where profile.yaml lives. Overridable so Lambda can point at /tmp after
+# downloading it from S3.
+PROFILE_PATH = os.getenv("PROFILE_PATH", "profile.yaml")
 ENABLE_ADZUNA = True
 ENABLE_ATS = True
 MAX_RESULTS_PER_BOARD = 50

@@ -5,3 +5,8 @@ __pycache__/
 .venv/
 venv/
 .cache/
+.DS_Store
+node_modules/
+cdk.out/
+*.tsbuildinfo
+infra/node_modules/

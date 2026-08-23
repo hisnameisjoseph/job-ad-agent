@@ -6,6 +6,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as scheduler from 'aws-cdk-lib/aws-scheduler';
 import { Construct } from 'constructs';
+import * as ecrAssets from 'aws-cdk-lib/aws-ecr-assets';
 
 /**
  * Infrastructure for job-ad-agent.
@@ -49,16 +50,17 @@ export class InfraStack extends cdk.Stack {
       functionName: 'job-ad-agent-scoring',
 
       // Build context is the repo root, two levels up from infra/lib.
-      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '..', '..')),
+      code: lambda.DockerImageCode.fromImageAsset(path.join(__dirname, '..', '..'), {
+        platform: ecrAssets.Platform.LINUX_ARM64,
+      }),
+      architecture: lambda.Architecture.ARM_64,
 
-      // 256MB: the work is network-bound, but Lambda scales CPU with memory,
-      // so 128MB can make the run longer AND more expensive.
       memorySize: 256,
       timeout: cdk.Duration.minutes(15),
 
       // One run at a time. Two overlapping runs would double-score the same
       // new postings before either had written them.
-      reservedConcurrentExecutions: 1,
+      // reservedConcurrentExecutions: 1,
 
       environment: {
         STORE_BACKEND: 'dynamodb',

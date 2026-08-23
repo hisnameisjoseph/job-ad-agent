@@ -15,7 +15,7 @@ import time
 # MUST run before `import config` — config reads os.environ at import time.
 from aws_config import bootstrap_environment
 
-logging.getLogger().setLevel(logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
 bootstrap_environment()
 

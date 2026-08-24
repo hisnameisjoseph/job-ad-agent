@@ -55,7 +55,13 @@ export class InfraStack extends cdk.Stack {
       }),
       architecture: lambda.Architecture.ARM_64,
 
-      memorySize: 256,
+      // 256 MB was pegged: CloudWatch reported "Max Memory Used: 256 MB" against
+      // a 256 MB limit on every successful run, i.e. zero headroom, and the
+      // container init phase hit its 10s ceiling twice because Lambda scales CPU
+      // with memory and importing litellm at 256 MB is slow. Raising this fixes
+      // both at once. Still comfortably inside the Lambda free tier: one ~70s
+      // run a day is roughly 2,100 GB-seconds a month against 400,000 free.
+      memorySize: 1024,
       timeout: cdk.Duration.minutes(15),
 
       // One run at a time. Two overlapping runs would double-score the same

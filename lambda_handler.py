@@ -15,7 +15,15 @@ import time
 # MUST run before `import config` — config reads os.environ at import time.
 from aws_config import bootstrap_environment
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig() is a NO-OP under Lambda. The runtime installs a handler
+# on the root logger before this module is imported, and basicConfig() returns
+# early whenever root.handlers is non-empty — so the level is never applied, the
+# root logger stays at WARNING, and every log.info() below is silently dropped.
+#
+# The symptom is nasty precisely because nothing errors: rich's console.print
+# goes to stdout and survives, so a healthy run appears to fetch jobs, score
+# them, and then stop dead with no completion summary. Set the level explicitly.
+logging.getLogger().setLevel(logging.INFO)
 
 bootstrap_environment()
 

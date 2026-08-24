@@ -115,12 +115,118 @@ Useful knobs in `config.py`:
 `profile.yaml`, `.env`, and `.cache/` are gitignored. The committed
 `profile.example.yaml` contains only resume-level information.
 
+
+## Authentication and hosting
+
+The viewer runs on the public internet, so it is gated by Google sign-in. No
+password is ever created or stored: Google holds the credential, Cognito holds
+a federated identity, and this application holds neither.
+
+```
+browser ──► CloudFront ──► S3                    the static viewer
+        ──► Cognito managed login ──► Google     sign-in, no passwords stored
+        ──► API Gateway (JWT authorizer)
+                     ──► Lambda (FastAPI/Mangum) ──► DynamoDB (read-only)
+```
+
+Design notes:
+
+- **The allowlist is the security model.** "Sign in with Google" means every
+  Google account on earth can reach the login page. A Cognito PreSignUp Lambda
+  rejects any email not in an SSM parameter, so account creation is blocked
+  outright rather than access being revoked afterwards. It fails closed: if the
+  parameter is unreadable, empty, or SSM is down, nobody gets in.
+- **Adding a person needs no deploy.** The allowlist lives in SSM, not in code.
+- **The API is a second entry point on the same container image.** `cmd` is
+  applied to the Lambda image config rather than baked in, so the scoring
+  function and the API function share one build and one ECR image.
+- **The API Lambda is read-only** on the table, holds no API keys, and skips
+  the SSM/S3 bootstrap the scoring function needs.
+- **Cognito is pinned to the Essentials tier**, which is what managed login
+  requires and carries a perpetual 10,000 monthly-active-user free tier. Social
+  sign-ins draw from that same allowance. The Plus tier has no free tier.
+- **Separate origins, not one.** The API is not behind CloudFront because the
+  user pool client needs CloudFront's domain, the authorizer needs that
+  client's id, and CloudFront would need the API — a genuine CloudFormation
+  dependency cycle. Splitting them costs one CORS rule.
+
+### One-time setup
+
+**1. Create the Google OAuth client.** In the
+[Google Cloud console](https://console.cloud.google.com/apis/credentials):
+
+- Configure the OAuth consent screen (External). While it is in *Testing*
+  mode, only accounts added as test users can sign in — so you would be
+  maintaining two lists. Publishing the app avoids that.
+- Credentials → Create credentials → OAuth client ID → **Web application**.
+- Leave the redirect URI blank for now; it does not exist until step 3.
+- Copy the client ID and client secret.
+
+**2. Store the credentials and the allowlist in SSM.**
+
+```bash
+export AWS_PROFILE=job-ad-agent
+aws ssm put-parameter --name /job-ad-agent/auth/google-client-id \
+  --type String --value "YOUR_CLIENT_ID"
+aws ssm put-parameter --name /job-ad-agent/auth/google-client-secret \
+  --type SecureString --value "YOUR_CLIENT_SECRET"
+aws ssm put-parameter --name /job-ad-agent/auth/allowed-emails \
+  --type SecureString --value "you@gmail.com"
+```
+
+The allowlist is deliberately a separate path from the API keys: `aws_config.py`
+reads `/job-ad-agent` non-recursively, so nothing under `auth/` leaks into the
+scoring function's environment.
+
+**3. Deploy.** The Google client secret is passed as a `noEcho` stack
+parameter rather than read from SSM by CloudFormation, because
+`{{resolve:ssm-secure:...}}` is not supported on Cognito identity providers —
+it would store the literal unresolved string and sign-in would fail silently.
+SSM stays the source of truth; the deploy command reads it:
+
+```bash
+cd infra
+npx cdk deploy --all --parameters "WebStack:GoogleClientSecret=$(aws ssm get-parameter --name /job-ad-agent/auth/google-client-secret --with-decryption --query Parameter.Value --output text)"
+```
+
+**4. Close the loop with Google.** The deploy prints `GoogleRedirectUri` and
+`GoogleJavaScriptOrigin`. Paste them into the same Google credential, under
+*Authorised redirect URIs* and *Authorised JavaScript origins*. Sign-in fails
+with `redirect_uri_mismatch` until this is done.
+
+**5. Open the `SiteUrl` from the outputs** and sign in.
+
+### Adding someone later
+
+```bash
+aws ssm put-parameter --name /job-ad-agent/auth/allowed-emails --overwrite \
+  --type SecureString --value "you@gmail.com,friend@gmail.com"
+```
+
+No redeploy. If the Google consent screen is still in Testing mode, add them as
+a Google test user too.
+
+Note that everyone on the allowlist sees the *same* job list, scored against
+the one `profile.yaml` in S3. Per-person profiles and per-person scores are a
+separate piece of work: scores are a function of (person, job), so that means a
+user dimension in the DynamoDB key and a scoring run per person.
+
+### Local development is unchanged
+
+`config.json` is written into the S3 bucket at deploy time and does not exist
+locally. The frontend treats its absence as "no auth", so
+`uvicorn server:app --reload` behaves exactly as it did before. The 404 for
+`/config.json` in the browser console is that check, not a fault.
+
 ## Roadmap
 
 - [x] Phase 1: fetch, pre-filter, score, cache, rank (local)
 - [x] Web viewer with requirement breakdown per job
 - [ ] Phase 2: daily HTML email digest of new high-fit jobs
 - [ ] Phase 3: deploy to AWS (EventBridge + Lambda + DynamoDB + SES) via CDK
+- [x] Authenticated hosting: the viewer on the internet behind Google
+      sign-in (Cognito + API Gateway + Lambda + S3/CloudFront) — see
+      "Authentication and hosting" below
 - [ ] Phase 4: on-demand tailored cover letter and resume bullet generator
 - [ ] Phase 5: tests, architecture diagram, model comparison write-up,
       walkthrough video

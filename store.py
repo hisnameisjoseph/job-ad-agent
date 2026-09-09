@@ -39,6 +39,7 @@ class Store(Protocol):
 
     def get(self, key: str) -> Optional[ScoredJob]: ...
     def put(self, key: str, scored: ScoredJob) -> None: ...
+    def delete(self, key: str) -> bool: ...
     def all(self) -> dict[str, ScoredJob]: ...
     def flush(self) -> None: ...
 
@@ -58,8 +59,8 @@ class JsonStore:
     def __init__(self, path: str, flush_every: int = 5):
         self.path = path
         self.flush_every = max(1, flush_every)
+        self._pending = 0  # set before _load(), which flags a key migration
         self._data: dict[str, ScoredJob] = self._load()
-        self._pending = 0
 
     def _load(self) -> dict[str, ScoredJob]:
         if not os.path.exists(self.path):
@@ -93,6 +94,10 @@ class JsonStore:
                 "They will be rescored.", dropped
             )
         if migrated:
+            # Mark dirty so the migration is actually WRITTEN BACK. Otherwise
+            # _pending stays 0, flush() early-returns, and a run that scores
+            # nothing new re-derives the same migration forever.
+            self._pending = migrated
             log.info("Migrated %d cache keys to 'source#id' form.", migrated)
         return out
 
@@ -104,6 +109,13 @@ class JsonStore:
         self._pending += 1
         if self._pending >= self.flush_every:
             self.flush()
+
+    def delete(self, key: str) -> bool:
+        """Forget one score so the next run recomputes it. True if it existed."""
+        if self._data.pop(key, None) is None:
+            return False
+        self._pending += 1
+        return True
 
     def all(self) -> dict[str, ScoredJob]:
         return dict(self._data)
@@ -173,6 +185,11 @@ class DynamoStore:
             **self._metadata,
         }
         self._table.put_item(Item=item)
+
+    def delete(self, key: str) -> bool:
+        """Forget one score. Returns whether a row was actually removed."""
+        resp = self._table.delete_item(Key={"job_key": key}, ReturnValues="ALL_OLD")
+        return "Attributes" in resp
 
     def all(self) -> dict[str, ScoredJob]:
         """Full table scan. Fine below a few thousand items; revisit if it grows."""

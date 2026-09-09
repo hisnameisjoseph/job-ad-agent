@@ -49,7 +49,11 @@ def _load_secrets_from_ssm(prefix: str = SSM_PREFIX) -> int:
 
 
 def _download_config_from_s3(bucket: str) -> None:
-    """Fetch profile.yaml and companies.yaml into /tmp (Lambda's only writable dir).
+    """Fetch profile.yaml and companies.yaml to the paths config.py will read.
+
+    Destinations default under /tmp, Lambda's only writable directory, but are
+    taken from PROFILE_PATH / COMPANIES_PATH so this and config.py can never
+    disagree about where the files went.
 
     Fails loudly on a missing profile. Scoring every job against an absent
     profile would silently burn the whole run's API budget producing garbage.
@@ -58,10 +62,20 @@ def _download_config_from_s3(bucket: str) -> None:
 
     s3 = boto3.client("s3")
 
-    for key, dest, required in (
-        ("profile.yaml", "/tmp/profile.yaml", True),
-        ("companies.yaml", "/tmp/companies.yaml", False),
+    # Destinations come from the SAME env vars config.py resolves its paths
+    # from, so there is one source of truth. Hardcoding /tmp here would mean
+    # two places had to agree, and changing only the CDK env var would land the
+    # file where nothing ever reads it -- a FileNotFoundError visible only on
+    # Lambda, long after a green deploy.
+    for key, env_var, default, required in (
+        ("profile.yaml", "PROFILE_PATH", "/tmp/profile.yaml", True),
+        ("companies.yaml", "COMPANIES_PATH", "/tmp/companies.yaml", False),
+        # Optional by design: settings.py falls back to the values this project
+        # shipped with, which is a working configuration rather than an empty
+        # one. A missing document means "never edited", not "broken".
+        ("settings.yaml", "SETTINGS_PATH", "/tmp/settings.yaml", False),
     ):
+        dest = os.environ.get(env_var) or default
         try:
             s3.download_file(bucket, key, dest)
             log.info("Downloaded s3://%s/%s -> %s", bucket, key, dest)
@@ -70,7 +84,22 @@ def _download_config_from_s3(bucket: str) -> None:
                 raise RuntimeError(
                     f"Could not download required s3://{bucket}/{key}: {e}"
                 ) from None
-            log.warning("Optional config s3://%s/%s missing (%s)", bucket, key, e)
+            elif key == "companies.yaml":
+                # ERROR, not WARNING. Without companies.yaml every ATS board is
+                # silently skipped and the run scores only Adzuna's 500-char
+                # truncated descriptions -- so the citizenship and experience
+                # filters read incomplete requirements and quality collapses
+                # with no other signal that anything is wrong.
+                log.error(
+                    "Optional config s3://%s/%s missing (%s). ALL ATS boards "
+                    "(Greenhouse/Lever/Ashby) will be skipped and only Adzuna's "
+                    "truncated descriptions will be scored.", bucket, key, e
+                )
+            else:
+                log.info(
+                    "s3://%s/%s not present (%s); using built-in defaults.",
+                    bucket, key, e
+                )
 
 
 def bootstrap_environment() -> None:

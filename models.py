@@ -85,3 +85,23 @@ class ScoredJob(BaseModel):
 
     job: JobPosting
     score: ScoreResult
+
+    # --- Provenance ---
+    # What this score was computed AGAINST, so the viewer can say "scored under
+    # an older profile" instead of presenting a stale judgement as current.
+    # Stored in the payload rather than as a DynamoDB attribute so both
+    # backends carry it and the JSON cache stays self-describing.
+    #
+    # All optional: rows scored before this existed load with None, and None
+    # means "unknown", never "stale". Flagging thousands of pre-existing rows
+    # as stale on the day this shipped would be noise, not information.
+    profile_hash: Optional[str] = None
+    prompt_version: Optional[str] = None
+    model: Optional[str] = None
+
+    def is_stale(self, current_profile_hash: str) -> bool:
+        """True only when we KNOW this was scored against a different profile."""
+        return (
+            self.profile_hash is not None
+            and self.profile_hash != current_profile_hash
+        )

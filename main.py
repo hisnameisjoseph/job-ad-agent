@@ -16,7 +16,6 @@ import asyncio
 import logging
 import sys
 import time
-import hashlib
 
 from rich.console import Console
 from rich.table import Table
@@ -24,9 +23,9 @@ from rich.table import Table
 import config
 from filters import prefilter_reason
 from models import ScoredJob
-from profile_loader import load_profile, profile_to_text
+from profile_loader import load_profile, profile_fingerprint, profile_to_text
 from scoring import cache_summary, score_job, PROMPT_VERSION
-from store import JsonStore, Store, job_key, make_store
+from store import Store, job_key, make_store
 from visibility import hidden_reason
 from sources.adzuna import AdzunaSource
 from sources.ashby import AshbySource
@@ -126,21 +125,40 @@ def collect_jobs() -> list:
 
 
 async def score_new_jobs(
-    profile_text: str, jobs: list, store: Store, deadline: float
+    profile_text: str,
+    jobs: list,
+    store: Store,
+    deadline: float,
+    known: dict[str, ScoredJob] | None = None,
 ) -> dict:
     """Score uncached, un-prefiltered jobs concurrently, writing each through.
 
     deadline is a time.monotonic() value. Work is never STARTED past it, so the
     run always ends cleanly rather than being killed mid-call.
+
+    known is the already-scored set. Pass one in to reuse it after the call
+    (build_ranking wants it); omit it and the store is read once here.
     """
+    # Recorded on every score so the viewer can tell a current judgement from
+    # one made against a profile you have since edited.
+    profile_hash = profile_fingerprint(profile_text)
     stats = {
         "cached": 0, "filtered": 0, "scored": 0, "blocked": 0,
         "failed": 0, "deferred": 0, "out_of_time": 0,
     }
 
+    # ONE read of the store, not one per job. Against DynamoDB a per-job
+    # store.get() is a network GetItem each, so a few hundred collected
+    # postings meant a few hundred blocking round trips before any scoring
+    # started. Workers keep this dict in step as they write, so the caller can
+    # rank from it without re-reading (and without a scan racing the writes
+    # that just happened).
+    if known is None:
+        known = store.all()
+
     to_score = []
     for job in jobs:
-        if store.get(job_key(job)) is not None:
+        if job_key(job) in known:
             stats["cached"] += 1
             continue
         if prefilter_reason(
@@ -193,7 +211,15 @@ async def score_new_jobs(
 
             # Written through immediately. No await between here and the store
             # write, so this is atomic with respect to other coroutines.
-            store.put(job_key(job), ScoredJob(job=job, score=result))
+            scored = ScoredJob(
+                job=job,
+                score=result,
+                profile_hash=profile_hash,
+                prompt_version=PROMPT_VERSION,
+                model=config.SCORING_MODEL,
+            )
+            store.put(job_key(job), scored)
+            known[job_key(job)] = scored
             if result.hard_blockers:
                 stats["blocked"] += 1
             else:
@@ -205,15 +231,19 @@ async def score_new_jobs(
     return stats
 
 
-def build_ranking(jobs: list, store: Store) -> list[ScoredJob]:
+def build_ranking(jobs: list, known: dict[str, ScoredJob]) -> list[ScoredJob]:
     """Rank jobs from THIS run, hiding blocked / stale / over-experienced ones.
 
     Visibility rules are re-applied here (not just at ingestion) so that
     already-cached jobs respect current config thresholds.
+
+    Takes the scored-job dict rather than the Store: it is the same snapshot
+    score_new_jobs just updated, so ranking costs no further reads and cannot
+    miss a write that an eventually-consistent DynamoDB scan would.
     """
     ranked = []
     for job in jobs:
-        sj = store.get(job_key(job))
+        sj = known.get(job_key(job))
         if sj and hidden_reason(sj) is None:
             ranked.append(sj)
     ranked.sort(key=lambda s: s.score.fit_score, reverse=True)
@@ -247,17 +277,21 @@ async def run() -> None:
     store = make_store(metadata={
         "model": config.SCORING_MODEL,
         "prompt_version": PROMPT_VERSION,
-        "profile_hash": hashlib.sha256(profile_text.encode()).hexdigest()[:16],
+        "profile_hash": profile_fingerprint(profile_text),
     })
     jobs = collect_jobs()
 
+    # Read once, then reused for ranking below. score_new_jobs keeps it current
+    # as workers write, so no second read is needed.
+    known = store.all()
+
     deadline = time.monotonic() + config.RUN_BUDGET_SECONDS
     try:
-        stats = await score_new_jobs(profile_text, jobs, store, deadline)
+        stats = await score_new_jobs(profile_text, jobs, store, deadline, known)
     finally:
         store.flush()  # nothing scored is ever lost, however we exit
 
-    print_table(build_ranking(jobs, store)[: config.TOP_N])
+    print_table(build_ranking(jobs, known)[: config.TOP_N])
 
     console.print(
         f"\nNew scored: {stats['scored']}  |  Blocked: {stats['blocked']}  |  "

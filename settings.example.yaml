@@ -1,0 +1,56 @@
+# Runtime-editable settings: what to search for, and what to filter out.
+#
+# Copy to settings.yaml. Editable from the website's settings page AND from
+# your editor -- locally they are the same file, so either way works.
+# Deployed, `python config_sync.py --pull` fetches whatever the website last
+# saved, and `--push` sends your local edits up.
+#
+# Delete settings.yaml entirely and the pipeline falls back to these same
+# values, which are the ones config.py used to hardcode.
+
+# Adzuna queries. Broad on purpose: the LLM ranks by fit afterwards, so these
+# only decide which jobs enter the funnel.
+searches:
+  - query: graduate software engineer
+    location: Melbourne
+  - query: junior backend engineer
+    location: Melbourne
+  - query: full stack developer
+    location: Melbourne
+  - query: web developer
+    location: Melbourne
+  - query: cloud engineer
+    location: Melbourne
+  - query: data analyst
+    location: Melbourne
+  - query: junior data engineer
+    location: Melbourne
+  - query: AI engineer
+    location: Melbourne
+
+# Volume dial. Keep low while testing: every result is a candidate LLM call.
+max_results_per_search: 20
+
+# Pre-filters. Applied before the LLM to save calls, and again at display time
+# so changing them affects already-scored jobs with no rescore needed.
+filters:
+  # Whole-word title matches that are skipped outright.
+  exclude_title_keywords:
+    - senior
+    - snr
+    - principal
+    - staff
+    - head of
+    - director
+    - vice president
+    - vp
+    - sr
+    - manager
+  # Drop postings clearly asking for this many years or more. null disables.
+  max_years_experience: 3
+  # Drop postings older than this many days. null disables. Undated jobs stay.
+  max_posting_age_days: 45
+  # Hide anything the model flagged as a hard blocker (clearance, citizenship).
+  drop_hard_blockers: true
+  # How many rows the terminal table prints.
+  top_n: 25

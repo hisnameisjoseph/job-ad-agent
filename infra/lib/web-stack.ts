@@ -19,6 +19,8 @@ import { Construct } from 'constructs';
 export interface WebStackProps extends cdk.StackProps {
   /** Written by the scoring pipeline in InfraStack; read (only) by the API here. */
   readonly scoredJobsTable: dynamodb.Table;
+  /** profile.yaml / settings.yaml. The settings page reads and writes these. */
+  readonly configBucket: s3.Bucket;
 }
 
 /** SSM parameter holding the comma-separated list of emails allowed to register. */
@@ -254,13 +256,23 @@ export class WebStack extends cdk.Stack {
       environment: {
         STORE_BACKEND: 'dynamodb',
         STORE_TABLE_NAME: props.scoredJobsTable.tableName,
+        // Makes config_store resolve to S3 rather than local files, so the
+        // settings page edits the same documents the scoring run reads.
+        CONFIG_BUCKET: props.configBucket.bucketName,
       },
-      description: 'Read-only viewer API (FastAPI via Mangum)',
+      description: 'Viewer API and settings editor (FastAPI via Mangum)',
     });
 
     // Read, not read-write. This function serves a dashboard; nothing it does
-    // should ever be able to modify a score.
+    // should ever be able to modify a SCORE.
     props.scoredJobsTable.grantReadData(apiFn);
+
+    // Config is the one thing it may write, because that is the whole point of
+    // the settings page. grantRead + grantPut rather than grantReadWrite: the
+    // latter also grants s3:DeleteObject, and nothing in the API deletes a
+    // config document. Versioning on the bucket is the undo.
+    props.configBucket.grantRead(apiFn);
+    props.configBucket.grantPut(apiFn);
 
     const userPoolClient = userPool.addClient('WebClient', {
       userPoolClientName: 'job-ad-agent-web',
@@ -321,14 +333,20 @@ export class WebStack extends cdk.Stack {
         // which is what stops preflights from failing 401.
         allowOrigins: [siteUrl],
         allowHeaders: ['authorization', 'content-type'],
-        allowMethods: [apigwv2.CorsHttpMethod.GET, apigwv2.CorsHttpMethod.OPTIONS],
+        allowMethods: [
+          apigwv2.CorsHttpMethod.GET,
+          apigwv2.CorsHttpMethod.PUT,
+          apigwv2.CorsHttpMethod.OPTIONS,
+        ],
         maxAge: cdk.Duration.hours(1),
       },
     });
 
     httpApi.addRoutes({
       path: '/api/{proxy+}',
-      methods: [apigwv2.HttpMethod.GET],
+      // PUT for the settings and profile editors. Both are behind the same
+      // JWT authorizer as the reads: there is no unauthenticated write.
+      methods: [apigwv2.HttpMethod.GET, apigwv2.HttpMethod.PUT],
       integration: new apigwv2Integrations.HttpLambdaIntegration('ApiIntegration', apiFn),
       authorizer: new apigwv2Authorizers.HttpUserPoolAuthorizer(
         'ViewerAuthorizer', userPool, {

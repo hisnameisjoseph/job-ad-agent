@@ -27,4 +27,5 @@ new WebStack(app, 'WebStack', {
   env,
   description: 'job-ad-agent: authenticated web viewer (Cognito + API + CDN)',
   scoredJobsTable: infra.scoredJobsTable,
+  configBucket: infra.configBucket,
 });

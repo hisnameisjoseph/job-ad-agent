@@ -24,6 +24,15 @@ function el(tag, text, className) {
   return node;
 }
 
+// Narrow screens drop the table header and stack each row into a card, so the
+// cells that lose their column heading carry it as a data-label instead. The
+// CSS renders it via ::before at that breakpoint and ignores it otherwise.
+function metaCell(label, text, className) {
+  const td = el("td", text, className);
+  td.dataset.label = label;
+  return td;
+}
+
 function reqList(title, items) {
   const wrap = document.createElement("div");
   wrap.appendChild(el("h4", title));
@@ -65,6 +74,18 @@ function renderRow(item) {
   } else {
     roleTd.appendChild(el("span", j.title || "Untitled role", "role-title"));
   }
+
+  // Flagged, not hidden. A score computed against a profile you have since
+  // edited is still the best information available until a rescore happens,
+  // so say so rather than either dropping the row or presenting it as current.
+  if (item.stale) {
+    const badge = el("span", "old profile", "stale-badge");
+    badge.title =
+      "Scored against an earlier version of your profile. It will be " +
+      "recomputed the next time this posting is rescored.";
+    roleTd.appendChild(badge);
+  }
+
   roleTd.appendChild(el("p", s.one_line, "why"));
 
   const details = document.createElement("details");
@@ -78,13 +99,21 @@ function renderRow(item) {
   roleTd.appendChild(details);
   tr.appendChild(roleTd);
 
-  tr.appendChild(el("td", j.company || "—"));
-  tr.appendChild(el("td", new Date(j.created).toLocaleDateString() || "—"));
-  tr.appendChild(el("td", j.location || "—"));
-  tr.appendChild(el("td", s.recommendation, "rec"));
+  tr.appendChild(metaCell("Company", j.company || "—"));
+  // Guard on j.created rather than on the formatted string: `new Date(null)`
+  // is the epoch ("1/1/1970") and `new Date(undefined)` formats as the string
+  // "Invalid Date", so both are truthy and `|| "—"` could never fire.
+  const posted = j.created ? new Date(j.created) : null;
+  tr.appendChild(
+    metaCell("Posted", posted && !Number.isNaN(posted.valueOf())
+      ? posted.toLocaleDateString()
+      : "—"),
+  );
+  tr.appendChild(metaCell("Location", j.location || "—"));
+  tr.appendChild(metaCell("Verdict", s.recommendation, "rec"));
 
   // Explicit posting link per row
-  const linkTd = document.createElement("td");
+  const linkTd = metaCell("Posting", null);
   if (j.url) {
     linkTd.appendChild(externalLink(j.url, "Open ↗", "posting-link"));
   } else {
@@ -165,19 +194,29 @@ async function main() {
   $("signin").addEventListener("click", () => signIn());
   $("signout").addEventListener("click", () => signOut());
 
-  // Handles the ?code= / ?error= redirect back from Cognito. An allowlist
-  // rejection arrives here as an error message rather than a blank page.
-  const authError = await completeSignIn();
-  if (authError) notice(authError);
+  // The auth steps below all reach the network (the Cognito token endpoint,
+  // and config.json), and any of them can reject. Uncaught, that rejection
+  // leaves the page on "loading…" forever with nothing rendered and nothing
+  // said, so the whole sequence is guarded and failures are surfaced.
+  try {
+    // Handles the ?code= / ?error= redirect back from Cognito. An allowlist
+    // rejection arrives here as an error message rather than a blank page.
+    const authError = await completeSignIn();
+    if (authError) notice(authError);
 
-  const secured = await authEnabled();
-  if (secured) {
-    $("authbar").hidden = false;
-    if (!(await getIdToken())) {
-      showSignedOut();
-      return;
+    const secured = await authEnabled();
+    if (secured) {
+      $("authbar").hidden = false;
+      if (!(await getIdToken())) {
+        showSignedOut();
+        return;
+      }
+      await showSignedIn();
     }
-    await showSignedIn();
+  } catch (err) {
+    $("count").textContent = "Sign-in is unavailable.";
+    notice(`${err.message} Please reload the page to try again.`);
+    return;
   }
 
   try {

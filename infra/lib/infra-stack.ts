@@ -19,6 +19,8 @@ import * as ecrAssets from 'aws-cdk-lib/aws-ecr-assets';
  */
 export class InfraStack extends cdk.Stack {
   public readonly scoredJobsTable: dynamodb.Table;
+  /** Holds profile.yaml / settings.yaml. The viewer API edits these. */
+  public readonly configBucket: s3.Bucket;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -35,7 +37,7 @@ export class InfraStack extends cdk.Stack {
 
     // Versioned so a bad profile edit can be rolled back, and because the
     // whole point of S3 here is editing without redeploying.
-    const configBucket = new s3.Bucket(this, 'ConfigBucket', {
+    this.configBucket = new s3.Bucket(this, 'ConfigBucket', {
       bucketName: `job-ad-agent-config-${this.account}`,
       versioned: true,
       encryption: s3.BucketEncryption.S3_MANAGED,
@@ -65,15 +67,18 @@ export class InfraStack extends cdk.Stack {
       timeout: cdk.Duration.minutes(15),
 
       // One run at a time. Two overlapping runs would double-score the same
-      // new postings before either had written them.
-      // reservedConcurrentExecutions: 1,
+      // new postings before either had written them: both call store.get(),
+      // both miss, and both pay the LLM. The schedule below retries twice, so
+      // a run that outlives its invocation CAN overlap itself without this.
+      reservedConcurrentExecutions: 1,
 
       environment: {
         STORE_BACKEND: 'dynamodb',
         STORE_TABLE_NAME: this.scoredJobsTable.tableName,
-        CONFIG_BUCKET: configBucket.bucketName,
+        CONFIG_BUCKET: this.configBucket.bucketName,
         PROFILE_PATH: '/tmp/profile.yaml',
         COMPANIES_PATH: '/tmp/companies.yaml',
+        SETTINGS_PATH: '/tmp/settings.yaml',
         SSM_PREFIX: '/job-ad-agent',
         MAX_JOBS_PER_RUN: '150',
         SCORING_CONCURRENCY: '5',
@@ -85,7 +90,7 @@ export class InfraStack extends cdk.Stack {
     // --- Permissions (least privilege) -----------------------------------
 
     this.scoredJobsTable.grantReadWriteData(scoringFn);
-    configBucket.grantRead(scoringFn);
+    this.configBucket.grantRead(scoringFn);
 
     // Scoped to this app's parameter path, not all of SSM. Decryption of the
     // SecureStrings is handled by the AWS-managed aws/ssm key, so no explicit
@@ -131,7 +136,7 @@ export class InfraStack extends cdk.Stack {
       value: this.scoredJobsTable.tableName,
     });
     new cdk.CfnOutput(this, 'ConfigBucketName', {
-      value: configBucket.bucketName,
+      value: this.configBucket.bucketName,
       description: 'Upload profile.yaml and companies.yaml here',
     });
     new cdk.CfnOutput(this, 'ScoringFunctionName', {

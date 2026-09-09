@@ -22,12 +22,36 @@ const EXPIRY_SKEW_MS = 60_000;
 
 let _configPromise = null;
 
-/** Deploy-time config, or null when running locally. */
+/**
+ * Deploy-time config, or null when genuinely running locally.
+ *
+ * Only a 404 means "local". Everything else THROWS, because collapsing all
+ * failures to null silently turns auth off on the deployed site: the sign-in
+ * button never unhides, apiBase() falls back to same-origin, and the app looks
+ * broken rather than signed out.
+ *
+ * That is not hypothetical on CloudFront. The distribution rewrites 403/404 to
+ * /index.html with status 200, so a config.json that failed to deploy arrives
+ * as res.ok with an HTML body -- which is why a non-JSON 200 is treated as an
+ * error rather than parsed. A rejected promise is not memoised, so a caller
+ * can retry.
+ */
 export function loadConfig() {
   if (_configPromise) return _configPromise;
-  _configPromise = fetch(CONFIG_URL, { cache: "no-store" })
-    .then((res) => (res.ok ? res.json() : null))
-    .catch(() => null); // absent locally; that is a supported mode, not an error
+  _configPromise = (async () => {
+    const res = await fetch(CONFIG_URL, { cache: "no-store" });
+    if (res.status === 404) return null; // absent locally: a supported mode
+    if (!res.ok) throw new Error(`Could not load config.json (${res.status}).`);
+    const body = await res.text();
+    try {
+      return JSON.parse(body);
+    } catch {
+      throw new Error("config.json was not valid JSON.");
+    }
+  })().catch((err) => {
+    _configPromise = null; // do not cache a transient failure
+    throw err;
+  });
   return _configPromise;
 }
 

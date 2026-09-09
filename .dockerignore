@@ -17,6 +17,8 @@ companies.yaml
 test_*.py
 *.md
 migrate_to_dynamo.py
+config_sync.py
 discover_boards.py
 check_boards.py
 rescore.py
+settings.yaml

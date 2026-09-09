@@ -11,3 +11,5 @@ cdk.out/
 *.tsbuildinfo
 infra/node_modules/
 static/config.json
+settings.yaml
+.claude/launch.json

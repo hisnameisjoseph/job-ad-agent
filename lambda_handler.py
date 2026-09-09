@@ -8,7 +8,6 @@ main.py's, unchanged, so the CLI and the scheduled run can never diverge.
 from __future__ import annotations
 
 import asyncio
-import hashlib
 import logging
 import time
 
@@ -29,7 +28,11 @@ bootstrap_environment()
 
 import config  # noqa: E402
 from main import collect_jobs, score_new_jobs  # noqa: E402
-from profile_loader import load_profile, profile_to_text  # noqa: E402
+from profile_loader import (  # noqa: E402
+    load_profile,
+    profile_fingerprint,
+    profile_to_text,
+)
 from scoring import PROMPT_VERSION, cache_summary  # noqa: E402
 from store import make_store  # noqa: E402
 
@@ -46,7 +49,7 @@ async def _run(deadline: float) -> dict:
     store = make_store(metadata={
         "model": config.SCORING_MODEL,
         "prompt_version": PROMPT_VERSION,
-        "profile_hash": hashlib.sha256(profile_text.encode()).hexdigest()[:16],
+        "profile_hash": profile_fingerprint(profile_text),
     })
 
     jobs = collect_jobs()

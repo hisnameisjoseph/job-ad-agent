@@ -1,8 +1,0 @@
-# Development and test dependencies only.
-#
-# Kept OUT of requirements.txt because the Dockerfile installs that file into
-# the Lambda image: pytest and its transitive dependencies have no business in
-# a deployed artefact, and they slow the cold start.
-#
-# Install with:  pip install -r requirements.txt -r requirements-dev.txt
-pytest>=8.0

@@ -1,0 +1,1519 @@
+{
+  "/WebStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/SsmParameterValue:--job-ad-agent--auth--google-client-id:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SsmParameterValuejobadagentauthgoogleclientidC96584B6F00A464EAD1953AFF4B05118Parameter"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...StringParameter2.valueForStringParameter in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:62:48)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/GoogleClientSecret": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GoogleClientSecret"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:77:32)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "functionName": "*",
+        "runtime": "*",
+        "architecture": "*",
+        "handler": "*",
+        "code": "*",
+        "timeout": "*",
+        "memorySize": "*",
+        "environment": "*",
+        "description": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addEnvironment": [
+          "*",
+          "*"
+        ]
+      }
+    }
+  ],
+  "/WebStack/UserPool": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "userPoolName": "*",
+        "featurePlan": "ESSENTIALS",
+        "selfSignUpEnabled": true,
+        "signInAliases": {
+          "email": true
+        },
+        "standardAttributes": {},
+        "autoVerify": {
+          "email": true
+        },
+        "lambdaTriggers": {},
+        "removalPolicy": "retain"
+      }
+    }
+  ],
+  "/WebStack/Google": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/SiteBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "blockPublicAccess": "*",
+        "encryption": "S3_MANAGED",
+        "enforceSSL": true,
+        "removalPolicy": "destroy",
+        "autoDeleteObjects": true
+      }
+    }
+  ],
+  "/WebStack/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/WebStack/SecurityHeaders": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "responseHeadersPolicyName": "*",
+        "comment": "*",
+        "securityHeadersBehavior": {
+          "contentSecurityPolicy": {
+            "contentSecurityPolicy": "*",
+            "override": true
+          },
+          "strictTransportSecurity": {
+            "accessControlMaxAge": "*",
+            "includeSubdomains": true,
+            "override": true
+          },
+          "contentTypeOptions": {
+            "override": true
+          },
+          "frameOptions": {
+            "frameOption": "DENY",
+            "override": true
+          },
+          "referrerPolicy": {
+            "referrerPolicy": "no-referrer",
+            "override": true
+          }
+        },
+        "customHeadersBehavior": {
+          "customHeaders": [
+            {
+              "header": "*",
+              "value": "*",
+              "override": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "/WebStack/SiteDistribution": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "comment": "*",
+        "defaultRootObject": "*",
+        "defaultBehavior": {
+          "origin": "*",
+          "viewerProtocolPolicy": "redirect-to-https",
+          "cachePolicy": "*",
+          "responseHeadersPolicy": "*"
+        },
+        "priceClass": "PriceClass_All",
+        "errorResponses": [
+          {
+            "httpStatus": "*",
+            "responseHttpStatus": "*",
+            "responsePagePath": "*"
+          },
+          {
+            "httpStatus": "*",
+            "responseHttpStatus": "*",
+            "responsePagePath": "*"
+          }
+        ]
+      }
+    }
+  ],
+  "/WebStack/ViewerApiFunction": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "functionName": "*",
+        "code": "*",
+        "architecture": "*",
+        "memorySize": "*",
+        "timeout": "*",
+        "environment": "*",
+        "description": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "functionName": "*",
+        "code": "*",
+        "architecture": "*",
+        "memorySize": "*",
+        "timeout": "*",
+        "environment": "*",
+        "description": "*"
+      }
+    }
+  ],
+  "/WebStack/LoginBranding": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LoginBranding"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:382:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": "*"
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "layers": [
+          "*"
+        ],
+        "environment": "*",
+        "timeout": "*",
+        "role": "*",
+        "memorySize": "*",
+        "ephemeralStorageSize": "*",
+        "vpc": "*",
+        "vpcSubnets": "*",
+        "securityGroups": "*",
+        "filesystem": "*",
+        "logGroup": "*",
+        "code": "*",
+        "handler": "*",
+        "runtime": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addEnvironment": [
+          "*",
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addLayers": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:is-custom-resource-handler-singleton",
+      "data": true
+    },
+    {
+      "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+      "data": 2
+    }
+  ],
+  "/WebStack/SiteUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:472:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/GoogleRedirectUri": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GoogleRedirectUri"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:476:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/GoogleJavaScriptOrigin": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GoogleJavaScriptOrigin"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:481:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/LoginUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LoginUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:486:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/ApiEndpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiEndpoint"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:490:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/UserPoolIdOut": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolIdOut"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:494:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/UserPoolClientIdOut": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolClientIdOut"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:495:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/AllowlistParameter": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AllowlistParameter"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:498:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/ServiceRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "managedPolicies": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PreSignUpAllowlist79CC6682"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:90:25)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/LogGroup": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "logGroupName": "*"
+      }
+    }
+  ],
+  "/WebStack/UserPool/PreSignUpCognito": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolPreSignUpCognito3AFF8F1F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPool2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:119:22)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/UserPool/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPool6BA7E5F2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPool2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:119:22)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/UserPool/LoginDomain": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "userPool": "*",
+        "cognitoDomain": {
+          "domainPrefix": "*"
+        },
+        "managedLoginVersion": 2
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "baseUrl": []
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "baseUrl": []
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "baseUrl": []
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "baseUrl": []
+      }
+    }
+  ],
+  "/WebStack/UserPool/WebClient": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "userPool": "*",
+        "userPoolClientName": "*",
+        "generateSecret": false,
+        "oAuth": {
+          "flows": {
+            "authorizationCodeGrant": true
+          },
+          "scopes": "*",
+          "callbackUrls": "*",
+          "logoutUrls": "*"
+        },
+        "supportedIdentityProviders": "*",
+        "preventUserExistenceErrors": true,
+        "accessTokenValidity": "*",
+        "idTokenValidity": "*",
+        "refreshTokenValidity": "*"
+      }
+    }
+  ],
+  "/WebStack/Google/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GoogleAF1E99FA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPoolIdentityProviderGoogle2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:144:28)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/SiteBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucket397A1860"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:203:24)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/WebStack/SiteBucket/Policy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucket": "*"
+      }
+    }
+  ],
+  "/WebStack/SiteBucket/AutoDeleteObjectsCustomResource": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/SecurityHeaders/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SecurityHeadersE66B69D3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new ResponseHeadersPolicy2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:241:29)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/SiteDistribution/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteDistribution3FF9535D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:271:26)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApiFunction/ServiceRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "managedPolicies": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/WebStack/ViewerApiFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiFunction8C016AF8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DockerImageFunction2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:300:19)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApiFunction/LogGroup": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "logGroupName": "*"
+      }
+    }
+  ],
+  "/WebStack/ViewerApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiC65AC160"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new HttpApi2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:388:21)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/DefaultStage": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/ViewerApi/GET--api--{proxy+}": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/ViewerApi/ViewerAuthorizer": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/ViewerApi/PUT--api--{proxy+}": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/DeploySite/AwsCliLayer": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {}
+    }
+  ],
+  "/WebStack/DeploySite/CustomResourceHandler": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "uuid": "*",
+        "layers": [
+          "*"
+        ],
+        "environment": "*",
+        "lambdaPurpose": "*",
+        "timeout": "*",
+        "role": "*",
+        "memorySize": "*",
+        "ephemeralStorageSize": "*",
+        "vpc": "*",
+        "vpcSubnets": "*",
+        "securityGroups": "*",
+        "filesystem": "*",
+        "logGroup": "*",
+        "code": "*",
+        "handler": "*",
+        "runtime": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addMetadata": [
+          "*",
+          true
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addMetadata": [
+          "*",
+          "*"
+        ]
+      }
+    }
+  ],
+  "/WebStack/DeploySite/CustomResource": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "managedPolicies": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new BucketDeployment2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:448:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)"
+      ]
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/LogGroup": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "logGroupName": "*"
+      }
+    }
+  ],
+  "/WebStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PreSignUpAllowlistServiceRole54F54B54"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:90:25)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/ServiceRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/Code/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PreSignUpAllowlistLogGroupDA92F00B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:90:25)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/UserPool/LoginDomain/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolLoginDomain7848D1BF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addDomain in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:192:37)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/UserPool/WebClient/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UserPoolWebClient4C9370B0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addClient in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:338:37)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/SiteBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketPolicy3AC1D0F8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:203:24)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)"
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/WebStack/SiteBucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteBucketAutoDeleteObjectsCustomResource9585E968"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/SiteDistribution/Origin1/S3OriginAccessControl": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/ViewerApiFunction/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiFunctionServiceRole8E83BA8B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DockerImageFunction2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:300:19)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApiFunction/ServiceRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/WebStack/ViewerApiFunction/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiFunctionLogGroupAC8A71B8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DockerImageFunction2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:300:19)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/DefaultStage/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiDefaultStage520D3B83"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new HttpApi2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:388:21)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/GET--api--{proxy+}/ApiIntegration": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/ViewerApi/GET--api--{proxy+}/ApiIntegration-Permission": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiGETapiproxyApiIntegrationPermission6CFC59D2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:424:13)"
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/GET--api--{proxy+}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiGETapiproxy3789C1F0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:424:13)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/ViewerAuthorizer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiViewerAuthorizerC9A3EB84"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:424:13)"
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/PUT--api--{proxy+}/ApiIntegration-Permission": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiPUTapiproxyApiIntegrationPermissionB5167465"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:424:13)"
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/PUT--api--{proxy+}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiPUTapiproxy02F3AB77"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:424:13)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/WebStack/DeploySite/AwsCliLayer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DeploySiteAwsCliLayer88B0EBE2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new BucketDeployment2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:448:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/WebStack/DeploySite/Asset1/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/DeploySite/Asset2/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/DeploySite/CustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DeploySiteCustomResourceE47C9748"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new BucketDeployment2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:448:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Code/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CLogGroup817B64E9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/PreSignUpAllowlist/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PreSignUpAllowlistServiceRoleDefaultPolicy0DADDA8B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addToRolePolicy in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:110:17)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/WebStack/SiteDistribution/Origin1/S3OriginAccessControl/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SiteDistributionOrigin1S3OriginAccessControl7D960FE6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:271:26)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:26:1)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)"
+      ]
+    }
+  ],
+  "/WebStack/ViewerApiFunction/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiFunctionServiceRoleDefaultPolicyDDE85DE1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/WebStack/ViewerApi/GET--api--{proxy+}/ApiIntegration/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ViewerApiGETapiproxyApiIntegration2C2DC0A8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        ".../Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/node_modules/aws-cdk-lib/aws-apigatewayv2/lib/http/api.js:1:96 in aws-cdk-lib...",
+        "Array.map (:)",
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "new WebStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/web-stack.ts:424:13)"
+      ]
+    }
+  ],
+  "/WebStack/DeploySite/AwsCliLayer/Code/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/WebStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ]
+}

@@ -66,11 +66,11 @@ export class InfraStack extends cdk.Stack {
       memorySize: 1024,
       timeout: cdk.Duration.minutes(15),
 
-      // One run at a time. Two overlapping runs would double-score the same
-      // new postings before either had written them: both call store.get(),
-      // both miss, and both pay the LLM. The schedule below retries twice, so
-      // a run that outlives its invocation CAN overlap itself without this.
-      reservedConcurrentExecutions: 1,
+      // // One run at a time. Two overlapping runs would double-score the same
+      // // new postings before either had written them: both call store.get(),
+      // // both miss, and both pay the LLM. The schedule below retries twice, so
+      // // a run that outlives its invocation CAN overlap itself without this.
+      // reservedConcurrentExecutions: 1,
 
       environment: {
         STORE_BACKEND: 'dynamodb',

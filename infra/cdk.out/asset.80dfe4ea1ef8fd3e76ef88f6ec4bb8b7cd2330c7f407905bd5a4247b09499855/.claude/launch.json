@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "viewer",
+      "runtimeExecutable": "/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/.venv/bin/uvicorn",
+      "runtimeArgs": ["server:app", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}

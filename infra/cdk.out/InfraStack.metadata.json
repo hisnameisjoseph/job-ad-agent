@@ -1,0 +1,599 @@
+{
+  "/InfraStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ScoredJobs": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "tableName": "*",
+        "partitionKey": {
+          "name": "*",
+          "type": "S"
+        },
+        "billingMode": "PAY_PER_REQUEST",
+        "timeToLiveAttribute": "*",
+        "removalPolicy": "retain"
+      }
+    },
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "ScoredJobs47A831C1"
+      }
+    }
+  ],
+  "/InfraStack/ConfigBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucketName": "*",
+        "versioned": true,
+        "encryption": "S3_MANAGED",
+        "blockPublicAccess": "*",
+        "enforceSSL": true,
+        "removalPolicy": "retain"
+      }
+    }
+  ],
+  "/InfraStack/ScoringFunction": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "functionName": "*",
+        "code": "*",
+        "architecture": "*",
+        "memorySize": "*",
+        "timeout": "*",
+        "environment": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {}
+    },
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "functionName": "*",
+        "code": "*",
+        "architecture": "*",
+        "memorySize": "*",
+        "timeout": "*",
+        "environment": "*"
+      }
+    }
+  ],
+  "/InfraStack/SchedulerRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "description": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "/InfraStack/DailyScoringSchedule": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DailyScoringSchedule"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:117:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ScoredJobsTableName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoredJobsTableName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:135:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ConfigBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConfigBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:138:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ScoringFunctionName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoringFunctionName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:142:5)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/ScoredJobs/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoredJobs47A831C1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:30:28)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ScoredJobs/ScalingRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/InfraStack/ConfigBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConfigBucket2112C5EC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:40:25)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ConfigBucket/Policy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucket": "*"
+      }
+    }
+  ],
+  "/InfraStack/ScoringFunction/ServiceRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "managedPolicies": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/InfraStack/ScoringFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoringFunctionEEC8206D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DockerImageFunction2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:51:23)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/ScoringFunction/LogGroup": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "logGroupName": "*"
+      }
+    }
+  ],
+  "/InfraStack/SchedulerRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SchedulerRole59E73443"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:108:27)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/InfraStack/SchedulerRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/InfraStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/Publish/Output{\"Fn::GetAtt\":[\"ScoredJobs47A831C1\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PublishOutputFnGetAttScoredJobs47A831C1ArnCFAEBAEE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/Publish/Output{\"Fn::GetAtt\":[\"ConfigBucket2112C5EC\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PublishOutputFnGetAttConfigBucket2112C5ECArn5D558BAC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/Publish/Output{\"Ref\":\"ScoredJobs47A831C1\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PublishOutputRefScoredJobs47A831C12F024754"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/Publish/Output{\"Ref\":\"ConfigBucket2112C5EC\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PublishOutputRefConfigBucket2112C5EC44EEFD8D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/InfraStack/ConfigBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConfigBucketPolicy6D5E90FF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:40:25)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)"
+      ]
+    }
+  ],
+  "/InfraStack/ScoringFunction/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoringFunctionServiceRole8A649595"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DockerImageFunction2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:51:23)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/InfraStack/ScoringFunction/ServiceRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/InfraStack/ScoringFunction/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoringFunctionLogGroupD1F019A5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new DockerImageFunction2 in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:51:23)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:16:15)",
+        "<anonymous> (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/bin/infra.ts:31:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/InfraStack/SchedulerRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SchedulerRoleDefaultPolicy66F774B8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantInvoke in aws-cdk-lib...",
+        "new InfraStack (/Users/hisnameisjoseph/Documents/485/Project 485/Individual Project/job-ad-agent/infra/lib/infra-stack.ts:112:15)"
+      ]
+    }
+  ],
+  "/InfraStack/ScoringFunction/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ScoringFunctionServiceRoleDefaultPolicy23317001"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ]
+}

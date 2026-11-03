@@ -1,0 +1,40 @@
+# Job boards to poll directly. These ATS APIs return the COMPLETE job
+# description, unlike Adzuna's search API which truncates at 500 characters.
+#
+# YOU DO NOT NEED TO FILL THIS IN BY HAND. Run:
+#     python discover_boards.py --trace --write
+# which finds companies from your Adzuna searches, works out which ATS each
+# one uses, and merges the results below.
+#
+# To add one manually, read the company's careers URL:
+#   https://boards.greenhouse.io/canva   -> greenhouse: canva
+#   https://jobs.lever.co/atlassian      -> lever: atlassian
+#   https://jobs.ashbyhq.com/linear      -> ashby: linear
+#
+# Verify anything here with: python check_boards.py
+
+# Only titles containing one of these are kept, since ATS boards return every
+# open role at a company (sales, legal, marketing included).
+title_keywords:
+  - engineer
+  - developer
+  - software
+  - backend
+  - back end
+  - frontend
+  - front end
+  - full stack
+  - fullstack
+  - cloud
+  - platform
+  - data
+  - analyst
+  - graduate
+  - junior
+  - intern
+  - support
+  - technology
+
+greenhouse: []
+lever: []
+ashby: []

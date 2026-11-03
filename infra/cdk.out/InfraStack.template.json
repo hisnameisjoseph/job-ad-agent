@@ -1,0 +1,488 @@
+{
+ "Description": "job-ad-agent: scored-job storage",
+ "Resources": {
+  "ScoredJobs47A831C1": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "job_key",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "job_key",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "job-ad-agent-scored-jobs",
+    "TimeToLiveSpecification": {
+     "AttributeName": "expires_at",
+     "Enabled": true
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ScoredJobs/Resource"
+   }
+  },
+  "ConfigBucket2112C5EC": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketEncryption": {
+     "ServerSideEncryptionConfiguration": [
+      {
+       "ServerSideEncryptionByDefault": {
+        "SSEAlgorithm": "AES256"
+       }
+      }
+     ]
+    },
+    "BucketName": "job-ad-agent-config-438465142105",
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    },
+    "VersioningConfiguration": {
+     "Status": "Enabled"
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ConfigBucket/Resource"
+   }
+  },
+  "ConfigBucketPolicy6D5E90FF": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "ConfigBucket2112C5EC"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:*",
+       "Condition": {
+        "Bool": {
+         "aws:SecureTransport": "false"
+        }
+       },
+       "Effect": "Deny",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ConfigBucket2112C5EC",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ConfigBucket2112C5EC",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ConfigBucket/Policy/Resource"
+   }
+  },
+  "ScoringFunctionServiceRole8A649595": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ScoringFunction/ServiceRole/Resource"
+   }
+  },
+  "ScoringFunctionServiceRoleDefaultPolicy23317001": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "ScoredJobs47A831C1",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ConfigBucket2112C5EC",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ConfigBucket2112C5EC",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "ssm:GetParameter",
+        "ssm:GetParameters",
+        "ssm:GetParametersByPath"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        "arn:aws:ssm:ap-southeast-2:438465142105:parameter/job-ad-agent",
+        "arn:aws:ssm:ap-southeast-2:438465142105:parameter/job-ad-agent/*"
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ScoringFunctionServiceRoleDefaultPolicy23317001",
+    "Roles": [
+     {
+      "Ref": "ScoringFunctionServiceRole8A649595"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ScoringFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "ScoringFunctionEEC8206D": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "ImageUri": {
+      "Fn::Sub": "438465142105.dkr.ecr.ap-southeast-2.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-438465142105-ap-southeast-2:e3fb6609126b0c50137cea3e2672e015ed22cfa609c209919ee0c0398d8fb71a"
+     }
+    },
+    "Environment": {
+     "Variables": {
+      "STORE_BACKEND": "dynamodb",
+      "STORE_TABLE_NAME": {
+       "Ref": "ScoredJobs47A831C1"
+      },
+      "CONFIG_BUCKET": {
+       "Ref": "ConfigBucket2112C5EC"
+      },
+      "PROFILE_PATH": "/tmp/profile.yaml",
+      "COMPANIES_PATH": "/tmp/companies.yaml",
+      "SETTINGS_PATH": "/tmp/settings.yaml",
+      "SSM_PREFIX": "/job-ad-agent",
+      "MAX_JOBS_PER_RUN": "150",
+      "SCORING_CONCURRENCY": "5"
+     }
+    },
+    "FunctionName": "job-ad-agent-scoring",
+    "MemorySize": 1024,
+    "PackageType": "Image",
+    "Role": {
+     "Fn::GetAtt": [
+      "ScoringFunctionServiceRole8A649595",
+      "Arn"
+     ]
+    },
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "ScoringFunctionServiceRoleDefaultPolicy23317001",
+    "ScoringFunctionServiceRole8A649595"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ScoringFunction/Resource",
+    "aws:asset:path": "asset.e3fb6609126b0c50137cea3e2672e015ed22cfa609c209919ee0c0398d8fb71a",
+    "aws:asset:dockerfile-path": "Dockerfile",
+    "aws:asset:property": "Code.ImageUri"
+   }
+  },
+  "ScoringFunctionLogGroupD1F019A5": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "ScoringFunctionEEC8206D"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/ScoringFunction/LogGroup/Resource"
+   }
+  },
+  "SchedulerRole59E73443": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "scheduler.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Lets EventBridge Scheduler invoke the scoring function"
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/SchedulerRole/Resource"
+   }
+  },
+  "SchedulerRoleDefaultPolicy66F774B8": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ScoringFunctionEEC8206D",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ScoringFunctionEEC8206D",
+             "Arn"
+            ]
+           },
+           ":*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "SchedulerRoleDefaultPolicy66F774B8",
+    "Roles": [
+     {
+      "Ref": "SchedulerRole59E73443"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/SchedulerRole/DefaultPolicy/Resource"
+   }
+  },
+  "DailyScoringSchedule": {
+   "Type": "AWS::Scheduler::Schedule",
+   "Properties": {
+    "Description": "Daily job scoring run",
+    "FlexibleTimeWindow": {
+     "Mode": "OFF"
+    },
+    "Name": "job-ad-agent-daily",
+    "ScheduleExpression": "cron(0 7 * * ? *)",
+    "ScheduleExpressionTimezone": "Australia/Melbourne",
+    "Target": {
+     "Arn": {
+      "Fn::GetAtt": [
+       "ScoringFunctionEEC8206D",
+       "Arn"
+      ]
+     },
+     "RetryPolicy": {
+      "MaximumEventAgeInSeconds": 3600,
+      "MaximumRetryAttempts": 2
+     },
+     "RoleArn": {
+      "Fn::GetAtt": [
+       "SchedulerRole59E73443",
+       "Arn"
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/DailyScoringSchedule"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/7VT22obMRD9lugxKGrr0D74bZ24ITRJXa/7UEwwWmm8mVgrLbo4bMX+e9FeXIdAKKSBBc3OGZ05M6OZsMmXz+zjCX9yZ0LuzhQWLOaeix3lT24TZaN5ZWTB4ooXCtaR+HTe8QrIlJwSSmpuPXo0+hs0ZBqJ/gv5pk5mTlpKClQKdXlrZHItsl+bxXy5Wc5//JznqxSLFazMDe4h895iEfzIYqEye64WRqFoyJRY8Bw1ae/pxVZ3qlrqzlmcBbEDv46k6IwjiXuwDo0GSabeBqAEtLBNnUQneeeb2+wuu5pfEkoKZcRuEQqFIhMCnBsoQG+NFZDnNyPHq7J6LbQ/+pCDsI7xOKzHW6p4VUjO4qURO7DXFS/ha9AiyVxHsh3Mo7pE38xkcise0IPwwY6uCipjmxx/H8aBFZjgDxXt0RpdgR4U0fjK9/7pu4aM9bYUecXi0nRPjjsXKpCz7n3VFrXAmqtMCBP0yNfHpAuZGAabaiIV17wE2fUYwZHpOj7zNZkdYu9TmVzKlVmMKcbhruOAes/Fw7VWqOGAkVPyD+DrvG9B39AcCU5YrI9c79SBbrgpPx2WIckaL6xMQl7wvHRLmXvuIb0Z96w9b3X/LzVdmeM6g7Ab7hx4x442OkuehLEl1MahN7aZcQdUmdKxeGPKK2tCvY5EDeZh43r6MaKlTjyADAosu9jqfPhp6RKcCVZAp5R2+XLPS9Rluv49+Dr4lmojgT26D/vJhE0m7NPJo0M8s0GnNWXL/vwDdqUUgh4GAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "InfraStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ScoredJobsTableName": {
+   "Value": {
+    "Ref": "ScoredJobs47A831C1"
+   }
+  },
+  "ConfigBucketName": {
+   "Description": "Upload profile.yaml and companies.yaml here",
+   "Value": {
+    "Ref": "ConfigBucket2112C5EC"
+   }
+  },
+  "ScoringFunctionName": {
+   "Value": {
+    "Ref": "ScoringFunctionEEC8206D"
+   }
+  },
+  "PublishOutputFnGetAttScoredJobs47A831C1ArnCFAEBAEE": {
+   "Value": {
+    "Fn::GetAtt": [
+     "ScoredJobs47A831C1",
+     "Arn"
+    ]
+   }
+  },
+  "PublishOutputFnGetAttConfigBucket2112C5ECArn5D558BAC": {
+   "Value": {
+    "Fn::GetAtt": [
+     "ConfigBucket2112C5EC",
+     "Arn"
+    ]
+   }
+  },
+  "PublishOutputRefScoredJobs47A831C12F024754": {
+   "Value": {
+    "Ref": "ScoredJobs47A831C1"
+   }
+  },
+  "PublishOutputRefConfigBucket2112C5EC44EEFD8D": {
+   "Value": {
+    "Ref": "ConfigBucket2112C5EC"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

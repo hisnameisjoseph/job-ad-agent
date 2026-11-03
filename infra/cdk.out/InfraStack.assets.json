@@ -1,0 +1,37 @@
+{
+  "version": "54.0.0",
+  "files": {
+    "ca3ca7a2e84865150bce01c6192d8c0e90235d0145ee08e426ad9df1ec1d8f3a": {
+      "displayName": "InfraStack Template",
+      "source": {
+        "path": "InfraStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "438465142105-ap-southeast-2-cb1ababd": {
+          "bucketName": "cdk-hnb659fds-assets-438465142105-ap-southeast-2",
+          "objectKey": "ca3ca7a2e84865150bce01c6192d8c0e90235d0145ee08e426ad9df1ec1d8f3a.json",
+          "region": "ap-southeast-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::438465142105:role/cdk-hnb659fds-file-publishing-role-438465142105-ap-southeast-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {
+    "e3fb6609126b0c50137cea3e2672e015ed22cfa609c209919ee0c0398d8fb71a": {
+      "displayName": "ScoringFunction/AssetImage",
+      "source": {
+        "directory": "asset.e3fb6609126b0c50137cea3e2672e015ed22cfa609c209919ee0c0398d8fb71a",
+        "platform": "linux/arm64"
+      },
+      "destinations": {
+        "438465142105-ap-southeast-2-4cb4d1d9": {
+          "repositoryName": "cdk-hnb659fds-container-assets-438465142105-ap-southeast-2",
+          "imageTag": "e3fb6609126b0c50137cea3e2672e015ed22cfa609c209919ee0c0398d8fb71a",
+          "region": "ap-southeast-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::438465142105:role/cdk-hnb659fds-image-publishing-role-438465142105-ap-southeast-2"
+        }
+      }
+    }
+  }
+}

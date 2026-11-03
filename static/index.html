@@ -4,67 +4,175 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 
   <!-- Home-screen install. The CloudFront domain never changes between
-       deploys, so "Add to Home Screen" gives a permanent icon and you never
-       have to find the link again. -->
+       deploys, so "Add to Home Screen" gives a permanent icon. -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#121212">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Jobs">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/icon-192.png" type="image/png">
-  <title>Job Matcher</title>
+
+  <title>Jobs · Job Matches</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-  <header class="masthead">
-    <div class="masthead-main">
-      <h1>job matches</h1>
-      <p class="count" id="count">loading&hellip;</p>
+  <main class="page" id="jobs-page" data-app>
+    <header class="root-head">
+      <h1 class="t-large">Jobs</h1>
+      <p class="t-foot sec" id="count" aria-live="polite">Loading&hellip;</p>
+    </header>
+
+    <div class="band" id="notice" role="alert" hidden></div>
+
+    <div class="pillrow" id="filters" role="toolbar" aria-label="Filter and sort jobs" hidden>
+      <div class="seg" role="group" aria-label="Filter by call">
+        <button type="button" data-verdict="all" aria-pressed="true">All <span class="seg-count" data-count-for="total"></span></button>
+        <button type="button" data-verdict="apply" aria-pressed="false">Apply <span class="seg-count" data-count-for="apply"></span></button>
+        <button type="button" data-verdict="maybe" aria-pressed="false">Maybe <span class="seg-count" data-count-for="maybe"></span></button>
+        <button type="button" data-verdict="skip" aria-pressed="false">Skip <span class="seg-count" data-count-for="skip"></span></button>
+      </div>
+      <button type="button" class="btn btn-secondary btn-sm" id="new-only" aria-pressed="false">
+        New <span class="seg-count" data-count-for="fresh"></span>
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm" id="sort-button" aria-haspopup="dialog">
+        <span id="sort-label">Fit</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m8 9 4-4 4 4M8 15l4 4 4-4" />
+        </svg>
+      </button>
     </div>
 
-    <div class="authbar">
-      <!-- Outside #authbar on purpose: that bar is hidden until Cognito is in
-           front of the page, and settings must stay reachable locally too. -->
-      <a class="btn btn-quiet" href="/settings.html">Settings</a>
-
-      <!-- Revealed only when the page is deployed behind Cognito. Locally
-           there is no /config.json, so auth stays off and this stays hidden. -->
-      <span class="authbar" id="authbar" hidden>
-        <span class="who" id="who"></span>
-        <button type="button" class="btn" id="signin" hidden>Sign in with Google</button>
-        <button type="button" class="btn btn-quiet" id="signout" hidden>Sign out</button>
-      </span>
+    <!-- Column headings, desktop only. The phone layout carries no headers. -->
+    <div class="list-head" aria-hidden="true" hidden>
+      <span class="t-over">Fit</span>
+      <span class="t-over">Role</span>
+      <span class="t-over">Call</span>
+      <span class="t-over">Posted</span>
+      <span class="t-over">Posting</span>
     </div>
-  </header>
 
-  <p class="notice" id="notice" hidden></p>
+    <ul class="rows" id="rows" aria-label="Job matches"></ul>
 
-  <main>
-    <table id="jobs">
-      <thead>
-        <tr>
-          <th class="col-score">Fit</th>
-          <th>Role</th>
-          <th>Company</th>
-          <th>Posted</th>
-          <th>Location</th>
-          <th>Call</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody id="rows"></tbody>
-    </table>
-
-    <p class="empty" id="empty" hidden>
-      No jobs scored yet. Run <code>python main.py</code> to populate this list.
-    </p>
+    <div class="empty" id="empty" hidden>
+      <p class="t-body" id="empty-title"></p>
+      <p class="t-sub sec" id="empty-detail"></p>
+      <button type="button" class="btn btn-secondary btn-sm" id="clear-filters" hidden>Clear filters</button>
+    </div>
   </main>
 
-  <!-- type="module" so app.js can import the auth helpers. -->
+  <nav class="tabbar" aria-label="Main" data-app>
+    <div class="capsule">
+      <a class="tab" href="/" aria-current="page">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="7" width="18" height="13" rx="3" />
+          <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18" />
+        </svg>
+        <span class="t-cap">Jobs</span>
+      </a>
+      <a class="tab" href="/settings.html">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
+          <circle cx="16" cy="7" r="2" />
+          <circle cx="10" cy="17" r="2" />
+        </svg>
+        <span class="t-cap">Settings</span>
+      </a>
+    </div>
+    <button type="button" class="fab" id="search-button" aria-label="Search and sort" aria-haspopup="dialog">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" />
+        <path d="m16 16 4 4" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Job details: a bottom sheet on a phone, a centred pop-up on desktop. -->
+  <dialog class="sheet" id="job-dialog" aria-labelledby="job-title">
+    <div class="sheet-body">
+      <span class="grabber" aria-hidden="true"></span>
+      <button type="button" class="icon-btn close" data-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div id="job-detail"></div>
+    </div>
+  </dialog>
+
+  <!-- Search & sort. -->
+  <dialog class="sheet narrow" id="search-dialog" aria-labelledby="search-title">
+    <div class="sheet-body">
+      <span class="grabber" aria-hidden="true"></span>
+      <button type="button" class="icon-btn close" data-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+
+      <div class="d-head">
+        <h2 class="t-title2" id="search-title">Search &amp; sort</h2>
+        <p class="t-foot sec" id="search-total"></p>
+      </div>
+
+      <label class="field" for="search-query">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="m16 16 4 4" />
+        </svg>
+        <input type="search" id="search-query" placeholder="Role, company or location" autocomplete="off"
+          enterkeyhint="search" aria-label="Search jobs">
+      </label>
+
+      <div class="block">
+        <span class="t-over sec" id="sort-heading">Sort by</span>
+        <div class="seg full" role="group" aria-labelledby="sort-heading">
+          <button type="button" data-sort="fit" aria-pressed="true">Fit</button>
+          <button type="button" data-sort="posted" aria-pressed="false">Posted</button>
+          <button type="button" data-sort="scored" aria-pressed="false">Scored</button>
+        </div>
+      </div>
+
+      <div class="block">
+        <span class="t-over sec">Show</span>
+        <div class="card">
+          <div class="srow">
+            <div class="grow">
+              <span class="t-body" id="new-switch-label">Only new since last visit</span>
+              <span class="t-foot sec" id="new-switch-detail"></span>
+            </div>
+            <button type="button" class="switch" id="new-switch" role="switch" aria-checked="false"
+              aria-labelledby="new-switch-label"></button>
+          </div>
+          <div class="srow">
+            <div class="grow">
+              <span class="t-body" id="stale-switch-label">Hide old-profile scores</span>
+              <span class="t-foot sec">Scored before your last profile edit</span>
+            </div>
+            <button type="button" class="switch" id="stale-switch" role="switch" aria-checked="false"
+              aria-labelledby="stale-switch-label"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-cta">
+        <button type="button" class="btn-cta" id="search-done" data-close>Show jobs</button>
+      </div>
+    </div>
+  </dialog>
+
   <script type="module" src="/app.js"></script>
 </body>
 

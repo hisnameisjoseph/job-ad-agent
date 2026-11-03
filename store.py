@@ -24,6 +24,20 @@ from models import JobPosting, ScoredJob
 log = logging.getLogger(__name__)
 
 
+def stamp_scored_at(scored: ScoredJob, now: Optional[int] = None) -> ScoredJob:
+    """Return `scored` with scored_at set, keeping any existing value.
+
+    Every backend calls this from put(), so "when was this scored" means the
+    same thing whichever store wrote the row. An existing value always wins: a
+    row copied from one store to another keeps its original age instead of
+    reappearing as new.
+    """
+    if scored.scored_at is not None:
+        return scored
+    stamp = int(time.time()) if now is None else now
+    return scored.model_copy(update={"scored_at": stamp})
+
+
 def job_key(job: JobPosting) -> str:
     """Cache key for a posting.
 
@@ -105,7 +119,7 @@ class JsonStore:
         return self._data.get(key)
 
     def put(self, key: str, scored: ScoredJob) -> None:
-        self._data[key] = scored
+        self._data[key] = stamp_scored_at(scored)
         self._pending += 1
         if self._pending >= self.flush_every:
             self.flush()
@@ -163,23 +177,41 @@ class DynamoStore:
         self._ttl_seconds = ttl_days * 24 * 3600
         self._metadata = metadata or {}
 
+    @staticmethod
+    def _from_item(item: dict) -> ScoredJob:
+        """Rebuild a ScoredJob from a table item. Raises on a bad payload.
+
+        Rows written before ScoredJob carried scored_at hold it only as a
+        top-level attribute (put() has always written one). Backfilling from
+        that attribute means existing rows get their true age in the viewer
+        rather than none at all. boto3 returns DynamoDB numbers as Decimal,
+        hence the int().
+        """
+        scored = ScoredJob.model_validate_json(item["payload"])
+        if scored.scored_at is None and item.get("scored_at") is not None:
+            scored = scored.model_copy(update={"scored_at": int(item["scored_at"])})
+        return scored
+
     def get(self, key: str) -> Optional[ScoredJob]:
         resp = self._table.get_item(Key={"job_key": key})
         item = resp.get("Item")
         if not item or "payload" not in item:
             return None
         try:
-            return ScoredJob.model_validate_json(item["payload"])
+            return self._from_item(item)
         except Exception:
             log.warning("Cached item %s no longer matches the schema.", key)
             return None
 
     def put(self, key: str, scored: ScoredJob) -> None:
         now = int(time.time())
+        scored = stamp_scored_at(scored, now)
         item = {
             "job_key": key,
             "payload": scored.model_dump_json(),
-            "scored_at": now,
+            # Mirrors the payload value, so the attribute and the payload can
+            # never disagree about a row's age.
+            "scored_at": scored.scored_at,
             "expires_at": now + self._ttl_seconds,  # DynamoDB TTL evicts this
             "fit_score": scored.score.fit_score,  # denormalised for eyeballing
             **self._metadata,
@@ -199,7 +231,7 @@ class DynamoStore:
             resp = self._table.scan(**kwargs)
             for item in resp.get("Items", []):
                 try:
-                    out[item["job_key"]] = ScoredJob.model_validate_json(item["payload"])
+                    out[item["job_key"]] = self._from_item(item)
                 except Exception:
                     continue
             if "LastEvaluatedKey" not in resp:

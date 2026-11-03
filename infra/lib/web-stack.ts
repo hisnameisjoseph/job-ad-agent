@@ -208,6 +208,66 @@ export class WebStack extends cdk.Stack {
       autoDeleteObjects: true,
     });
 
+    // Security headers on every response the site serves.
+    //
+    // The page keeps Cognito tokens in browser storage and renders text that
+    // came from third-party job ads, so the Content-Security-Policy is the
+    // backstop if an escaping bug ever lets markup through: no inline script,
+    // no inline style, no foreign script origin, and network access limited to
+    // exactly the two services the page talks to.
+    //
+    // connect-src names the API by REGIONAL WILDCARD rather than its exact
+    // URL, and that is forced, not lazy. The API's CORS rule needs this
+    // distribution's domain, so making the distribution depend on the API's
+    // URL would close a CloudFormation dependency cycle. The Cognito login
+    // domain has no such problem: its prefix is a plain string computed above.
+    const cognitoOrigin = `https://${domainPrefix}.auth.${this.region}.amazoncognito.com`;
+    const apiOrigins = `https://*.execute-api.${this.region}.amazonaws.com`;
+    const contentSecurityPolicy = [
+      "default-src 'self'",
+      "script-src 'self'",
+      "style-src 'self'",
+      "img-src 'self' data:",
+      "font-src 'self'",
+      `connect-src 'self' ${cognitoOrigin} ${apiOrigins}`,
+      "manifest-src 'self'",
+      "object-src 'none'",
+      "base-uri 'none'",
+      "form-action 'none'",
+      "frame-ancestors 'none'",
+      'upgrade-insecure-requests',
+    ].join('; ');
+
+    const securityHeaders = new cloudfront.ResponseHeadersPolicy(this, 'SecurityHeaders', {
+      responseHeadersPolicyName: 'job-ad-agent-security-headers',
+      comment: 'CSP, HSTS and friends for the job-ad-agent viewer',
+      securityHeadersBehavior: {
+        contentSecurityPolicy: { contentSecurityPolicy, override: true },
+        strictTransportSecurity: {
+          accessControlMaxAge: cdk.Duration.days(730),
+          includeSubdomains: true,
+          override: true,
+        },
+        contentTypeOptions: { override: true },
+        frameOptions: { frameOption: cloudfront.HeadersFrameOption.DENY, override: true },
+        // Posting links go to Adzuna and ATS boards; none of them needs to
+        // learn which page, or which job, the click came from.
+        referrerPolicy: {
+          referrerPolicy: cloudfront.HeadersReferrerPolicy.NO_REFERRER,
+          override: true,
+        },
+      },
+      customHeadersBehavior: {
+        customHeaders: [
+          {
+            header: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+            override: true,
+          },
+        ],
+      },
+    });
+
     const distribution = new cloudfront.Distribution(this, 'SiteDistribution', {
       comment: 'job-ad-agent viewer',
       defaultRootObject: 'index.html',
@@ -217,6 +277,7 @@ export class WebStack extends cdk.Stack {
         origin: origins.S3BucketOrigin.withOriginAccessControl(siteBucket),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
+        responseHeadersPolicy: securityHeaders,
       },
       // PRICE_CLASS_100 is the cheap default and would be actively wrong here:
       // it excludes Australia and New Zealand, so the one person who actually
@@ -342,6 +403,24 @@ export class WebStack extends cdk.Stack {
       },
     });
 
+    // Throttle the whole API. One person uses this, and a page load makes at
+    // most a couple of calls, so these limits never touch real use. What they
+    // cap is the bill if the API URL leaks: every request that reaches the
+    // authorizer still costs an invocation, signed in or not.
+    //
+    // HttpApi exposes no throttle option for its auto-created default stage,
+    // hence the escape hatch to the underlying CloudFormation resource.
+    const defaultStage = httpApi.defaultStage?.node.defaultChild as
+      | apigwv2.CfnStage
+      | undefined;
+    if (!defaultStage) {
+      throw new Error('ViewerApi has no default stage to throttle.');
+    }
+    defaultStage.defaultRouteSettings = {
+      throttlingRateLimit: 5,
+      throttlingBurstLimit: 20,
+    };
+
     httpApi.addRoutes({
       path: '/api/{proxy+}',
       // PUT for the settings and profile editors. Both are behind the same
@@ -368,7 +447,11 @@ export class WebStack extends cdk.Stack {
     // id is public by design.
     new s3deploy.BucketDeployment(this, 'DeploySite', {
       sources: [
-        s3deploy.Source.asset(path.join(__dirname, '..', '..', 'static')),
+        // static/package.json only tells Node to load these files as ES
+        // modules for the frontend unit tests. Browsers never need it.
+        s3deploy.Source.asset(path.join(__dirname, '..', '..', 'static'), {
+          exclude: ['package.json'],
+        }),
         s3deploy.Source.jsonData('config.json', {
           region: this.region,
           userPoolId: userPool.userPoolId,

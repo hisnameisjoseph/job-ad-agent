@@ -16,6 +16,47 @@ const TOKENS_KEY = "jobmatcher.tokens";
 const VERIFIER_KEY = "jobmatcher.pkce_verifier";
 const STATE_KEY = "jobmatcher.oauth_state";
 
+// "Stay signed in on reopen" without moving tokens out of sessionStorage.
+//
+// REMEMBER_KEY is a plain flag in localStorage meaning "this device has signed
+// in before and has not signed out". It holds no credential, so leaking it
+// leaks nothing. When a fresh session (a reopened home-screen app, a new tab)
+// finds no tokens but finds this flag, the page redirects to Cognito by
+// itself. Cognito's own session cookie then sends it straight back signed in,
+// with no button to tap and no Google prompt.
+//
+// SILENT_KEY limits that to one attempt per browser session. Without it, any
+// failure on the way back (an expired Cognito session the user then abandons,
+// a rejected account) would bounce the page to Cognito forever.
+const REMEMBER_KEY = "jobmatcher.remember_sign_in";
+const SILENT_KEY = "jobmatcher.silent_sign_in_attempted";
+
+// Storage can throw (Safari private mode, blocked site data). None of these
+// flags is essential, so every access degrades to "not set".
+const flags = {
+  get(store, key) {
+    try {
+      return store.getItem(key);
+    } catch {
+      return null;
+    }
+  },
+  set(store, key, value) {
+    try {
+      store.setItem(key, value);
+    } catch {
+      /* ignored: the flag is a convenience */
+    }
+  },
+  remove(store, key) {
+    try {
+      store.removeItem(key);
+    } catch {
+      /* ignored */
+    }
+  },
+};
+
 // Refresh this far before actual expiry, so a request can never leave with a
 // token that dies in flight.
 const EXPIRY_SKEW_MS = 60_000;
@@ -144,6 +185,9 @@ export async function signIn() {
 export async function signOut() {
   const cfg = await loadConfig();
   clearTokens();
+  // An explicit sign-out must stick: forget the device, or the next open
+  // would silently sign straight back in.
+  flags.remove(localStorage, REMEMBER_KEY);
   if (!cfg) return;
 
   // Also ends the Cognito session, otherwise "sign out" only forgets the
@@ -217,7 +261,27 @@ export async function completeSignIn() {
   storeTokenResponse(await res.json());
   sessionStorage.removeItem(VERIFIER_KEY);
   sessionStorage.removeItem(STATE_KEY);
+  flags.set(localStorage, REMEMBER_KEY, "1");
+  flags.remove(sessionStorage, SILENT_KEY);
   return null;
+}
+
+/**
+ * Sign back in without a tap, if this device has signed in before.
+ *
+ * Returns true when it has started a redirect to Cognito (the caller should
+ * stop rendering, the page is navigating away), false when the caller should
+ * show the sign-in screen instead. Only ever tries once per browser session.
+ */
+export async function resumeSignIn() {
+  const cfg = await loadConfig();
+  if (!cfg || readTokens()) return false;
+  if (flags.get(localStorage, REMEMBER_KEY) !== "1") return false;
+  if (flags.get(sessionStorage, SILENT_KEY)) return false;
+
+  flags.set(sessionStorage, SILENT_KEY, "1");
+  await signIn();
+  return true;
 }
 
 async function refreshTokens(cfg, refreshToken) {

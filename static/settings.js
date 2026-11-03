@@ -1,263 +1,275 @@
-// The settings page: edit the searches, the filter thresholds, and the
-// profile the model scores against.
+// The Settings page: account, the Adzuna searches, and the filter thresholds.
 //
-// Same auth story as app.js — deployed, every request carries a Cognito ID
-// token; locally there is no /config.json, auth reports itself off, and this
-// edits the very same profile.yaml and settings.yaml sitting in the repo. That
-// is deliberate: the settings page and your editor are one source of truth,
-// not two that drift.
+// Edits are made to a local draft and sent in one PUT /api/settings when you
+// press Save. The server validates the whole document and returns its own
+// normalised copy (trimmed queries, lowercased keywords), and the page
+// re-renders from THAT, so what you see is always what was stored.
+//
+// Locally (no /config.json) this edits settings.yaml in the repo, the same
+// file your editor sees. Deployed, it edits the copy in the config bucket that
+// the scoring run reads each morning.
 
-import {
-  apiBase,
-  authEnabled,
-  completeSignIn,
-  currentEmail,
-  getIdToken,
-  signOut,
-} from "./auth.js";
+import { signOut } from "./auth.js";
+import { api, errorDetail, SessionExpiredError } from "./api.js";
+import { startSession, showSignIn } from "./session.js";
+import { bindDialog, el, icon, notice } from "./ui.js";
 
 const $ = (id) => document.getElementById(id);
 
-function notice(message) {
-  const node = $("notice");
-  if (!message) {
-    node.hidden = true;
+const state = {
+  saved: null, // the server's copy
+  draft: null, // what the form currently says
+  editing: null, // index of the search being edited, or -1 when adding
+};
+
+let searchDialog;
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+const isDirty = () => JSON.stringify(state.draft) !== JSON.stringify(state.saved);
+
+function status(message, kind = "") {
+  const node = $("settings-status");
+  node.textContent = message;
+  node.dataset.kind = kind;
+}
+
+// --- Account -----------------------------------------------------------------
+
+function renderAccount(session) {
+  if (session.mode === "local") {
+    $("avatar").textContent = "";
+    $("account-name").textContent = "Running on your computer";
+    $("account-detail").textContent = "Sign-in is off locally. Changes edit settings.yaml in the repo.";
+    $("sign-out").hidden = true;
     return;
   }
-  node.textContent = message; // textContent: messages can come from the API
-  node.hidden = false;
+  const email = session.email || "Signed in";
+  $("avatar").textContent = email.charAt(0).toUpperCase();
+  $("account-name").textContent = email;
+  $("account-detail").textContent = "Signed in with Google";
+  $("sign-out").hidden = false;
 }
 
-/** Transient status beside a save button. */
-function status(id, message, kind = "") {
-  const node = $(id);
-  node.textContent = message;
-  node.className = `status ${kind}`;
+// --- Searches ------------------------------------------------------------------
+
+function renderSearches() {
+  const items = state.draft.searches.map((search, index) => {
+    const li = el("li");
+    const button = el("button", "srow srow-button");
+    button.type = "button";
+    button.dataset.index = String(index);
+    const text = el("span", "grow");
+    text.append(el("span", "t-body", search.query), el("span", "t-sub ter", search.location));
+    const chev = icon("chevronRight", 16);
+    chev.classList.add("chev");
+    button.append(text, chev);
+    button.setAttribute("aria-label", `Edit search: ${search.query} in ${search.location}`);
+    li.appendChild(button);
+    return li;
+  });
+  $("searches").replaceChildren(...items);
+
+  const n = state.draft.max_results_per_search;
+  $("searches-note").textContent =
+    `Each search pulls up to ${n} Adzuna ${n === 1 ? "result" : "results"} every morning.`;
 }
 
-async function api(path, options = {}) {
-  const base = await apiBase();
-  const token = await getIdToken();
-  const headers = { ...(options.headers || {}) };
-  if (token) headers.Authorization = `Bearer ${token}`;
+function openSearchEditor(index) {
+  state.editing = index;
+  const existing = index >= 0 ? state.draft.searches[index] : null;
+  $("search-dialog-title").textContent = existing ? "Edit search" : "Add search";
+  $("search-query").value = existing?.query ?? "";
+  $("search-location").value = existing?.location ?? (state.draft.searches[0]?.location || "");
+  $("search-error").hidden = true;
+  // Deleting the last search is refused by the server, so it is not offered.
+  $("search-delete").hidden = !existing || state.draft.searches.length <= 1;
+  searchDialog.open();
+  $("search-query").focus();
+}
 
-  const res = await fetch(`${base}${path}`, { ...options, headers });
-  if (res.status === 401 || res.status === 403) {
-    throw new Error("Your session has expired. Please reload and sign in again.");
+function commitSearch() {
+  const query = $("search-query").value.trim();
+  const location = $("search-location").value.trim();
+  if (!query || !location) {
+    $("search-error").textContent = "Enter both what to search for and where.";
+    $("search-error").hidden = false;
+    return;
   }
-  return res;
+  const entry = { query, location };
+  if (state.editing >= 0) state.draft.searches[state.editing] = entry;
+  else state.draft.searches.push(entry);
+  searchDialog.close();
+  draftChanged();
 }
 
-/** Pull the API's error detail out, since that is the useful part. */
-async function errorDetail(res) {
-  try {
-    const body = await res.json();
-    if (typeof body.detail === "string") return body.detail;
-    if (Array.isArray(body.detail) && body.detail.length) {
-      // FastAPI's own validation errors arrive as a list of objects.
-      const first = body.detail[0];
-      return `${(first.loc || []).slice(1).join(".")}: ${first.msg}`;
-    }
-    return JSON.stringify(body);
-  } catch {
-    return `Request failed (${res.status}).`;
-  }
+function deleteSearch() {
+  if (state.editing < 0 || state.draft.searches.length <= 1) return;
+  state.draft.searches.splice(state.editing, 1);
+  searchDialog.close();
+  draftChanged();
 }
 
-// --- Searches --------------------------------------------------------------
+// --- Filters -------------------------------------------------------------------
 
-function searchRow(query = "", location = "") {
-  const row = document.createElement("div");
-  row.className = "search-row";
-
-  const q = document.createElement("input");
-  q.type = "text";
-  q.value = query;
-  q.placeholder = "graduate software engineer";
-  q.setAttribute("aria-label", "Search query");
-  q.dataset.field = "query";
-
-  const loc = document.createElement("input");
-  loc.type = "text";
-  loc.value = location;
-  loc.placeholder = "Melbourne";
-  loc.setAttribute("aria-label", "Location");
-  loc.dataset.field = "location";
-
-  const remove = document.createElement("button");
-  remove.type = "button";
-  remove.className = "btn btn-danger";
-  remove.textContent = "Remove";
-  remove.setAttribute("aria-label", `Remove search: ${query || "new"}`);
-  remove.addEventListener("click", () => row.remove());
-
-  row.append(q, loc, remove);
-  return row;
-}
-
-function renderSearches(searches) {
-  const box = $("searches");
-  box.replaceChildren();
-  searches.forEach((s) => box.appendChild(searchRow(s.query, s.location)));
-}
-
-function readSearches() {
-  return [...$("searches").querySelectorAll(".search-row")]
-    .map((row) => ({
-      query: row.querySelector('[data-field="query"]').value.trim(),
-      location: row.querySelector('[data-field="location"]').value.trim(),
-    }))
-    // Drop rows the user blanked rather than sending them: the API rejects
-    // empty strings, and a half-filled row the user forgot about should not
-    // block saving the rest.
-    .filter((s) => s.query && s.location);
-}
-
-// --- Settings form ---------------------------------------------------------
-
-function fillSettings(s) {
-  renderSearches(s.searches);
-  $("per-search").value = s.max_results_per_search;
-  $("max-years").value = s.filters.max_years_experience ?? "";
-  $("max-age").value = s.filters.max_posting_age_days ?? "";
-  $("top-n").value = s.filters.top_n;
-  $("drop-blockers").value = String(s.filters.drop_hard_blockers);
-  $("exclude-kw").value = s.filters.exclude_title_keywords.join(", ");
-}
-
-/** Blank means "disabled" (null), not zero. */
-function optionalNumber(id) {
-  const raw = $(id).value.trim();
+/** Blank means "turned off" (null), not zero. */
+function optionalNumber(input) {
+  const raw = input.value.trim();
   return raw === "" ? null : Number(raw);
 }
 
-function readSettings() {
-  return {
-    searches: readSearches(),
-    max_results_per_search: Number($("per-search").value),
-    filters: {
-      exclude_title_keywords: $("exclude-kw")
-        .value.split(",")
-        .map((k) => k.trim())
-        .filter(Boolean),
-      max_years_experience: optionalNumber("max-years"),
-      max_posting_age_days: optionalNumber("max-age"),
-      drop_hard_blockers: $("drop-blockers").value === "true",
-      top_n: Number($("top-n").value),
-    },
-  };
+function renderFilters() {
+  const f = state.draft.filters;
+  $("max-years").value = f.max_years_experience ?? "";
+  $("max-age").value = f.max_posting_age_days ?? "";
+  $("per-search").value = state.draft.max_results_per_search;
+  $("top-n").value = f.top_n;
+  $("drop-blockers").setAttribute("aria-checked", String(f.drop_hard_blockers));
+  $("exclude-kw").value = f.exclude_title_keywords.join(", ");
 }
 
-async function saveSettings() {
-  const body = readSettings();
-  if (!body.searches.length) {
-    status("settings-status", "Add at least one search before saving.", "error");
-    return;
+function readFiltersIntoDraft() {
+  const f = state.draft.filters;
+  f.max_years_experience = optionalNumber($("max-years"));
+  f.max_posting_age_days = optionalNumber($("max-age"));
+  f.top_n = Number($("top-n").value);
+  f.exclude_title_keywords = $("exclude-kw")
+    .value.split(",")
+    .map((k) => k.trim())
+    .filter(Boolean);
+  state.draft.max_results_per_search = Number($("per-search").value);
+}
+
+// --- Draft lifecycle -------------------------------------------------------------
+
+function draftChanged() {
+  renderSearches();
+  const dirty = isDirty();
+  $("save-settings").disabled = !dirty;
+  $("discard-settings").hidden = !dirty;
+  if (dirty) status("Unsaved changes");
+  else if ($("settings-status").dataset.kind !== "ok") status("");
+}
+
+function render() {
+  renderSearches();
+  renderFilters();
+  draftChanged();
+}
+
+async function save() {
+  // Let the browser explain out-of-range numbers before a round trip.
+  for (const id of ["max-years", "max-age", "per-search", "top-n"]) {
+    if (!$(id).checkValidity()) {
+      $(id).reportValidity();
+      return;
+    }
   }
 
-  status("settings-status", "Saving…");
+  $("save-settings").disabled = true;
+  status("Saving…");
   try {
     const res = await api("/api/settings", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify(state.draft),
     });
     if (!res.ok) {
-      status("settings-status", await errorDetail(res), "error");
+      status(await errorDetail(res), "error");
+      $("save-settings").disabled = false;
       return;
     }
-    // Re-render from the SERVER's copy, not the form: it normalises values
-    // (trimming queries, lowercasing keywords), and showing anything else
-    // would misrepresent what was actually stored.
-    fillSettings(await res.json());
-    status("settings-status", "Saved. The next run will use these.", "ok");
+    state.saved = await res.json();
+    state.draft = clone(state.saved);
+    render();
+    status("Saved. The next run will use these.", "ok");
   } catch (err) {
-    status("settings-status", err.message, "error");
+    if (err instanceof SessionExpiredError) {
+      showSignIn(err.message);
+      return;
+    }
+    status(err.message, "error");
+    $("save-settings").disabled = false;
   }
 }
 
-// --- Profile ---------------------------------------------------------------
-
-async function loadProfile() {
-  const res = await api("/api/profile");
-  if (res.status === 404) {
-    $("profile-editor").value = "";
-    status("profile-status", "No profile stored yet — write one and save.", "");
-    return;
-  }
-  if (!res.ok) {
-    status("profile-status", await errorDetail(res), "error");
-    return;
-  }
-  $("profile-editor").value = await res.text();
-  status("profile-status", "");
+function discard() {
+  state.draft = clone(state.saved);
+  render();
+  status("");
 }
 
-async function saveProfile() {
-  status("profile-status", "Saving…");
-  try {
-    const res = await api("/api/profile", {
-      method: "PUT",
-      headers: { "Content-Type": "text/plain" },
-      body: $("profile-editor").value,
+// --- Page --------------------------------------------------------------------------
+
+function wire() {
+  searchDialog = bindDialog($("search-dialog"));
+
+  $("searches").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-index]");
+    if (button) openSearchEditor(Number(button.dataset.index));
+  });
+  $("add-search").addEventListener("click", () => openSearchEditor(-1));
+  $("search-save").addEventListener("click", commitSearch);
+  $("search-delete").addEventListener("click", deleteSearch);
+  for (const id of ["search-query", "search-location"]) {
+    $(id).addEventListener("keydown", (event) => {
+      if (event.key === "Enter") commitSearch();
     });
-    if (!res.ok) {
-      status("profile-status", await errorDetail(res), "error");
-      return;
-    }
-    status(
-      "profile-status",
-      "Saved. Existing scores are now marked against an older profile.",
-      "ok",
-    );
-  } catch (err) {
-    status("profile-status", err.message, "error");
   }
-}
 
-// --- Page ------------------------------------------------------------------
+  for (const id of ["max-years", "max-age", "per-search", "top-n", "exclude-kw"]) {
+    $(id).addEventListener("input", () => {
+      readFiltersIntoDraft();
+      draftChanged();
+    });
+  }
+  $("drop-blockers").addEventListener("click", () => {
+    state.draft.filters.drop_hard_blockers = !state.draft.filters.drop_hard_blockers;
+    $("drop-blockers").setAttribute("aria-checked", String(state.draft.filters.drop_hard_blockers));
+    draftChanged();
+  });
+
+  $("save-settings").addEventListener("click", save);
+  $("discard-settings").addEventListener("click", discard);
+  $("sign-out").addEventListener("click", () => signOut());
+
+  // Leaving with unsaved edits loses them without a word otherwise.
+  window.addEventListener("beforeunload", (event) => {
+    if (state.saved && isDirty()) event.preventDefault();
+  });
+}
 
 async function main() {
-  $("add-search").addEventListener("click", () =>
-    $("searches").appendChild(searchRow()),
-  );
-  $("save-settings").addEventListener("click", saveSettings);
-  $("save-profile").addEventListener("click", saveProfile);
-  $("reload-profile").addEventListener("click", loadProfile);
-  $("signout").addEventListener("click", () => signOut());
+  wire();
 
-  // Same guarded sequence as app.js: these all reach the network, and an
-  // uncaught rejection would leave the page on "loading…" saying nothing.
+  let session;
   try {
-    const authError = await completeSignIn();
-    if (authError) notice(authError);
-
-    if (await authEnabled()) {
-      $("authbar").hidden = false;
-      if (!(await getIdToken())) {
-        $("count").textContent = "sign in on the matches page first";
-        return;
-      }
-      $("signout").hidden = false;
-      $("who").textContent = (await currentEmail()) || "";
-    }
+    session = await startSession();
   } catch (err) {
-    $("count").textContent = "Sign-in is unavailable.";
-    notice(`${err.message} Please reload the page to try again.`);
+    $("status-line").textContent = "Sign-in is unavailable";
+    notice($("notice"), "Sign-in is unavailable", `${err.message} Reload the page to try again.`);
     return;
   }
+  if (session.mode === "stop") return;
 
   try {
     const res = await api("/api/settings");
     if (!res.ok) throw new Error(await errorDetail(res));
-    fillSettings(await res.json());
-    await loadProfile();
-    $("panels").hidden = false;
-    $("count").textContent = "edit and save";
+    state.saved = await res.json();
   } catch (err) {
-    $("count").textContent = "Could not load settings.";
-    notice(err.message);
+    if (err instanceof SessionExpiredError) {
+      showSignIn(err.message);
+      return;
+    }
+    $("status-line").textContent = "Could not load settings";
+    notice($("notice"), "Could not load settings", err.message);
+    return;
   }
+
+  state.draft = clone(state.saved);
+  renderAccount(session);
+  render();
+  $("status-line").textContent = "What to search for, and what to filter out";
+  $("panels").hidden = false;
 }
 
 main();

@@ -84,6 +84,13 @@ and the test framework has no business in a deployed artefact:
 ```bash
 pip install -r requirements-dev.txt
 pytest -q
+
+# Frontend list logic (filter, sort, "new since last visit"). Node's built-in
+# test runner, nothing to install:
+node --test tests/js/view.test.mjs
+
+# Infrastructure assertions (security headers, throttling, IAM scope):
+cd infra && npm test
 ```
 
 Free keys:
@@ -216,9 +223,24 @@ or **⋮ → Add to Home screen** (Android). A manifest and icons ship with the
 site, so it opens full-screen with its own icon and you never have to find the
 link again.
 
-The job list is built for a phone: each row becomes a card with every field
-visible, including the link to the posting. The settings page is deliberately
-desktop-first, because the profile editor is a YAML document.
+The interface follows a Flighty-style design system: light by default with a
+matching dark mode, a floating Jobs | Settings tab bar, and colour used only
+for meaning (green Apply, amber Maybe, red Skip, blue for actions and New).
+
+- **Phone:** each row shows the fit score, role, company, location and the
+  call, plus a blue **New** label for jobs scored since your last visit on that
+  device and a grey **Old profile** label for scores made before your last
+  profile edit. Tap a row for a bottom sheet with the reasoning and the
+  Meets / Partial / Missing breakdown.
+- **Desktop:** the same rows gain the one-line reason, the posted date and a
+  direct Open link; details open in a centred pop-up.
+- **Search & sort** (the round button): text search, sort by fit, posted date
+  or when scored, and switches for "only new" and "hide old-profile scores".
+  Your choices are remembered per device.
+- **Staying signed in:** reopening the home-screen app signs you back in
+  automatically (one silent redirect through Cognito). Signing out stops this.
+- The profile editor works on a phone but is built for a desktop, because it is
+  a YAML document.
 
 Design notes:
 

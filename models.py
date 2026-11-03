@@ -99,6 +99,16 @@ class ScoredJob(BaseModel):
     prompt_version: Optional[str] = None
     model: Optional[str] = None
 
+    # When this score was first stored, as Unix epoch seconds (UTC). Powers the
+    # viewer's "new since your last visit" marker and its "sort by scored".
+    #
+    # Stamped by the store on first write, and preserved on every later write,
+    # so copying a row between backends (migrate_to_dynamo.py) keeps its real
+    # age. None for rows written before this field existed, and the viewer
+    # treats None as "not new": an unknown age must never light up hundreds of
+    # old rows as fresh.
+    scored_at: Optional[int] = None
+
     def is_stale(self, current_profile_hash: str) -> bool:
         """True only when we KNOW this was scored against a different profile."""
         return (

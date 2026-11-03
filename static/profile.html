@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Jobs">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/icon-192.png" type="image/png">
+
+  <title>Profile · Job Matches</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <main class="page page-editor" id="profile-page" data-app>
+    <!-- Pushed screen: back, centred title, Save. -->
+    <div class="navbar">
+      <a class="back" href="/settings.html">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m15 5-7 7 7 7" />
+        </svg>
+        Settings
+      </a>
+      <h1 class="t-headline navbar-title">Profile</h1>
+      <button type="button" class="btn btn-primary btn-sm" id="save-profile" disabled>Save</button>
+    </div>
+
+    <div class="band" id="notice" role="alert" hidden></div>
+
+    <div class="band phone-only" id="desktop-hint">
+      <span class="t-headline band-title">Easier on a computer</span>
+      <span class="t-sub sec">This is a long document. Open this page on your laptop for a full-size editor.</span>
+    </div>
+
+    <div class="editor" id="editor" hidden>
+      <label class="t-over sec" for="profile-editor">profile.yaml</label>
+      <textarea class="yaml" id="profile-editor" spellcheck="false" autocomplete="off" autocapitalize="off"
+        autocorrect="off" aria-describedby="profile-help"></textarea>
+      <p class="t-foot sec" id="profile-help">
+        Free-form YAML, read by the AI as prose. Saving tags existing scores
+        <b>Old profile</b> until they are rescored.
+      </p>
+      <div class="editor-actions">
+        <p class="t-foot sec save-status" id="profile-status" aria-live="polite"></p>
+        <button type="button" class="btn-text" id="discard-profile" hidden>Discard changes</button>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tabbar" aria-label="Main" data-app>
+    <div class="capsule">
+      <a class="tab" href="/">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="7" width="18" height="13" rx="3" />
+          <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18" />
+        </svg>
+        <span class="t-cap">Jobs</span>
+      </a>
+      <a class="tab" href="/settings.html" aria-current="page">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
+          <circle cx="16" cy="7" r="2" />
+          <circle cx="10" cy="17" r="2" />
+        </svg>
+        <span class="t-cap">Settings</span>
+      </a>
+    </div>
+  </nav>
+
+  <script type="module" src="/profile.js"></script>
+</body>
+
+</html>

@@ -4,121 +4,183 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#121212">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Jobs">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/icon-192.png" type="image/png">
-  <title>Settings — Job Matcher</title>
+
+  <title>Settings · Job Matches</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-  <header class="masthead">
-    <div class="masthead-main">
-      <h1>settings</h1>
-      <p class="count" id="count">loading&hellip;</p>
-    </div>
-    <div class="authbar">
-      <span class="authbar" id="authbar" hidden>
-        <span class="who" id="who"></span>
-        <button type="button" class="btn btn-quiet" id="signout" hidden>Sign out</button>
-      </span>
-    </div>
-  </header>
+  <main class="page page-narrow" id="settings-page" data-app>
+    <header class="root-head">
+      <h1 class="t-large">Settings</h1>
+      <p class="t-foot sec" id="status-line" aria-live="polite">Loading&hellip;</p>
+    </header>
 
-  <nav class="page-nav">
-    <a href="/">Matches</a>
-    <a href="/settings.html" aria-current="page">Settings</a>
+    <div class="band" id="notice" role="alert" hidden></div>
+
+    <div id="panels" hidden>
+      <!-- Account ------------------------------------------------------- -->
+      <section class="set-sec" aria-labelledby="account-heading">
+        <h2 class="t-over" id="account-heading">Account</h2>
+        <div class="card">
+          <div class="srow">
+            <span class="avatar" id="avatar" aria-hidden="true"></span>
+            <div class="grow">
+              <span class="t-headline" id="account-name"></span>
+              <span class="t-sub sec" id="account-detail"></span>
+            </div>
+          </div>
+          <button type="button" class="srow srow-button destructive" id="sign-out" hidden>Sign out</button>
+        </div>
+      </section>
+
+      <!-- Searches ------------------------------------------------------ -->
+      <section class="set-sec" aria-labelledby="searches-heading">
+        <h2 class="t-over" id="searches-heading">Searches</h2>
+        <div class="card">
+          <ul class="slist" id="searches"></ul>
+          <button type="button" class="srow srow-button add" id="add-search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            Add search
+          </button>
+        </div>
+        <p class="t-foot sec" id="searches-note"></p>
+      </section>
+
+      <!-- Filters ------------------------------------------------------- -->
+      <section class="set-sec" aria-labelledby="filters-heading">
+        <h2 class="t-over" id="filters-heading">Filters</h2>
+        <div class="card">
+          <label class="srow" for="max-years">
+            <span class="grow"><span class="t-body">Max years of experience</span>
+              <span class="t-foot sec">Leave blank to turn off</span></span>
+            <input class="num" type="number" id="max-years" min="0" max="40" step="1" inputmode="numeric">
+            <span class="unit sec">years</span>
+          </label>
+          <label class="srow" for="max-age">
+            <span class="grow"><span class="t-body">Ignore postings older than</span>
+              <span class="t-foot sec">Leave blank to turn off</span></span>
+            <input class="num" type="number" id="max-age" min="1" max="365" step="1" inputmode="numeric">
+            <span class="unit sec">days</span>
+          </label>
+          <label class="srow" for="per-search">
+            <span class="grow"><span class="t-body">Results per search</span>
+              <span class="t-foot sec">Each result can cost one AI call</span></span>
+            <input class="num" type="number" id="per-search" min="1" max="100" step="1" inputmode="numeric" required>
+            <span class="unit sec">jobs</span>
+          </label>
+          <label class="srow" for="top-n">
+            <span class="grow"><span class="t-body">Rows in the terminal table</span>
+              <span class="t-foot sec">Only affects <code>python main.py</code></span></span>
+            <input class="num" type="number" id="top-n" min="1" max="500" step="1" inputmode="numeric" required>
+            <span class="unit sec">rows</span>
+          </label>
+          <div class="srow">
+            <span class="grow"><span class="t-body" id="blockers-label">Hide jobs with hard blockers</span>
+              <span class="t-foot sec">Citizenship or clearance you can't meet</span></span>
+            <button type="button" class="switch" id="drop-blockers" role="switch" aria-checked="true"
+              aria-labelledby="blockers-label"></button>
+          </div>
+          <label class="srow srow-stack" for="exclude-kw">
+            <span class="grow"><span class="t-body">Skip titles containing</span>
+              <span class="t-foot sec">Comma separated, whole words</span></span>
+            <span class="field field-inline"><input type="text" id="exclude-kw"
+                placeholder="senior, principal, manager" autocomplete="off" spellcheck="false"></span>
+          </label>
+        </div>
+        <p class="t-foot sec">Changes apply to your list straight away and to the next 7:00 am run.</p>
+      </section>
+
+      <div class="save-bar">
+        <button type="button" class="btn-cta" id="save-settings" disabled>Save changes</button>
+        <button type="button" class="btn-text" id="discard-settings" hidden>Discard changes</button>
+        <p class="t-foot sec save-status" id="settings-status" aria-live="polite"></p>
+      </div>
+
+      <!-- Profile ------------------------------------------------------- -->
+      <section class="set-sec" aria-labelledby="profile-heading">
+        <h2 class="t-over" id="profile-heading">Profile</h2>
+        <div class="card">
+          <a class="srow srow-button" href="/profile.html">
+            <span class="grow"><span class="t-body">Edit profile</span>
+              <span class="t-sub ter">The skills and experience every job is scored against</span></span>
+            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m9 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <nav class="tabbar" aria-label="Main" data-app>
+    <div class="capsule">
+      <a class="tab" href="/">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="7" width="18" height="13" rx="3" />
+          <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18" />
+        </svg>
+        <span class="t-cap">Jobs</span>
+      </a>
+      <a class="tab" href="/settings.html" aria-current="page">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
+          <circle cx="16" cy="7" r="2" />
+          <circle cx="10" cy="17" r="2" />
+        </svg>
+        <span class="t-cap">Settings</span>
+      </a>
+    </div>
   </nav>
 
-  <p class="notice" id="notice" hidden></p>
+  <!-- Add or edit one search. -->
+  <dialog class="sheet narrow" id="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="sheet-body">
+      <span class="grabber" aria-hidden="true"></span>
+      <button type="button" class="icon-btn close" data-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+      <div class="d-head">
+        <h2 class="t-title2" id="search-dialog-title">Edit search</h2>
+        <p class="t-foot sec">Pulled from Adzuna every morning.</p>
+      </div>
 
-  <main id="panels" hidden>
-    <!-- Searches ------------------------------------------------------- -->
-    <section class="panel">
-      <h2>Job searches</h2>
-      <p class="hint">
-        What to pull from Adzuna. Broad is fine — these only decide which jobs
-        enter the funnel, and the model ranks by fit afterwards. Changes apply
-        to the next scoring run.
-      </p>
-      <div id="searches"></div>
-      <div class="actions">
-        <button type="button" class="btn" id="add-search">+ Add search</button>
+      <div class="block">
+        <label class="t-over sec" for="search-query">What</label>
+        <span class="field"><input type="text" id="search-query" maxlength="120" placeholder="graduate software engineer"
+            autocomplete="off"></span>
       </div>
-    </section>
+      <div class="block">
+        <label class="t-over sec" for="search-location">Where</label>
+        <span class="field"><input type="text" id="search-location" maxlength="120" placeholder="Melbourne"
+            autocomplete="off"></span>
+      </div>
+      <p class="t-foot field-error" id="search-error" role="alert" hidden></p>
 
-    <!-- Thresholds ----------------------------------------------------- -->
-    <section class="panel">
-      <h2>Filters</h2>
-      <p class="hint">
-        Applied before the model runs, to save calls, and again when the list is
-        displayed — so changing these re-filters jobs you have already scored,
-        immediately, with no rescore needed.
-      </p>
-      <div class="field-grid">
-        <div class="field">
-          <label for="max-years">Max years of experience</label>
-          <input type="number" id="max-years" min="0" max="40">
-          <p class="note">Drop postings asking for this many years or more. Blank disables.</p>
-        </div>
-        <div class="field">
-          <label for="max-age">Max posting age (days)</label>
-          <input type="number" id="max-age" min="1" max="365">
-          <p class="note">Undated postings are always kept. Blank disables.</p>
-        </div>
-        <div class="field">
-          <label for="per-search">Results per search</label>
-          <input type="number" id="per-search" min="1" max="100">
-          <p class="note">Volume dial. Every result is a candidate LLM call.</p>
-        </div>
-        <div class="field">
-          <label for="top-n">Rows in the terminal table</label>
-          <input type="number" id="top-n" min="1" max="500">
-          <p class="note">Only affects <code>python main.py</code>, not this page.</p>
-        </div>
-        <div class="field">
-          <label for="drop-blockers">Hard blockers</label>
-          <select id="drop-blockers">
-            <option value="true">Hide roles with blockers</option>
-            <option value="false">Show them anyway</option>
-          </select>
-          <p class="note">Citizenship or clearance requirements you cannot meet.</p>
-        </div>
-        <div class="field">
-          <label for="exclude-kw">Excluded title words</label>
-          <input type="text" id="exclude-kw" placeholder="senior, principal, manager">
-          <p class="note">Comma separated. Whole-word title matches are skipped.</p>
-        </div>
+      <div class="block-cta">
+        <button type="button" class="btn-cta" id="search-save">Done</button>
+        <button type="button" class="btn-text destructive" id="search-delete" hidden>Delete search</button>
       </div>
-      <div class="actions">
-        <button type="button" class="btn btn-primary" id="save-settings">Save settings</button>
-        <span class="status" id="settings-status"></span>
-      </div>
-    </section>
-
-    <!-- Profile -------------------------------------------------------- -->
-    <section class="panel">
-      <h2>Profile</h2>
-      <p class="desktop-note">
-        This one is built for a desktop. It is a YAML document, and editing it
-        on a phone keyboard is not a good time.
-      </p>
-      <p class="hint">
-        The document every job is scored against. Free-form YAML on purpose —
-        it is fed to the model as prose, so there is no schema to fight. Saving
-        marks existing scores as having been made against an older profile;
-        they are re-scored as postings come back around.
-      </p>
-      <textarea id="profile-editor" spellcheck="false" autocomplete="off"
-                aria-label="profile.yaml"></textarea>
-      <div class="actions">
-        <button type="button" class="btn btn-primary" id="save-profile">Save profile</button>
-        <button type="button" class="btn btn-quiet" id="reload-profile">Discard changes</button>
-        <span class="status" id="profile-status"></span>
-      </div>
-    </section>
-  </main>
+    </div>
+  </dialog>
 
   <script type="module" src="/settings.js"></script>
 </body>

@@ -177,6 +177,48 @@ describe('WebStack', () => {
     }
   });
 
+  test('every site response carries the security headers', () => {
+    stacks().web.hasResourceProperties('AWS::CloudFront::Distribution', {
+      DistributionConfig: Match.objectLike({
+        DefaultCacheBehavior: Match.objectLike({
+          ResponseHeadersPolicyId: Match.anyValue(),
+        }),
+      }),
+    });
+  });
+
+  test('the CSP forbids inline script and foreign script origins', () => {
+    // The page renders job-ad text. If an escaping bug ever lets markup
+    // through, this policy is what stops it from running.
+    const policies = stacks().web.findResources('AWS::CloudFront::ResponseHeadersPolicy');
+    const configs = Object.values(policies).map(
+      (p: any) => p.Properties.ResponseHeadersPolicyConfig,
+    );
+    expect(configs).toHaveLength(1);
+
+    const headers = configs[0].SecurityHeadersConfig;
+    const csp = JSON.stringify(headers.ContentSecurityPolicy.ContentSecurityPolicy);
+    expect(csp).toContain("script-src 'self'");
+    expect(csp).toContain("frame-ancestors 'none'");
+    expect(csp).not.toContain('unsafe-inline');
+    expect(csp).not.toContain('unsafe-eval');
+    // The two services the page calls: Cognito and API Gateway.
+    expect(csp).toContain('amazoncognito.com');
+    expect(csp).toContain('execute-api');
+
+    expect(headers.StrictTransportSecurity.AccessControlMaxAgeSec).toBeGreaterThanOrEqual(31536000);
+    expect(headers.FrameOptions.FrameOption).toBe('DENY');
+  });
+
+  test('the API is throttled', () => {
+    stacks().web.hasResourceProperties('AWS::ApiGatewayV2::Stage', {
+      DefaultRouteSettings: Match.objectLike({
+        ThrottlingRateLimit: Match.anyValue(),
+        ThrottlingBurstLimit: Match.anyValue(),
+      }),
+    });
+  });
+
   test('the site bucket is private', () => {
     stacks().web.hasResourceProperties('AWS::S3::Bucket', {
       PublicAccessBlockConfiguration: {

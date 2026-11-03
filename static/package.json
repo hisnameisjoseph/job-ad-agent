@@ -1,0 +1,5 @@
+{
+  "//": "Tells Node to treat these files as ES modules, which browsers already do. Only the frontend unit tests (tests/js) need it; it is excluded from the website deploy.",
+  "private": true,
+  "type": "module"
+}

@@ -59,22 +59,46 @@ class AdzunaSource(JobSource):
             params["sort_by"] = self.sort_by
 
         url = _BASE.format(country=self.country, page=page)
-        resp = httpx.get(url, params=params, timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
+
+        # Credentials travel as query params, and httpx puts the full URL in
+        # its exception messages. Re-raise WITHOUT the original ('from None'
+        # suppresses the chained cause) so app_key never reaches a traceback,
+        # a terminal scrollback, or CloudWatch.
+        try:
+            resp = httpx.get(url, params=params, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+        except httpx.HTTPStatusError as e:
+            detail = (e.response.text or "").strip().replace("\n", " ")[:300]
+            raise RuntimeError(
+                f"Adzuna returned {e.response.status_code} for query={query!r} "
+                f"location={location!r}: {detail or '(empty body)'}"
+            ) from None
+        except httpx.HTTPError as e:
+            raise RuntimeError(
+                f"Adzuna request failed ({type(e).__name__}) for "
+                f"query={query!r} location={location!r}"
+            ) from None
+        except ValueError as e:  # resp.json() on a non-JSON body
+            raise RuntimeError(
+                f"Adzuna sent a non-JSON response for query={query!r}: {e}"
+            ) from None
 
         jobs: list[JobPosting] = []
         for r in data.get("results", []):
-            description = r.get("description", "") or ""
+            description = r.get("description") or ""
+            job_id = r.get("id")
+            if not job_id:
+                continue  # a null id would collide with every other null id
             jobs.append(
                 JobPosting(
-                    id=str(r.get("id", "")),
+                    id=str(job_id),
                     source=self.name,
                     title=(r.get("title") or "").strip(),
                     company=(r.get("company") or {}).get("display_name"),
                     location=(r.get("location") or {}).get("display_name"),
                     description=description,
-                    url=r.get("redirect_url", ""),
+                    url=r.get("redirect_url") or "",
                     salary_min=r.get("salary_min"),
                     salary_max=r.get("salary_max"),
                     created=r.get("created"),

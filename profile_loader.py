@@ -6,6 +6,7 @@ text. The scorer and (later) the cover-letter generator both consume this.
 
 from __future__ import annotations
 
+import hashlib
 import os
 
 import yaml
@@ -23,3 +24,14 @@ def load_profile(path: str = "profile.yaml") -> dict:
 def profile_to_text(profile: dict) -> str:
     """Flatten the profile into a readable block for prompting."""
     return yaml.safe_dump(profile, sort_keys=False, allow_unicode=True).strip()
+
+
+def profile_fingerprint(profile_text: str) -> str:
+    """Short stable hash of the exact text the model was prompted with.
+
+    Defined once, here, because it is computed in three places (the CLI run,
+    the Lambda run, and the viewer deciding whether a score is stale) and they
+    must agree exactly. Two implementations that differ by a strip() would
+    silently mark every score stale forever.
+    """
+    return hashlib.sha256(profile_text.encode()).hexdigest()[:16]

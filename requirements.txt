@@ -1,4 +1,28 @@
-litellm>=1.55
+# litellm is UPPER-BOUNDED deliberately. It was `>=1.55` with no ceiling, so
+# the Nov 3 image rebuild silently resolved 1.106.6, whose completion() does
+# this before checking whether any tool is actually an MCP tool:
+#
+#   if not skip_mcp_handler and tools:
+#       from litellm.responses.mcp.chat_completions_handler import ...
+#
+# instructor gets structured output via tool calling, so `tools` is non-empty
+# on EVERY scoring call. The import needs the `mcp` package, which was not
+# installed, so each call died with ModuleNotFoundError wrapped as
+# litellm.APIConnectionError -- a run that fetched jobs fine and scored zero.
+# Nothing errored at the top level, so the Lambda kept exiting 200 daily.
+litellm>=1.55,<1.107
+
+# Not imported by this project directly. It is litellm's unguarded transitive
+# requirement described above, and litellm does not declare it in the base
+# install, so it has to be named here or a rebuild loses it again.
+#
+# The marker is REQUIRED, not tidiness: mcp publishes no wheel for Python 3.9
+# (every release is Requires-Python >=3.10) and the local .venv here is 3.9.6,
+# so an unmarked line makes `pip install -r requirements.txt` fail outright on
+# a dev machine. Lambda runs 3.12 and gets it. 3.9 does not need it either:
+# the newest litellm installable there (1.83.9) still guards the import.
+mcp>=1.0; python_version >= "3.10"
+
 instructor>=1.7
 pydantic>=2.9
 pyyaml>=6.0
